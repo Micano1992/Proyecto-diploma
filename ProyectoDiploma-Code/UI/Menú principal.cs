@@ -112,6 +112,8 @@ namespace UI
             CU046___Cargar_conductor nCar = new CU046___Cargar_conductor();
 
             nCar.Show();
+
+            //sdfsfdsfds
         }
 
         private void modificarConductorToolStripMenuItem_Click(object sender, EventArgs e)
