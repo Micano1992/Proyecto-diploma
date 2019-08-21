@@ -113,7 +113,6 @@ namespace UI
 
             nCar.Show();
 
-            //sdfsfdsfds
         }
 
         private void modificarConductorToolStripMenuItem_Click(object sender, EventArgs e)
