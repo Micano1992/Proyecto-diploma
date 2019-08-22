@@ -23,6 +23,11 @@ namespace UI
             this.MaximizeBox = false;
 
             MainMenuStrip.Enabled = true;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
         }
 
         #region Producto
