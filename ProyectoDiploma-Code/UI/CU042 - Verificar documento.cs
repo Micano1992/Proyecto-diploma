@@ -25,5 +25,10 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
+
+        private void CU042___Verificar_documento_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

@@ -21,12 +21,15 @@ namespace UI
         {
             CU030___Modificar_producto nMod = new CU030___Modificar_producto();
 
-            nMod.Show();
+            this.Enabled = false;
+
+            nMod.Show(this);
         }
 
         private void CU028___Consultar_producto_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Owner.Activate();
+
+            this.Owner.Enabled = true;
             
         }
 

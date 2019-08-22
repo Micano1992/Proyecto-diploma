@@ -25,5 +25,10 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
+
+        private void CU040___Generar_remito_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

@@ -25,5 +25,10 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
+
+        private void CU021___Restaurar_copia_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

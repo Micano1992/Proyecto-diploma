@@ -30,5 +30,10 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
+
+        private void CU008___Asignar_patente_a_usuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

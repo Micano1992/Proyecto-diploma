@@ -32,5 +32,10 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
+
+        private void CU013___Administrar_patente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

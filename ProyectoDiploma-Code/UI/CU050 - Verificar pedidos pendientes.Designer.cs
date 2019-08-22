@@ -125,6 +125,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU050___Verificar_pedidos_pendientes";
             this.Text = "VERIFICAR PEDIDOS PENDIENTES";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU050___Verificar_pedidos_pendientes_FormClosed);
             this.Load += new System.EventHandler(this.CU050___Verificar_pedidos_pendientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

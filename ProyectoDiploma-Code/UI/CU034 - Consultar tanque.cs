@@ -46,5 +46,10 @@ namespace UI
 
             nTran.Show();
         }
+
+        private void CU034___Consultar_tanque_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

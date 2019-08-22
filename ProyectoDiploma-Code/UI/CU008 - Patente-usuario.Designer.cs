@@ -147,6 +147,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU008___Asignar_patente_a_usuario";
             this.Text = "ADMINISTRAR PATENTE DE USUARIO";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU008___Asignar_patente_a_usuario_FormClosing);
             this.Load += new System.EventHandler(this.CU008___Asignar_patente_a_usuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

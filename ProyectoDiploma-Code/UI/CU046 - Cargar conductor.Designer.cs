@@ -147,6 +147,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU046___Cargar_conductor";
             this.Text = "CONDUCTOR";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU046___Cargar_conductor_FormClosed);
             this.Load += new System.EventHandler(this.CU046___Cargar_conductor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

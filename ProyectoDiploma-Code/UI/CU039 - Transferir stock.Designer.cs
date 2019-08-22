@@ -119,6 +119,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU039___Transferir_stock";
             this.Text = "TRANSFERENCIA DE STOCK";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU039___Transferir_stock_FormClosed);
             this.Load += new System.EventHandler(this.CU039___Transferir_stock_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

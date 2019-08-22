@@ -151,6 +151,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU049___Modificar_conductor";
             this.Text = "MODIFICACIÓN DE CONDUCTOR";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU049___Modificar_conductor_FormClosed);
             this.Load += new System.EventHandler(this.CU049___Modificar_conductor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

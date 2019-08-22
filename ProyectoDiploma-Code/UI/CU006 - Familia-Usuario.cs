@@ -30,5 +30,10 @@ namespace UI
         {
             this.Close();
         }
+
+        private void CU006___Administrar_familia_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

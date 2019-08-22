@@ -37,5 +37,10 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
+
+        private void CU002___Consultar_usuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

@@ -149,6 +149,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU031___Verificar_productos_que_operan_en_terminal";
             this.Text = "RELACIÓN PRODUCTO-TERMINAL";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU031___Verificar_productos_que_operan_en_terminal_FormClosed);
             this.Load += new System.EventHandler(this.CU031___Verificar_productos_que_operan_en_terminal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

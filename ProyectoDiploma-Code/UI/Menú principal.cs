@@ -37,16 +37,16 @@ namespace UI
         {
             CU028___Consultar_producto nCon = new CU028___Consultar_producto();
 
-            this.menuStrip1.Enabled = false;
-
             nCon.Show(this);
+
+            this.Enabled = false;
         }
 
         private void altaDeProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU027___Alta_de_productos nAlt = new CU027___Alta_de_productos();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nAlt.Show(this);
 
@@ -56,7 +56,7 @@ namespace UI
         {
             CU030___Modificar_producto nMod = new CU030___Modificar_producto();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nMod.Show(this);
         }
@@ -65,7 +65,7 @@ namespace UI
         {
             CU031___Verificar_productos_que_operan_en_terminal nVer = new CU031___Verificar_productos_que_operan_en_terminal();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nVer.Show(this);
         }
@@ -74,7 +74,7 @@ namespace UI
         {
             CU032___Asignar_producto_que_opera_terminal nAsig = new CU032___Asignar_producto_que_opera_terminal();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nAsig.Show(this);
         }
@@ -86,12 +86,16 @@ namespace UI
         {
             CU034___Consultar_tanque nCon = new CU034___Consultar_tanque();
 
+            this.Enabled = false;
+
             nCon.Show(this);
         }
 
         private void altaTanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU035___Cargar_tanque nCar = new CU035___Cargar_tanque();
+
+            this.Enabled = false;
 
             nCar.Show(this);
         }
@@ -100,12 +104,16 @@ namespace UI
         {
             CU038___Modificar_tanque nMod = new CU038___Modificar_tanque();
 
+            this.Enabled = false;
+
             nMod.Show(this);
         }
 
         private void transferenciaDeStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU039___Transferir_stock nTran = new CU039___Transferir_stock();
+
+            this.Enabled = false;
 
             nTran.Show(this);
         }
@@ -124,13 +132,16 @@ namespace UI
         {
             CU046___Cargar_conductor nCar = new CU046___Cargar_conductor();
 
-            nCar.Show(this);
+            this.Enabled = false;
 
+            nCar.Show(this);
         }
 
         private void modificarConductorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU049___Modificar_conductor nMod = new CU049___Modificar_conductor();
+
+            this.Enabled = false;
 
             nMod.Show(this);
         }
@@ -141,7 +152,7 @@ namespace UI
         {
             CU042___Verificar_documento nVerdoc = new CU042___Verificar_documento();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nVerdoc.Show(this);
         }
@@ -150,7 +161,7 @@ namespace UI
         {
             CU040___Generar_remito nGenrem = new CU040___Generar_remito();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nGenrem.Show(this);
         }
@@ -159,7 +170,7 @@ namespace UI
         {
             CU041___Generar_recibo nGenRec = new CU041___Generar_recibo();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nGenRec.Show(this);
         }
@@ -168,7 +179,7 @@ namespace UI
         {
             CU050___Verificar_pedidos_pendientes nVerPed = new CU050___Verificar_pedidos_pendientes();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nVerPed.Show(this);
         }
@@ -181,7 +192,7 @@ namespace UI
         {
             CU024___Cambiar_contraseña nCam = new CU024___Cambiar_contraseña();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nCam.Show(this);
         }
@@ -191,7 +202,7 @@ namespace UI
         {
             CU025___Cambiar_idioma nCam = new CU025___Cambiar_idioma();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nCam.Show(this);
         }
@@ -206,14 +217,14 @@ namespace UI
 
             nCon.Show(this);
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
         }
 
         private void crearUsuarioToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
             CU001_Crear_usuario nCrear = new CU001_Crear_usuario();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nCrear.Show(this);
         }
@@ -222,7 +233,7 @@ namespace UI
         {
             CU005___Modificar_usuario nMod = new CU005___Modificar_usuario();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nMod.Show(this);
         }
@@ -231,7 +242,7 @@ namespace UI
         {
             CU012___Consultar_familia nCon = new CU012___Consultar_familia();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nCon.Show(this);
         }
@@ -241,7 +252,7 @@ namespace UI
 
             CU011___CREAR_FAMILIA nCrear = new CU011___CREAR_FAMILIA();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nCrear.Show(this);
         }
@@ -250,7 +261,7 @@ namespace UI
         {
             CU006___Administrar_familia nAdm = new CU006___Administrar_familia();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nAdm.Show(this);
         }
@@ -259,7 +270,7 @@ namespace UI
         {
             CU013___Administrar_patente nAdm = new CU013___Administrar_patente();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nAdm.Show(this);
         }
@@ -271,7 +282,7 @@ namespace UI
         {
             CU018___Consultar_bitacora nCon = new CU018___Consultar_bitacora();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nCon.Show(this);
 
@@ -281,7 +292,7 @@ namespace UI
         {
             CU020___Generar_copia_seguridad nGen = new CU020___Generar_copia_seguridad();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nGen.Show(this);
         }
@@ -290,7 +301,7 @@ namespace UI
         {
             CU021___Restaurar_copia nRes = new CU021___Restaurar_copia();
 
-            this.menuStrip1.Enabled = false;
+            this.Enabled = false;
 
             nRes.Show(this);
         }

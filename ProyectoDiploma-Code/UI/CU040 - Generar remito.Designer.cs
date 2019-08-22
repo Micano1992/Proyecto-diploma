@@ -124,6 +124,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU040___Generar_remito";
             this.Text = "GENERAR REMITO";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU040___Generar_remito_FormClosed);
             this.Load += new System.EventHandler(this.CU040___Generar_remito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

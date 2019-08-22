@@ -84,6 +84,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU021___Restaurar_copia";
             this.Text = "RESTAURAR COPIA DE SEGURIDAD";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU021___Restaurar_copia_FormClosing);
             this.Load += new System.EventHandler(this.CU021___Restaurar_copia_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

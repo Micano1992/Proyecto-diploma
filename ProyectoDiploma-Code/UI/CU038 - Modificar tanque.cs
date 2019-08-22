@@ -33,5 +33,10 @@ namespace UI
             this.Close();
 
         }
+
+        private void CU038___Modificar_tanque_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

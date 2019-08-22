@@ -123,6 +123,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU013___Administrar_patente";
             this.Text = "ADMINISTRAR PATENTE DE FAMILIA";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU013___Administrar_patente_FormClosing);
             this.Load += new System.EventHandler(this.CU013___Administrar_patente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

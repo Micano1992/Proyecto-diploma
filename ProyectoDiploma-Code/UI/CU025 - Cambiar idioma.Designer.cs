@@ -98,6 +98,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU025___Cambiar_idioma";
             this.Text = "CAMBIAR IDIOMA";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU025___Cambiar_idioma_FormClosing);
             this.Load += new System.EventHandler(this.CU025___Cambiar_idioma_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

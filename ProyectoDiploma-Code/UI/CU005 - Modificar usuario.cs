@@ -37,5 +37,10 @@ namespace UI
         {
             this.Close();
         }
+
+        private void CU005___Modificar_usuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Enabled = true;
+        }
     }
 }

@@ -139,6 +139,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU027___Alta_de_productos";
             this.Text = "PRODUCTOS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU027___Alta_de_productos_FormClosing);
             this.Load += new System.EventHandler(this.CU027___Alta_de_productos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

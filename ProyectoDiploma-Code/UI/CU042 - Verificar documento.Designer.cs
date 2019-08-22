@@ -170,6 +170,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU042___Verificar_documento";
             this.Text = "DOCUMENTOS";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU042___Verificar_documento_FormClosed);
             this.Load += new System.EventHandler(this.CU042___Verificar_documento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

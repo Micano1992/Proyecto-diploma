@@ -199,6 +199,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU035___Cargar_tanque";
             this.Text = "TANQUE";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU035___Cargar_tanque_FormClosed);
             this.Load += new System.EventHandler(this.CU035___Cargar_tanque_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -100,6 +100,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU012___Consultar_familia";
             this.Text = "FAMILIAS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU012___Consultar_familia_FormClosing);
             this.Load += new System.EventHandler(this.CU012___Consultar_familia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

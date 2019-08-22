@@ -106,6 +106,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU020___Generar_copia_seguridad";
             this.Text = "REALIZAR COPIA DE SEGURIDAD";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU020___Generar_copia_seguridad_FormClosing);
             this.Load += new System.EventHandler(this.CU020___Generar_copia_seguridad_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

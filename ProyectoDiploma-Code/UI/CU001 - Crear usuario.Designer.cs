@@ -228,6 +228,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU001_Crear_usuario";
             this.Text = "USUARIO";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU001_Crear_usuario_FormClosing);
             this.Load += new System.EventHandler(this.CU001_Crear_usuario_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

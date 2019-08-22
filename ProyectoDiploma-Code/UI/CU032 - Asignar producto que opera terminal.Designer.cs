@@ -164,6 +164,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU032___Asignar_producto_que_opera_terminal";
             this.Text = "ASIGNACIÓN DE PRODUCTO-TERMINAL";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU032___Asignar_producto_que_opera_terminal_FormClosed);
             this.Load += new System.EventHandler(this.CU032___Asignar_producto_que_opera_terminal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();

@@ -215,6 +215,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU018___Consultar_bitacora";
             this.Text = "BITÁCORA";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU018___Consultar_bitacora_FormClosing);
             this.Load += new System.EventHandler(this.CU018___Consultar_bitacora_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
