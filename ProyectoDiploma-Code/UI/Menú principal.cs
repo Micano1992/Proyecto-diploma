@@ -18,6 +18,7 @@ namespace UI
         }
 
 
+
         private void Usuarios_Load(object sender, EventArgs e)
         {
             this.MaximizeBox = false;
@@ -30,12 +31,13 @@ namespace UI
 
         }
 
+
         #region Producto
         private void consultarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU028___Consultar_producto nCon = new CU028___Consultar_producto();
 
-            //this.menuStrip1.Enabled = false;
+            this.menuStrip1.Enabled = false;
 
             nCon.Show(this);
         }
@@ -44,9 +46,9 @@ namespace UI
         {
             CU027___Alta_de_productos nAlt = new CU027___Alta_de_productos();
 
-            nAlt.Show(this);
+            this.menuStrip1.Enabled = false;
 
-            this.Hide();
+            nAlt.Show(this);
 
         }
 
@@ -54,21 +56,27 @@ namespace UI
         {
             CU030___Modificar_producto nMod = new CU030___Modificar_producto();
 
-            nMod.Show();
+            this.menuStrip1.Enabled = false;
+
+            nMod.Show(this);
         }
 
         private void verificarProductoterminalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU031___Verificar_productos_que_operan_en_terminal nVer = new CU031___Verificar_productos_que_operan_en_terminal();
 
-            nVer.Show();
+            this.menuStrip1.Enabled = false;
+
+            nVer.Show(this);
         }
 
         private void asignarProductoterminalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU032___Asignar_producto_que_opera_terminal nAsig = new CU032___Asignar_producto_que_opera_terminal();
 
-            nAsig.Show();
+            this.menuStrip1.Enabled = false;
+
+            nAsig.Show(this);
         }
 
         #endregion
@@ -78,28 +86,28 @@ namespace UI
         {
             CU034___Consultar_tanque nCon = new CU034___Consultar_tanque();
 
-            nCon.Show();
+            nCon.Show(this);
         }
 
         private void altaTanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU035___Cargar_tanque nCar = new CU035___Cargar_tanque();
 
-            nCar.Show();
+            nCar.Show(this);
         }
 
         private void modificarTanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU038___Modificar_tanque nMod = new CU038___Modificar_tanque();
 
-            nMod.Show();
+            nMod.Show(this);
         }
 
         private void transferenciaDeStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU039___Transferir_stock nTran = new CU039___Transferir_stock();
 
-            nTran.Show();
+            nTran.Show(this);
         }
         #endregion
 
@@ -109,14 +117,14 @@ namespace UI
         {
             CU045___Consultar_conductor nCon = new CU045___Consultar_conductor();
 
-            nCon.Show();
+            nCon.Show(this);
         }
 
         private void altaDeConductorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CU046___Cargar_conductor nCar = new CU046___Cargar_conductor();
 
-            nCar.Show();
+            nCar.Show(this);
 
         }
 
@@ -124,7 +132,7 @@ namespace UI
         {
             CU049___Modificar_conductor nMod = new CU049___Modificar_conductor();
 
-            nMod.Show();
+            nMod.Show(this);
         }
         #endregion
 
@@ -133,28 +141,36 @@ namespace UI
         {
             CU042___Verificar_documento nVerdoc = new CU042___Verificar_documento();
 
-            nVerdoc.Show();
+            this.menuStrip1.Enabled = false;
+
+            nVerdoc.Show(this);
         }
 
         private void generarRemitoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU040___Generar_remito nGenrem = new CU040___Generar_remito();
 
-            nGenrem.Show();
+            this.menuStrip1.Enabled = false;
+
+            nGenrem.Show(this);
         }
 
         private void generarReciboToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU041___Generar_recibo nGenRec = new CU041___Generar_recibo();
 
-            nGenRec.Show();
+            this.menuStrip1.Enabled = false;
+
+            nGenRec.Show(this);
         }
 
         private void pedidosPendientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU050___Verificar_pedidos_pendientes nVerPed = new CU050___Verificar_pedidos_pendientes();
 
-            nVerPed.Show();
+            this.menuStrip1.Enabled = false;
+
+            nVerPed.Show(this);
         }
 
         #endregion
@@ -165,7 +181,9 @@ namespace UI
         {
             CU024___Cambiar_contraseña nCam = new CU024___Cambiar_contraseña();
 
-            nCam.Show();
+            this.menuStrip1.Enabled = false;
+
+            nCam.Show(this);
         }
 
 
@@ -173,7 +191,9 @@ namespace UI
         {
             CU025___Cambiar_idioma nCam = new CU025___Cambiar_idioma();
 
-            nCam.Show();
+            this.menuStrip1.Enabled = false;
+
+            nCam.Show(this);
         }
 
         #endregion
@@ -193,21 +213,27 @@ namespace UI
         {
             CU001_Crear_usuario nCrear = new CU001_Crear_usuario();
 
-            nCrear.Show();
+            this.menuStrip1.Enabled = false;
+
+            nCrear.Show(this);
         }
 
         private void modificarUsuarioToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             CU005___Modificar_usuario nMod = new CU005___Modificar_usuario();
 
-            nMod.Show();
+            this.menuStrip1.Enabled = false;
+
+            nMod.Show(this);
         }
 
         private void consultarFamiliaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU012___Consultar_familia nCon = new CU012___Consultar_familia();
 
-            nCon.Show();
+            this.menuStrip1.Enabled = false;
+
+            nCon.Show(this);
         }
 
         private void crearFamiliaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -215,21 +241,58 @@ namespace UI
 
             CU011___CREAR_FAMILIA nCrear = new CU011___CREAR_FAMILIA();
 
-            nCrear.Show();
+            this.menuStrip1.Enabled = false;
+
+            nCrear.Show(this);
         }
 
         private void familiaPorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU006___Administrar_familia nAdm = new CU006___Administrar_familia();
 
-            nAdm.Show();
+            this.menuStrip1.Enabled = false;
+
+            nAdm.Show(this);
         }
 
         private void patentePorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CU013___Administrar_patente nAdm = new CU013___Administrar_patente();
 
-            nAdm.Show();
+            this.menuStrip1.Enabled = false;
+
+            nAdm.Show(this);
+        }
+
+        #endregion
+
+        #region Seguridad
+        private void ConsultarBitácoraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CU018___Consultar_bitacora nCon = new CU018___Consultar_bitacora();
+
+            this.menuStrip1.Enabled = false;
+
+            nCon.Show(this);
+
+        }
+
+        private void GenerarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CU020___Generar_copia_seguridad nGen = new CU020___Generar_copia_seguridad();
+
+            this.menuStrip1.Enabled = false;
+
+            nGen.Show(this);
+        }
+
+        private void RestaurarCopiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CU021___Restaurar_copia nRes = new CU021___Restaurar_copia();
+
+            this.menuStrip1.Enabled = false;
+
+            nRes.Show(this);
         }
 
         #endregion
@@ -254,39 +317,19 @@ namespace UI
         }
 
 
-
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
                 this.Close();
        }
 
-        public void cerrarSesion()
+        private void Principal_Shown(object sender, EventArgs e)
         {
-
-
-
+            
         }
 
-        private void ConsultarBitácoraToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Principal_Activated(object sender, EventArgs e)
         {
-            CU018___Consultar_bitacora nCon = new CU018___Consultar_bitacora();
-
-            nCon.Show();
-
-        }
-
-        private void GenerarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CU020___Generar_copia_seguridad nGen = new CU020___Generar_copia_seguridad();
-
-            nGen.Show();
-        }
-
-        private void RestaurarCopiaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CU021___Restaurar_copia nRes = new CU021___Restaurar_copia();
-
-            nRes.Show();
+            menuStrip1.Enabled = true;
         }
     }
 }

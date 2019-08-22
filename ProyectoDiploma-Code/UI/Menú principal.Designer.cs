@@ -296,7 +296,7 @@
             this.crearUsuarioToolStripMenuItem1,
             this.modificarUsuarioToolStripMenuItem});
             this.crearUsuarioToolStripMenuItem.Name = "crearUsuarioToolStripMenuItem";
-            this.crearUsuarioToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.crearUsuarioToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
             this.crearUsuarioToolStripMenuItem.Text = "Usuarios";
             // 
             // consultarUsuarioToolStripMenuItem1
@@ -327,7 +327,7 @@
             this.crearFamiliaToolStripMenuItem,
             this.familiaPorUsuarioToolStripMenuItem});
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
             this.modificarToolStripMenuItem.Text = "Familias";
             // 
             // consultarFamiliaToolStripMenuItem
@@ -356,7 +356,7 @@
             this.patentesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.patentePorUsuarioToolStripMenuItem});
             this.patentesToolStripMenuItem.Name = "patentesToolStripMenuItem";
-            this.patentesToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.patentesToolStripMenuItem.Size = new System.Drawing.Size(182, 34);
             this.patentesToolStripMenuItem.Text = "Patentes";
             // 
             // patentePorUsuarioToolStripMenuItem
@@ -418,8 +418,10 @@
             this.Name = "principal";
             this.Text = "Menú principal";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.Activated += new System.EventHandler(this.Principal_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.principal_FormClosing);
             this.Load += new System.EventHandler(this.Usuarios_Load);
+            this.Shown += new System.EventHandler(this.Principal_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

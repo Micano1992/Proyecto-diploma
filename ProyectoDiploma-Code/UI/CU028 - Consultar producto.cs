@@ -26,7 +26,8 @@ namespace UI
 
         private void CU028___Consultar_producto_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            this.Owner.Activate();
+            
         }
 
         private void Owner_Load(object sender, EventArgs e)
@@ -42,5 +43,6 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
+
     }
 }

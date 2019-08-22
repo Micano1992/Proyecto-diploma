@@ -44,30 +44,27 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(436, 335);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button5.Location = new System.Drawing.Point(291, 218);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(544, 35);
+            this.button5.Size = new System.Drawing.Size(363, 23);
             this.button5.TabIndex = 13;
             this.button5.Text = "BLOQUEAR";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(436, 400);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button4.Location = new System.Drawing.Point(291, 260);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(544, 35);
+            this.button4.Size = new System.Drawing.Size(363, 23);
             this.button4.TabIndex = 12;
             this.button4.Text = "DESBLOQUEAR";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(436, 271);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(291, 176);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(544, 35);
+            this.button1.Size = new System.Drawing.Size(363, 23);
             this.button1.TabIndex = 9;
             this.button1.Text = "MODIFICAR";
             this.button1.UseVisualStyleBackColor = true;
@@ -78,11 +75,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(436, 18);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(291, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(544, 217);
+            this.groupBox1.Size = new System.Drawing.Size(363, 141);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "INFORMACIÓN PRODUCTO";
@@ -90,30 +85,27 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 137);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(14, 89);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(209, 20);
+            this.label4.Size = new System.Drawing.Size(143, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "TEMPERATURA NATURAL";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(324, 57);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(216, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 20);
+            this.label3.Size = new System.Drawing.Size(77, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "BLOQUEADO:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 57);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(15, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 20);
+            this.label1.Size = new System.Drawing.Size(142, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "MAGNITUD DE MEDICIÓN:";
             // 
@@ -123,43 +115,35 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Código,
             this.Descripción});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 18);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(304, 322);
+            this.dataGridView1.Size = new System.Drawing.Size(203, 209);
             this.dataGridView1.TabIndex = 7;
             // 
             // Código
             // 
             this.Código.HeaderText = "Código";
-            this.Código.MinimumWidth = 8;
             this.Código.Name = "Código";
-            this.Código.Width = 150;
             // 
             // Descripción
             // 
             this.Descripción.HeaderText = "Descripción";
-            this.Descripción.MinimumWidth = 8;
             this.Descripción.Name = "Descripción";
-            this.Descripción.Width = 150;
             // 
             // CU028___Consultar_producto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 469);
+            this.ClientSize = new System.Drawing.Size(702, 305);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU028___Consultar_producto";
             this.Text = "PRODUCTO";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU028___Consultar_producto_FormClosed);
-            this.Load += new System.EventHandler(this.CU028___Consultar_producto_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

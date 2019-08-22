@@ -21,9 +21,9 @@ namespace UI
         {
             MessageBox.Show("Se creó el producto", "INFORMACIÓN");
 
-            this.Owner.Show();
-
             this.Close();
+
+            this.Owner.Activate();
         }
 
         private void CU027___Alta_de_productos_Load(object sender, EventArgs e)
