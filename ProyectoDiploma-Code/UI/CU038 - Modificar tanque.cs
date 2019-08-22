@@ -19,7 +19,11 @@ namespace UI
 
         private void CU038___Modificar_tanque_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
 
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -21,5 +21,14 @@ namespace UI
         {
             this.Close();
         }
+
+        private void CU008___Asignar_patente_a_usuario_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

@@ -19,7 +19,11 @@ namespace UI
 
         private void CU006___Administrar_familia_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
 
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
         private void button3_Click(object sender, EventArgs e)

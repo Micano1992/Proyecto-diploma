@@ -16,5 +16,14 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void CU041___Generar_recibo_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

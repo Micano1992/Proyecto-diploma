@@ -16,5 +16,14 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void CU020___Generar_copia_seguridad_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

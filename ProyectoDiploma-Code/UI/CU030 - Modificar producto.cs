@@ -23,5 +23,14 @@ namespace UI
 
             this.Close();
         }
+
+        private void CU030___Modificar_producto_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

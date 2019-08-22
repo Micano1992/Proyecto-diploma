@@ -30,5 +30,14 @@ namespace UI
 
             nAdm.Show();
         }
+
+        private void CU012___Consultar_familia_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

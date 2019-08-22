@@ -47,69 +47,84 @@
             this.PRODUCTO,
             this.CANTIDAD,
             this.CONDUCTOR});
-            this.dataGridView1.Location = new System.Drawing.Point(107, 29);
+            this.dataGridView1.Location = new System.Drawing.Point(160, 45);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(404, 150);
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(606, 231);
             this.dataGridView1.TabIndex = 0;
             // 
             // PEDIDO
             // 
             this.PEDIDO.HeaderText = "PEDIDO";
+            this.PEDIDO.MinimumWidth = 8;
             this.PEDIDO.Name = "PEDIDO";
+            this.PEDIDO.Width = 150;
             // 
             // PRODUCTO
             // 
             this.PRODUCTO.HeaderText = "PRODUCTO";
+            this.PRODUCTO.MinimumWidth = 8;
             this.PRODUCTO.Name = "PRODUCTO";
+            this.PRODUCTO.Width = 150;
             // 
             // CANTIDAD
             // 
             this.CANTIDAD.HeaderText = "CANTIDAD";
+            this.CANTIDAD.MinimumWidth = 8;
             this.CANTIDAD.Name = "CANTIDAD";
+            this.CANTIDAD.Width = 150;
             // 
             // CONDUCTOR
             // 
             this.CONDUCTOR.HeaderText = "CONDUCTOR";
+            this.CONDUCTOR.MinimumWidth = 8;
             this.CONDUCTOR.Name = "CONDUCTOR";
+            this.CONDUCTOR.Width = 150;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(104, 217);
+            this.label1.Location = new System.Drawing.Point(156, 334);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(75, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "TANQUE";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(197, 214);
+            this.comboBox1.Location = new System.Drawing.Point(296, 329);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(188, 21);
+            this.comboBox1.Size = new System.Drawing.Size(280, 28);
             this.comboBox1.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(197, 275);
+            this.button1.Location = new System.Drawing.Point(296, 423);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 23);
+            this.button1.Size = new System.Drawing.Size(282, 35);
             this.button1.TabIndex = 3;
             this.button1.Text = "GENERAR DESPACHO";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // CU040___Generar_remito
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 322);
+            this.ClientSize = new System.Drawing.Size(920, 495);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU040___Generar_remito";
             this.Text = "GENERAR REMITO";
+            this.Load += new System.EventHandler(this.CU040___Generar_remito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

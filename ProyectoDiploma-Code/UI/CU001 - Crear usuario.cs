@@ -21,5 +21,14 @@ namespace UI
         {
             this.Close();
         }
+
+        private void CU001_Crear_usuario_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

@@ -19,7 +19,11 @@ namespace UI
 
         private void CU005___Mod_usuario_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
 
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
         private void button1_Click(object sender, EventArgs e)

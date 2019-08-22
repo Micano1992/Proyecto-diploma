@@ -33,5 +33,14 @@ namespace UI
         {
             throw new NotImplementedException();
         }
+
+        private void CU028___Consultar_producto_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

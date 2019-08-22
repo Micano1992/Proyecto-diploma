@@ -23,5 +23,14 @@ namespace UI
 
             this.Close();
         }
+
+        private void CU039___Transferir_stock_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

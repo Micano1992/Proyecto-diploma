@@ -23,5 +23,14 @@ namespace UI
 
             this.Close();
         }
+
+        private void CU024___Cambiar_contraseña_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

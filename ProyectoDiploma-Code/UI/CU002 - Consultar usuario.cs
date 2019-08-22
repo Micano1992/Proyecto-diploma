@@ -31,7 +31,11 @@ namespace UI
 
         private void CU002___Consultar_usuario_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
 
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
     }
 }

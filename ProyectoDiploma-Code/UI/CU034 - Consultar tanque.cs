@@ -20,6 +20,10 @@ namespace UI
         private void CU034___Consultar_tanque_Load(object sender, EventArgs e)
         {
             this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
         private void button1_Click(object sender, EventArgs e)

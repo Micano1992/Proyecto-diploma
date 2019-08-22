@@ -21,5 +21,14 @@ namespace UI
         {
 
         }
+
+        private void CU018___Consultar_bitacora_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

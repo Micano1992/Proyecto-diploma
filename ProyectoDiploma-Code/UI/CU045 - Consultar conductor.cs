@@ -30,5 +30,14 @@ namespace UI
 
             nMod.Show();
         }
+
+        private void CU045___Consultar_conductor_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }
