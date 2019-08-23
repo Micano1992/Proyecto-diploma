@@ -37,7 +37,9 @@ namespace UI
         {
             CU035___Cargar_tanque nCar = new CU035___Cargar_tanque();
 
-            nCar.Show();
+            this.Enabled = false;
+
+            nCar.Show(this);
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -19,14 +19,20 @@ namespace UI
 
         private void button3_Click(object sender, EventArgs e)
         {
+            CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario();
 
+            this.Close();
+
+            nAsg.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             CU005___Modificar_usuario nMod = new CU005___Modificar_usuario();
 
-            nMod.Show();
+            this.Enabled = false;
+
+            nMod.Show(this);
         }
 
         private void CU002___Consultar_usuario_Load(object sender, EventArgs e)

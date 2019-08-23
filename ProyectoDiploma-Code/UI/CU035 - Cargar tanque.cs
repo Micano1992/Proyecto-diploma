@@ -21,7 +21,10 @@ namespace UI
         {
             MessageBox.Show("Se creó el tanque", "INFORMACIÓN");
 
+            this.Owner.Enabled = true;
+
             this.Close();
+
         }
 
         private void CU035___Cargar_tanque_Load(object sender, EventArgs e)
