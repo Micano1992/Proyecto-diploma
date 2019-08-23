@@ -21,14 +21,18 @@ namespace UI
         {
             CU011___CREAR_FAMILIA nCrear = new CU011___CREAR_FAMILIA();
 
-            nCrear.Show();
+            this.Enabled = false;
+
+            nCrear.Show(this);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             CU013___Administrar_patente nAdm = new CU013___Administrar_patente();
 
-            nAdm.Show();
+            this.Enabled = false;
+
+            nAdm.Show(this);
         }
 
         private void CU012___Consultar_familia_Load(object sender, EventArgs e)

@@ -47,5 +47,13 @@ namespace UI
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
+        private void CU028___Consultar_producto_Load_1(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+
+            this.StartPosition = FormStartPosition.CenterParent;
+
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        }
     }
 }

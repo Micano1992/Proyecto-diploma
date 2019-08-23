@@ -30,7 +30,9 @@ namespace UI
         {
             CU038___Modificar_tanque nMod = new CU038___Modificar_tanque();
 
-            nMod.Show();
+            this.Enabled = false;
+
+            nMod.Show(this);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -46,7 +48,9 @@ namespace UI
         {
             CU039___Transferir_stock nTran = new CU039___Transferir_stock();
 
-            nTran.Show();
+            this.Enabled = false;
+
+            nTran.Show(this);
         }
 
         private void CU034___Consultar_tanque_FormClosed(object sender, FormClosedEventArgs e)

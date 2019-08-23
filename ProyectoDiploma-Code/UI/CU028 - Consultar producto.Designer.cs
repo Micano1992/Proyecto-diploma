@@ -144,6 +144,7 @@
             this.Name = "CU028___Consultar_producto";
             this.Text = "PRODUCTO";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU028___Consultar_producto_FormClosed);
+            this.Load += new System.EventHandler(this.CU028___Consultar_producto_Load_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

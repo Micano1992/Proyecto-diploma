@@ -28,9 +28,11 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CU005___Modificar_usuario nMod = new CU005___Modificar_usuario();
+            CU006___Administrar_familia nAdm = new CU006___Administrar_familia();
 
-            nMod.Show();
+            this.Enabled = false;
+
+            nAdm.Show(this);
         }
 
         private void button2_Click(object sender, EventArgs e)

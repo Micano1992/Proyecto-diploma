@@ -21,14 +21,18 @@ namespace UI
         {
             CU046___Cargar_conductor nCar = new CU046___Cargar_conductor();
 
-            nCar.Show();
+            this.Enabled = false;
+
+            nCar.Show(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             CU049___Modificar_conductor nMod = new CU049___Modificar_conductor();
 
-            nMod.Show();
+            this.Enabled = false;
+
+            nMod.Show(this);
         }
 
         private void CU045___Consultar_conductor_Load(object sender, EventArgs e)
