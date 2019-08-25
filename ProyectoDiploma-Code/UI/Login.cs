@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+
 
 namespace UI
 {
@@ -30,11 +32,26 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            principal nPrincipal = new principal();
+            if (textBox1.Text == string.Empty)
+            {
+                MessageBox.Show("Por favor ingresar el código de usuario", "ERROR");
+            }
 
-            nPrincipal.Show(this);
+            else
+            {
+                BLL.Seguridad nSeg = new Seguridad();
+                if (nSeg.login(textBox1.Text, textBox2.Text))
+                {
+                    principal nPrincipal = new principal();
 
-            this.Hide();
+                    nPrincipal.Show(this);
+
+                    this.Hide();
+                }
+            }
+
+            
+
             
         }
 

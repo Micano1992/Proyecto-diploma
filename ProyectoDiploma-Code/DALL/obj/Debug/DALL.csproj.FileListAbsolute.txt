@@ -1,0 +1,5 @@
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DALL\bin\Debug\DALL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DALL\bin\Debug\DALL.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DALL\obj\Debug\DALL.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DALL\obj\Debug\DALL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DALL\obj\Debug\DALL.pdb
