@@ -39,15 +39,25 @@ namespace UI
 
             else
             {
-                BLL.Seguridad nSeg = new Seguridad();
-                if (nSeg.login(textBox1.Text, textBox2.Text))
+                try
                 {
-                    principal nPrincipal = new principal();
+                    BLL.Seguridad nSeg = new Seguridad();
+                    if (nSeg.login(textBox1.Text, textBox2.Text))
+                    {
+                        principal nPrincipal = new principal();
 
-                    nPrincipal.Show(this);
+                        nPrincipal.Show(this);
 
-                    this.Hide();
+                        this.Hide();
+                    }
                 }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+                
             }
 
             

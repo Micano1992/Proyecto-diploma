@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 
 namespace BLL
 {
@@ -15,7 +16,23 @@ namespace BLL
 
         public bool login(string usuario, string contraseña)
         {
-            return true;
+            DAL.Seguridad nSeg = new DAL.Seguridad();
+
+            if(nSeg.validarUsuario(usuario))
+            {
+                if (nSeg.validarContraseña(usuario, contraseña))
+                {
+                    return true;
+                }
+                                    
+            }
+
+            else
+            {
+ 
+            }
+            
+            return false;
         }
 
 

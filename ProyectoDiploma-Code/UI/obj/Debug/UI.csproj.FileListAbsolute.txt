@@ -158,3 +158,5 @@ C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\obj\De
 C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\obj\Debug\UI.csproj.GenerateResource.Cache
 C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\BLL.dll
 C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\BLL.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\DAL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\DAL.pdb

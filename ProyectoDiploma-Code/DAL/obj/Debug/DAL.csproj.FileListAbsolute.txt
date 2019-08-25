@@ -1,0 +1,5 @@
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\bin\Debug\DAL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\bin\Debug\DAL.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\Debug\DAL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\Debug\DAL.pdb
