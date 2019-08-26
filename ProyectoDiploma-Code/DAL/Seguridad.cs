@@ -15,10 +15,14 @@ namespace DAL
 
         public bool validarContraseña(string usuario, string contraseña)
         {
+            bool acceso = true;
+
+            actualizarIngresosError(usuario, acceso);
+
             return true;
         }
 
-        public void actualizarIngresosError()
+        public void actualizarIngresosError(string usuario, bool acceso)
         {
 
         }

@@ -160,3 +160,8 @@ C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\De
 C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\BLL.pdb
 C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\DAL.dll
 C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\DAL.pdb
+C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\BLL.dll
+C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\DAL.dll
+C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\BLL.pdb
+C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\DAL.pdb
+C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\obj\Debug\UI.csproj.CopyComplete
