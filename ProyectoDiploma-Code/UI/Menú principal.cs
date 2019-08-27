@@ -266,11 +266,11 @@ namespace UI
 
         private void patentePorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU013___Administrar_patente nAdm = new CU013___Administrar_patente();
+            CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario();
 
             this.Enabled = false;
 
-            nAdm.Show(this);
+            nAsg.Show(this);
         }
 
         #endregion

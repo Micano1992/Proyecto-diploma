@@ -54,7 +54,7 @@ namespace UI
                 catch (Exception)
                 {
 
-                    throw;
+                    //throw;
                 }
 
                 

@@ -48,5 +48,14 @@ namespace UI
         {
             this.Owner.Enabled = true;
         }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            CU006___Administrar_familia nAdm = new CU006___Administrar_familia();
+
+            this.Enabled = false;
+
+            nAdm.Show(this);
+        }
     }
 }
