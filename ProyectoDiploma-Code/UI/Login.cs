@@ -32,15 +32,14 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == string.Empty)
+            if (textBox1.Text == string.Empty || textBox2.Text == string.Empty )
             {
-                MessageBox.Show("Por favor ingresar el código de usuario", "ERROR");
+                MessageBox.Show("Por favor completar datos de usuario y contraseña", "ERROR");
             }
 
             else
             {
-                try
-                {
+               
                     BLL.Seguridad nSeg = new Seguridad();
                     if (nSeg.login(textBox1.Text, textBox2.Text))
                     {
@@ -49,12 +48,18 @@ namespace UI
                         nPrincipal.Show(this);
 
                         this.Hide();
-                    }
-                }
-                catch (Exception)
-                {
 
-                    //throw;
+
+                    textBox1.Text = null;
+                    textBox2.Text = null;
+
+                    }
+
+                    else
+                {
+                    MessageBox.Show("Usuario inválido", "ERROR");
+
+                    textBox2.Text = null;
                 }
 
                 
