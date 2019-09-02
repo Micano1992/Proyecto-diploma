@@ -6,30 +6,29 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class UsuarioBE: ICRUD<UsuarioBE>
+    public class Familia : ICRUD<Familia>
     {
-        public string codUsuario { get; set; }
 
-        public string contraseña { get; set; }
+        public int idFamilia { get; set; }
 
-        public int bloqueado { get; set; }
+        public string descripcion { get; set; }
 
-        public bool Create(UsuarioBE objAlta)
+        public bool Create(Familia objAlta)
         {
             throw new NotImplementedException();
         }
 
-        public List<UsuarioBE> Retrieve()
+        public bool Delete(Familia objDelete)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(UsuarioBE objUpdate)
+        public List<Familia> Retrieve()
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(UsuarioBE objDelete)
+        public bool Update(Familia objUpdate)
         {
             throw new NotImplementedException();
         }

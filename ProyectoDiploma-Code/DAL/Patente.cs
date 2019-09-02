@@ -4,32 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE
+namespace DAL
 {
-    public class UsuarioBE: ICRUD<UsuarioBE>
+    public class Patente : BE.ICRUD<Patente>
     {
-        public string codUsuario { get; set; }
+        ConexionesSQL nConexion = new ConexionesSQL();
 
-        public string contraseña { get; set; }
+        string sql;
 
-        public int bloqueado { get; set; }
-
-        public bool Create(UsuarioBE objAlta)
+        public bool Create(Patente objAlta)
         {
             throw new NotImplementedException();
         }
 
-        public List<UsuarioBE> Retrieve()
+        public bool Delete(Patente objDelete)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(UsuarioBE objUpdate)
+        public List<Patente> Retrieve()
         {
+
             throw new NotImplementedException();
         }
 
-        public bool Delete(UsuarioBE objDelete)
+        public bool Update(Patente objUpdate)
         {
             throw new NotImplementedException();
         }

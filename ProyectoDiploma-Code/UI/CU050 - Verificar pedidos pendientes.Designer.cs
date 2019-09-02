@@ -47,12 +47,11 @@
             this.PRODUCTO,
             this.CANTIDAD,
             this.CONDUCTOR});
-            this.dataGridView1.Location = new System.Drawing.Point(96, 35);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(64, 23);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(606, 231);
+            this.dataGridView1.Size = new System.Drawing.Size(404, 150);
             this.dataGridView1.TabIndex = 1;
             // 
             // PEDIDO
@@ -85,10 +84,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(270, 388);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(180, 252);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(255, 60);
+            this.button1.Size = new System.Drawing.Size(170, 39);
             this.button1.TabIndex = 2;
             this.button1.Text = "ASIGNAR CONDUCTOR";
             this.button1.UseVisualStyleBackColor = true;
@@ -97,32 +95,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(126, 312);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(84, 203);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 20);
+            this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "CONDUCTOR:";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(302, 308);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBox1.Location = new System.Drawing.Point(201, 200);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(222, 28);
+            this.comboBox1.Size = new System.Drawing.Size(149, 21);
             this.comboBox1.TabIndex = 4;
             // 
             // CU050___Verificar_pedidos_pendientes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 502);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(562, 326);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CU050___Verificar_pedidos_pendientes";
             this.Text = "VERIFICAR PEDIDOS PENDIENTES";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU050___Verificar_pedidos_pendientes_FormClosed);

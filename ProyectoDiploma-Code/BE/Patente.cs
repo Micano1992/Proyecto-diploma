@@ -6,30 +6,28 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class UsuarioBE: ICRUD<UsuarioBE>
+    public class Patente : ICRUD<Patente>
     {
-        public string codUsuario { get; set; }
+        public int idPatente { get; set; }
 
-        public string contraseña { get; set; }
+        public string descripcion { get; set; }
 
-        public int bloqueado { get; set; }
-
-        public bool Create(UsuarioBE objAlta)
+        public bool Create(Patente objAlta)
         {
             throw new NotImplementedException();
         }
 
-        public List<UsuarioBE> Retrieve()
+        public bool Delete(Patente objDelete)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(UsuarioBE objUpdate)
+        public List<Patente> Retrieve()
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(UsuarioBE objDelete)
+        public bool Update(Patente objUpdate)
         {
             throw new NotImplementedException();
         }

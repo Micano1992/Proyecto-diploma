@@ -10,50 +10,51 @@ namespace DAL
 {
     public class SeguridadDAL
     {
+        ConexionesSQL nConexion = new ConexionesSQL();
 
-        SqlConnection nCon = new SqlConnection();
+        //SqlConnection nCon = new SqlConnection();
 
-        SqlCommand nCom = new SqlCommand();
+        //SqlCommand nCom = new SqlCommand();
 
         string sql;
 
-        public void conexionBD(int a, string consulta = "")
-        {
-            string conex = "Data Source=DESKTOP-P3SLUJR;Initial Catalog=ProyectoAnalista;Integrated Security=True";
+        //public void conexionBD(int a, string consulta = "")
+        //{
+        //    string conex = "Data Source=DESKTOP-P3SLUJR;Initial Catalog=ProyectoAnalista;Integrated Security=True";
                         
-            nCom.CommandType = CommandType.Text;
+        //    nCom.CommandType = CommandType.Text;
 
-            nCom.Connection = nCon;
+        //    nCom.Connection = nCon;
 
-            if(a == 1)
-            {
-                nCon.ConnectionString = conex;
+        //    if(a == 1)
+        //    {
+        //        nCon.ConnectionString = conex;
 
-                nCom.CommandText = consulta;
+        //        nCom.CommandText = consulta;
 
-                nCon.Open();
-            }
+        //        nCon.Open();
+        //    }
 
-            if (a == 0)
-            {
-                nCon.Close();
-            }
-        }
+        //    if (a == 0)
+        //    {
+        //        nCon.Close();
+        //    }
+        //}
 
         public bool validarUsuario(BE.UsuarioBE nUsuario)
         {      
            sql = string.Format("select count(*) from dbo.usuario where cod_usuario = '{0}'", nUsuario.codUsuario);
 
-            conexionBD(1, sql);
+           nConexion.conexionBD(1, sql);
 
-            if(int.Parse(nCom.ExecuteScalar().ToString()) > 0)
+            if(int.Parse(nConexion.nCom.ExecuteScalar().ToString()) > 0)
             {
-                nCon.Close();
+                nConexion.nCon.Close();
 
                 return true;
             }
 
-            conexionBD(0);
+            nConexion.conexionBD(0);
 
             return false;    
         }
@@ -62,16 +63,16 @@ namespace DAL
         {
             sql = string.Format("select bloqueado from dbo.usuario where cod_usuario = '{0}'", nUsuario.codUsuario);
 
-            conexionBD(1, sql);
+            nConexion.conexionBD(1, sql);
 
-            if (int.Parse(nCom.ExecuteScalar().ToString()) > 0)
+            if (int.Parse(nConexion.nCom.ExecuteScalar().ToString()) > 0)
             {
-                conexionBD(0);
+                nConexion.conexionBD(0);
 
                 return true;
             }
 
-            conexionBD(0);
+            nConexion.conexionBD(0);
 
             return false;
         }
@@ -82,14 +83,14 @@ namespace DAL
 
             sql = string.Format("select count(*) from dbo.usuario where cod_usuario = '{0}' and contraseña = '{1}'", nUsuario.codUsuario, nUsuario.contraseña);
 
-            conexionBD(1, sql);
+            nConexion.conexionBD(1, sql);
 
-            if (int.Parse(nCom.ExecuteScalar().ToString()) > 0)
+            if (int.Parse(nConexion.nCom.ExecuteScalar().ToString()) > 0)
             {
                 resp = true;
             }
 
-            conexionBD(0);
+            nConexion.conexionBD(0);
 
             actualizarIngresosError(nUsuario, resp);
 
@@ -115,11 +116,11 @@ namespace DAL
 
                 sql = string.Format("select cantidad_ingresos_incorrectos from dbo.usuario where cod_usuario = '{0}'", nUsuario.codUsuario);
 
-                conexionBD(1, sql);
+                nConexion.conexionBD(1, sql);
 
-                intentos = int.Parse(nCom.ExecuteScalar().ToString());
+                intentos = int.Parse(nConexion.nCom.ExecuteScalar().ToString());
 
-                conexionBD(0);
+                nConexion.conexionBD(0);
             }
             
             
@@ -142,12 +143,24 @@ namespace DAL
 
             }
 
-            conexionBD(1, sql);
+            nConexion.conexionBD(1, sql);
 
-            nCom.ExecuteNonQuery();
+            nConexion.nCom.ExecuteNonQuery();
 
-            conexionBD(0);
+            nConexion.conexionBD(0);
 
+        }
+
+        public List<BE.Patente> listarPatenteUsuario()
+        {
+            List<BE.Patente> lPatente = new List<BE.Patente>();
+
+           
+
+
+
+
+            return lPatente;
         }
 
 

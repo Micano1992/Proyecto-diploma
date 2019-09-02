@@ -13,7 +13,7 @@ namespace BLL
 
         DAL.SeguridadDAL nSeg = new DAL.SeguridadDAL();
 
-        public void listarPatentes(BE.UsuarioBE nUsu)
+        public void listarPatentes(string codUsuario)
         {
 
         }

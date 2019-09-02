@@ -10,19 +10,34 @@ namespace DAL
 {
     public class ConexionesSQL
     {
-        public void conectar(string bd)
+
+        public SqlConnection nCon = new SqlConnection();
+
+        public SqlCommand nCom = new SqlCommand();
+
+        public string sql;
+
+        public void conexionBD(int a, string consulta = "")
         {
-            SqlConnection nCon = new SqlConnection(bd);
+            string conex = "Data Source=DESKTOP-P3SLUJR;Initial Catalog=ProyectoAnalista;Integrated Security=True";
 
-            nCon.Open();
-            
-        }
+            nCom.CommandType = CommandType.Text;
 
-        public void desconectar(string bd)
-        {
-            SqlConnection nCon = new SqlConnection(bd);
+            nCom.Connection = nCon;
 
-            nCon.Close();
+            if (a == 1)
+            {
+                nCon.ConnectionString = conex;
+
+                nCom.CommandText = consulta;
+
+                nCon.Open();
+            }
+
+            if (a == 0)
+            {
+                nCon.Close();
+            }
         }
     }
 }
