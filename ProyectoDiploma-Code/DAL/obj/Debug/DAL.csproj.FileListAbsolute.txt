@@ -9,3 +9,5 @@ C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\
 C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\Debug\DAL.dll
 C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\Debug\DAL.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\bin\Debug\BE.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\bin\Debug\BE.pdb

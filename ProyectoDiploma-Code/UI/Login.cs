@@ -15,6 +15,9 @@ namespace UI
 
     public partial class Login : Form
     {
+
+        string mensaje;
+
         public void Login_Load(object sender, EventArgs e)
         {
             this.MaximizeBox = false;
@@ -40,8 +43,8 @@ namespace UI
             else
             {
                
-                    BLL.Seguridad nSeg = new Seguridad();
-                    if (nSeg.login(textBox1.Text, textBox2.Text))
+                    BLL.SeguridadBLL nSeg = new SeguridadBLL();
+                    if (nSeg.login(textBox1.Text, textBox2.Text, ref mensaje))
                     {
                         principal nPrincipal = new principal();
 
@@ -57,7 +60,7 @@ namespace UI
 
                     else
                 {
-                    MessageBox.Show("Usuario inválido", "ERROR");
+                    MessageBox.Show(mensaje, "ERROR");
 
                     textBox2.Text = null;
                 }
