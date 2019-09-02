@@ -17,6 +17,15 @@ namespace UI
             InitializeComponent();
         }
 
+        public principal(string usuario)
+        {
+            usuarioLogueado = usuario;
+        }
+
+        public string usuarioLogueado { get; set; }
+
+        BLL.UsuarioBLL nUsuario = new BLL.UsuarioBLL();
+
         private void Usuarios_Load(object sender, EventArgs e)
         {
             this.MaximizeBox = false;
@@ -339,6 +348,14 @@ namespace UI
         private void Principal_Activated(object sender, EventArgs e)
         {
             menuStrip1.Enabled = true;
+        }
+
+
+        public void verificarPatentes()
+        {
+           nUsuario.listarPatentes(usuarioLogueado);
+
+
         }
     }
 }

@@ -41,9 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionesSQL.cs" />
-    <Compile Include="Patente.cs" />
+    <Compile Include="PatenteBE.cs" />
     <Compile Include="SeguridadDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

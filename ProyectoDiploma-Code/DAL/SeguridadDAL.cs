@@ -151,9 +151,9 @@ namespace DAL
 
         }
 
-        public List<BE.Patente> listarPatenteUsuario()
+        public List<BE.PatenteBE> listarPatenteUsuario()
         {
-            List<BE.Patente> lPatente = new List<BE.Patente>();
+            List<BE.PatenteBE> lPatente = new List<BE.PatenteBE>();
 
            
 

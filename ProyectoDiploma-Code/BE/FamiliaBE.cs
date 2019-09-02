@@ -6,28 +6,29 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Patente : ICRUD<Patente>
+    public class FamiliaBE : ICRUD<FamiliaBE>
     {
-        public int idPatente { get; set; }
+
+        public int idFamilia { get; set; }
 
         public string descripcion { get; set; }
 
-        public bool Create(Patente objAlta)
+        public bool Create(FamiliaBE objAlta)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(Patente objDelete)
+        public bool Delete(FamiliaBE objDelete)
         {
             throw new NotImplementedException();
         }
 
-        public List<Patente> Retrieve()
+        public List<FamiliaBE> Retrieve()
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Patente objUpdate)
+        public bool Update(FamiliaBE objUpdate)
         {
             throw new NotImplementedException();
         }

@@ -46,7 +46,7 @@ namespace UI
                     BLL.SeguridadBLL nSeg = new SeguridadBLL();
                     if (nSeg.login(textBox1.Text, textBox2.Text, ref mensaje))
                     {
-                        principal nPrincipal = new principal();
+                        principal nPrincipal = new principal(textBox1.Text);
 
                         nPrincipal.Show(this);
 

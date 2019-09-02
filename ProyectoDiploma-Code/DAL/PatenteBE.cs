@@ -4,31 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BE
+namespace DAL
 {
-    public class Familia : ICRUD<Familia>
+    public class PatenteBE : BE.ICRUD<PatenteBE>
     {
+        ConexionesSQL nConexion = new ConexionesSQL();
 
-        public int idFamilia { get; set; }
+        string sql;
 
-        public string descripcion { get; set; }
-
-        public bool Create(Familia objAlta)
+        public bool Create(PatenteBE objAlta)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(Familia objDelete)
+        public bool Delete(PatenteBE objDelete)
         {
             throw new NotImplementedException();
         }
 
-        public List<Familia> Retrieve()
+        public List<PatenteBE> Retrieve()
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Familia objUpdate)
+        public bool Update(PatenteBE objUpdate)
         {
             throw new NotImplementedException();
         }
