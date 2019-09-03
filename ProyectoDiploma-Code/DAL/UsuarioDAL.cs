@@ -14,13 +14,13 @@ namespace DAL
         string sql;
 
         BE.PatenteBE nPat = new BE.PatenteBE();
-        BE.FamiliaBE nFam = new BE.FamiliaBE();
+        //BE.FamiliaBE nFam = new BE.FamiliaBE();
         List<BE.FamiliaBE> lFamilia = new List<BE.FamiliaBE>();
 
         public List<BE.FamiliaBE> familiaAsignada(BE.UsuarioBE nUsu)
         {
 
-            lFamilia = null;
+            lFamilia.Clear();
 
             sql = string.Format("Select * from dbo.FamiliaUSuario where cod_usuario = '{0}'", nUsu.codUsuario);
 
@@ -28,21 +28,26 @@ namespace DAL
 
             SqlDataReader reader = nConexion.nCom.ExecuteReader();
 
-            while(reader.HasRows)
-
-            reader.Read();
+            //reader.Read();
+     
 
             if(reader.HasRows)
             {
-                while (reader.HasRows)
+                while (reader.Read())
                 {
-                    nFam.idFamilia = reader.GetInt16(1);
+                    //nFam.idFamilia = int.Parse(reader.GetInt16(0).ToString());
+                    //BE.FamiliaBE nFam = new BE.FamiliaBE() { idFamilia = int.Parse(reader[0].ToString()) };
+
+                    BE.FamiliaBE nFam = new BE.FamiliaBE();
+
+                    nFam.idFamilia = int.Parse(reader[0].ToString());
 
                     lFamilia.Add(nFam);
 
-                    reader.Read();
+                    //reader.Read();
                 }
             }
+            
 
             nConexion.conexionBD(0);
 
@@ -52,7 +57,11 @@ namespace DAL
 
         public void patentesFamilias(List<BE.FamiliaBE> lFam, ref List<BE.PatenteBE> lPat)
         {
-            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+            //sql = string.Format("Select * from dbo.FamiliaPatente where id_familia = {0}", fam.idFamilia);
+
+            //nConexion.conexionBD(1, sql);
+
+            //SqlDataReader reader = nConexion.nCom.ExecuteReader();
 
             foreach (BE.FamiliaBE fam in lFam )
             {
@@ -60,7 +69,7 @@ namespace DAL
 
                 nConexion.conexionBD(1, sql);
 
-                reader = nConexion.nCom.ExecuteReader();
+                SqlDataReader reader = nConexion.nCom.ExecuteReader();
 
                 reader.Read();
 

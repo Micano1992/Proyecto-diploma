@@ -16,11 +16,13 @@ namespace BLL
 
         public List<int> listarPatentes(string codUsuario)
         {
+            nUsuario.codUsuario = codUsuario;
 
-            foreach(BE.PatenteBE pat in nUsuDAL.familiaAsignada())
-            {
+            nUsuDAL.patentesFamilias(nUsuDAL.familiaAsignada(nUsuario), ref lPat);
 
-            }
+            nUsuDAL.patentesAsignadas(nUsuario, ref lPat);
+
+            nUsuDAL.patentesNegadas(nUsuario, ref lPat);
 
             return listaPat;
 

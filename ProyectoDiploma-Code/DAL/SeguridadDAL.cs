@@ -65,7 +65,7 @@ namespace DAL
 
             nConexion.conexionBD(1, sql);
 
-            if (int.Parse(nConexion.nCom.ExecuteScalar().ToString()) > 0)
+            if (int.Parse(nConexion.nCom.ExecuteScalar().ToString()) == 0)
             {
                 nConexion.conexionBD(0);
 

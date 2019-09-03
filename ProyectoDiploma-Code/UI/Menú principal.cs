@@ -12,13 +12,15 @@ namespace UI
 {
     public partial class principal : Form
     {
-        public principal()
-        {
-            InitializeComponent();
-        }
+        //public principal()
+        //{
+        //    InitializeComponent();
+        //}
 
         public principal(string usuario)
         {
+            InitializeComponent();
+
             usuarioLogueado = usuario;
         }
 
@@ -35,6 +37,8 @@ namespace UI
             this.StartPosition = FormStartPosition.CenterParent;
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            nUsuario.listarPatentes(usuarioLogueado);
 
         }
 
@@ -351,11 +355,11 @@ namespace UI
         }
 
 
-        public void verificarPatentes()
-        {
-           nUsuario.listarPatentes(usuarioLogueado);
+        //public void verificarPatentes()
+        //{
+        //   nUsuario.listarPatentes(usuarioLogueado);
 
 
-        }
+        //}
     }
 }
