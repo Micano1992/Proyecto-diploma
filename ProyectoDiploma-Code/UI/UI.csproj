@@ -58,6 +58,12 @@
     <Compile Include="CU002 - Consultar usuario.Designer.cs">
       <DependentUpon>CU002 - Consultar usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="CU009 - Negar patente-usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CU009 - Negar patente-usuario.Designer.cs">
+      <DependentUpon>CU009 - Negar patente-usuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="CU012 - Consultar familia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,11 +88,11 @@
     <Compile Include="CU006 - Familia-Usuario.Designer.cs">
       <DependentUpon>CU006 - Familia-Usuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="CU008 - Patente-usuario.cs">
+    <Compile Include="CU008 - Asignar Patente-usuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CU008 - Patente-usuario.Designer.cs">
-      <DependentUpon>CU008 - Patente-usuario.cs</DependentUpon>
+    <Compile Include="CU008 - Asignar Patente-usuario.Designer.cs">
+      <DependentUpon>CU008 - Asignar Patente-usuario.cs</DependentUpon>
     </Compile>
     <Compile Include="CU011 - Crear familia.cs">
       <SubType>Form</SubType>
@@ -252,8 +258,8 @@
     <EmbeddedResource Include="CU006 - Familia-Usuario.resx">
       <DependentUpon>CU006 - Familia-Usuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CU008 - Patente-usuario.resx">
-      <DependentUpon>CU008 - Patente-usuario.cs</DependentUpon>
+    <EmbeddedResource Include="CU008 - Asignar Patente-usuario.resx">
+      <DependentUpon>CU008 - Asignar Patente-usuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CU011 - Crear familia.resx">
       <DependentUpon>CU011 - Crear familia.cs</DependentUpon>

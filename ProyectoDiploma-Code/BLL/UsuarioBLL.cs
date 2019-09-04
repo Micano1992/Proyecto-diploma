@@ -16,6 +16,10 @@ namespace BLL
 
         public List<int> listarPatentes(string codUsuario)
         {
+            listaPat.Clear();
+
+            lPat.Clear();
+
             nUsuario.codUsuario = codUsuario;
 
             nUsuDAL.patentesFamilias(nUsuDAL.familiaAsignada(nUsuario), ref lPat);
@@ -23,6 +27,12 @@ namespace BLL
             nUsuDAL.patentesAsignadas(nUsuario, ref lPat);
 
             nUsuDAL.patentesNegadas(nUsuario, ref lPat);
+
+            foreach(BE.PatenteBE pat in lPat)
+            {
+                listaPat.Add(pat.idPatente);
+            }
+ 
 
             return listaPat;
 

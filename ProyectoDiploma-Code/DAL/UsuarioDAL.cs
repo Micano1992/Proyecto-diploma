@@ -69,17 +69,16 @@ namespace DAL
 
                 nConexion.conexionBD(1, sql);
 
-                SqlDataReader reader = nConexion.nCom.ExecuteReader();
+                SqlDataReader reader = nConexion.nCom.ExecuteReader();               
 
-                reader.Read();
-
-                while(reader.HasRows)
+                while(reader.Read())
                 {
-                    nPat.idPatente = reader.GetInt16(2);
+                    BE.PatenteBE nPat = new BE.PatenteBE();
+
+                    nPat.idPatente = int.Parse(reader[1].ToString());
 
                     lPat.Add(nPat);
 
-                    reader.Read();
                 }
 
             }
@@ -90,21 +89,22 @@ namespace DAL
 
         public void patentesAsignadas(BE.UsuarioBE nUsu, ref List<BE.PatenteBE> lPat)
         {
-            sql = string.Format("Select * from dbo.UsuarioPatente where bloqueado = 0 and codUsuario = '{0}'", nUsu.codUsuario);
+            sql = string.Format("Select * from dbo.UsuarioPatente where negado = 0 and cod_usuario = '{0}'", nUsu.codUsuario);
 
             nConexion.conexionBD(1, sql);
 
             SqlDataReader reader = nConexion.nCom.ExecuteReader();
 
-            reader.Read();
 
-            while(reader.HasRows)
+
+            while (reader.Read())
             {
-                nPat.idPatente = reader.GetInt16(1);
+                BE.PatenteBE nPat = new BE.PatenteBE();
+
+                nPat.idPatente = int.Parse(reader[0].ToString());
 
                 lPat.Add(nPat);                
 
-                reader.Read();
             }
 
             nConexion.conexionBD(0);
@@ -113,21 +113,31 @@ namespace DAL
 
         public void patentesNegadas(BE.UsuarioBE nUsu, ref List<BE.PatenteBE> lPat)
         {
-            sql = string.Format("Select * from dbo.UsuarioPatente where bloqueado = 1 and codUsuario = '{0}'", nUsu.codUsuario);
+            sql = string.Format("Select * from dbo.UsuarioPatente where negado = 1 and cod_usuario = '{0}'", nUsu.codUsuario);
 
             nConexion.conexionBD(1, sql);
 
             SqlDataReader reader = nConexion.nCom.ExecuteReader();
 
-            reader.Read();
+            
 
-            while (reader.HasRows)
+            while (reader.Read())
             {
-                nPat.idPatente = reader.GetInt16(1);
+                BE.PatenteBE nPat = new BE.PatenteBE();
 
-                lPat.Remove(nPat);  
+                nPat.idPatente = int.Parse(reader[0].ToString());
 
-                reader.Read();
+                foreach (BE.PatenteBE negar in lPat)
+
+                {
+                    if (negar.idPatente == nPat.idPatente)
+                    {
+                        lPat.Remove(negar);
+
+                        break;
+                    }
+                }
+
             }
 
             nConexion.conexionBD(0);

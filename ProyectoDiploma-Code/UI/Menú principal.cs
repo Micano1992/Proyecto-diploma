@@ -28,6 +28,8 @@ namespace UI
 
         BLL.UsuarioBLL nUsuario = new BLL.UsuarioBLL();
 
+        List<int> lPatentesUsu = new List<int>();
+
         private void Usuarios_Load(object sender, EventArgs e)
         {
             this.MaximizeBox = false;
@@ -38,7 +40,11 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
-            nUsuario.listarPatentes(usuarioLogueado);
+            deshabilitarPuntos();
+
+
+            habilitarPuntosMenu(nUsuario.listarPatentes(usuarioLogueado));
+
 
         }
 
@@ -279,6 +285,15 @@ namespace UI
 
         private void patentePorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CU009___Negar_patente_usuario nNeg = new CU009___Negar_patente_usuario();
+
+            this.Enabled = false;
+
+            nNeg.Show(this);
+        }
+
+        private void otorgarPatenteAUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario();
 
             this.Enabled = false;
@@ -323,7 +338,7 @@ namespace UI
 
 
         private void principal_FormClosing(object sender, FormClosingEventArgs e)
-        {            
+        {
             DialogResult result = MessageBox.Show("¿Desea cerrar sesión?", "Salir", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.No)
@@ -341,12 +356,12 @@ namespace UI
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                this.Close();
-       }
+            this.Close();
+        }
 
         private void Principal_Shown(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Principal_Activated(object sender, EventArgs e)
@@ -354,12 +369,356 @@ namespace UI
             menuStrip1.Enabled = true;
         }
 
+        public void habilitarPuntosMenu(List<int> patentes)
+        {
 
-        //public void verificarPatentes()
-        //{
-        //   nUsuario.listarPatentes(usuarioLogueado);
+            foreach (int a in patentes)
+            {
+                switch (a)
+                {
+
+                    case 1:
+
+                        AdmUsuariosToolStripMenuItem.Visible = true;
+
+                        UsuariosToolStripMenuItem.Visible = true;
+
+                        consultarUsuarioToolStripMenuItem1.Visible = true;
+
+                        break;
+
+                    case 2:
+
+                        AdmUsuariosToolStripMenuItem.Visible = true;
+
+                        UsuariosToolStripMenuItem.Visible = true;
+
+                        crearUsuarioToolStripMenuItem1.Visible = true;
+
+                        break;
+
+                    case 3:
+
+                        AdmUsuariosToolStripMenuItem.Visible = true;
+
+                        UsuariosToolStripMenuItem.Visible = true;
+
+                        modificarUsuarioToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 6:
+
+                        AdmUsuariosToolStripMenuItem.Visible = true;
+
+                        familasToolStripMenuItem.Visible = true;
+
+                        consultarFamiliaToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 7:
+
+                        AdmUsuariosToolStripMenuItem.Visible = true;
+
+                        familasToolStripMenuItem.Visible = true;
+
+                        crearFamiliaToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 9:
 
 
-        //}
+                        break;
+
+                    case 10:
+
+                        AdmUsuariosToolStripMenuItem.Visible = true;
+
+                        patentesToolStripMenuItem.Visible = true;
+
+                        otorgarPatenteAUsuarioToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 11:
+
+                        AdmUsuariosToolStripMenuItem.Visible = true;
+
+                        patentesToolStripMenuItem.Visible = true;
+
+                        NegarPatentePorUsuarioToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 12:
+
+                        seguridadDeSistemaToolStripMenuItem.Visible = true;
+
+                        restaurarCopiaToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 13:
+
+                        seguridadDeSistemaToolStripMenuItem.Visible = true;
+
+                        generarCopiaDeSeguridadToolStripMenuItem.Visible = true;
+
+                        break;
+
+
+                    case 14:
+
+                        seguridadDeSistemaToolStripMenuItem.Visible = true;
+
+                        consultarBitácoraToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 15:
+
+                        menúUsuarioToolStripMenuItem.Visible = true;
+
+                        cambiarContraseñaToolStripMenuItem.Visible = true;
+
+                        break;
+
+
+                    case 16:
+
+                        menúUsuarioToolStripMenuItem.Visible = true;
+
+                        cambiarIdiomaToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 17:
+
+                        productosToolStripMenuItem.Visible = true;
+
+                        consultarProductoToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 18:
+
+                        productosToolStripMenuItem.Visible = true;
+
+                        altaDeProductoToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 19:
+
+                        productosToolStripMenuItem.Visible = true;
+
+                        modificarProductoToolStripMenuItem.Visible = true;
+
+                        break;
+                        
+                    case 21:
+
+                        productosToolStripMenuItem.Visible = true;
+
+                        productosToolStripMenuItem.Visible = true;
+
+                        verificarProductoterminalToolStripMenuItem.Visible = true;
+
+                        break;
+
+
+                    case 22:
+
+                        productosToolStripMenuItem.Visible = true;
+
+                        productosToolStripMenuItem.Visible = true;
+
+                        asignarProductoterminalToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 23:
+
+                        tanqueToolStripMenuItem.Visible = true;
+
+                        consultarTanqueToolStripMenuItem1.Visible = true;
+
+                        break;
+
+
+                    case 24:
+
+                        tanqueToolStripMenuItem.Visible = true;
+
+                        altaTanqueToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 25:
+
+                        tanqueToolStripMenuItem.Visible = true;
+
+                        modificarTanqueToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 27:
+
+                        tanqueToolStripMenuItem.Visible = true;
+
+                        transferenciaDeStockToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 28:
+
+                        gestionTerminalToolStripMenuItem2.Visible = true;
+
+                        generarRemitoToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 29:
+
+                        gestionTerminalToolStripMenuItem2.Visible = true;
+
+                        generarReciboToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 30:
+
+                        gestionTerminalToolStripMenuItem2.Visible = true;
+
+                        verificarDocumentoToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 31:
+
+                        conductorToolStripMenuItem.Visible = true;
+
+                        consultarConductorToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 32:
+
+                        conductorToolStripMenuItem.Visible = true;
+
+                        altaDeConductorToolStripMenuItem1.Visible = true;
+
+                        break;
+
+                    case 33:
+
+                        conductorToolStripMenuItem.Visible = true;
+
+                        modificarConductorToolStripMenuItem.Visible = true;
+
+                        break;
+
+                    case 35:
+
+                        gestionTerminalToolStripMenuItem2.Visible = true;
+
+                        pedidosPendientesToolStripMenuItem.Visible = true;
+
+                        break;
+
+                }
+
+
+            }
+        }
+
+        public void deshabilitarPuntos()
+        {
+            productosToolStripMenuItem.Visible = false;
+
+            tanqueToolStripMenuItem.Visible = false;
+
+            conductorToolStripMenuItem.Visible = false;
+
+            gestionTerminalToolStripMenuItem2.Visible = false;
+
+            AdmUsuariosToolStripMenuItem.Visible = false;
+
+            consultarFamiliaToolStripMenuItem.Visible = false;
+
+            menúUsuarioToolStripMenuItem.Visible = false;
+
+            seguridadDeSistemaToolStripMenuItem.Visible = false;
+
+            AdmUsuariosToolStripMenuItem.Visible = false;
+
+            consultarUsuarioToolStripMenuItem1.Visible = false; ;
+
+            UsuariosToolStripMenuItem.Visible = false;
+
+            modificarUsuarioToolStripMenuItem.Visible = false;
+
+           crearFamiliaToolStripMenuItem.Visible = false;
+
+            otorgarPatenteAUsuarioToolStripMenuItem.Visible = false;
+
+            NegarPatentePorUsuarioToolStripMenuItem.Visible = false;
+
+            restaurarCopiaToolStripMenuItem.Visible = false;
+
+            generarCopiaDeSeguridadToolStripMenuItem.Visible = false;
+
+            consultarBitácoraToolStripMenuItem.Visible = false;
+
+            cambiarContraseñaToolStripMenuItem.Visible = false;
+
+            cambiarIdiomaToolStripMenuItem.Visible = false;
+
+            consultarProductoToolStripMenuItem.Visible = false;
+
+            altaDeProductoToolStripMenuItem.Visible = false;
+
+            modificarProductoToolStripMenuItem.Visible = false;
+
+            verificarProductoterminalToolStripMenuItem.Visible = false;
+
+            asignarProductoterminalToolStripMenuItem.Visible = false;
+
+            consultarTanqueToolStripMenuItem1.Visible = false;
+
+            altaTanqueToolStripMenuItem.Visible = false;
+
+            modificarTanqueToolStripMenuItem.Visible = false;
+
+            transferenciaDeStockToolStripMenuItem.Visible = false;
+
+            generarRemitoToolStripMenuItem.Visible = false;
+
+            generarReciboToolStripMenuItem.Visible = false;
+
+            verificarDocumentoToolStripMenuItem.Visible = false;
+
+            consultarConductorToolStripMenuItem.Visible = false;
+
+            altaDeConductorToolStripMenuItem1.Visible = false;
+
+            modificarConductorToolStripMenuItem.Visible = false;
+
+            pedidosPendientesToolStripMenuItem.Visible = false;
+
+            productosOperadosToolStripMenuItem.Visible = false;
+
+            UsuariosToolStripMenuItem.Visible = false;
+
+            familasToolStripMenuItem.Visible = false;
+
+            patentesToolStripMenuItem.Visible = false;
+
+        }
+
+
     }
 }
+
