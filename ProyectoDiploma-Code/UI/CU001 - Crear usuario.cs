@@ -17,6 +17,8 @@ namespace UI
             InitializeComponent();
         }
 
+        BLL.TerminalBLL terminalBLL = new BLL.TerminalBLL();
+
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -29,6 +31,8 @@ namespace UI
             this.StartPosition = FormStartPosition.CenterParent;
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            comboBox1.DataSource = terminalBLL.Retrieve();
         }
 
         private void CU001_Crear_usuario_FormClosing(object sender, FormClosingEventArgs e)

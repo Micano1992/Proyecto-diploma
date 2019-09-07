@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    public class UsuarioDAL
+    public class Usuario
     {
         ConexionesSQL nConexion = new ConexionesSQL();
 

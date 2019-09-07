@@ -17,9 +17,23 @@ namespace UI
             InitializeComponent();
         }
 
+        BLL.Familia familiaBLL = new BLL.Familia();
+
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se creó la familia correctamente", "INFORMACIÓN");
+            if (textBox1.Text == null)
+            {
+                MessageBox.Show("Por favor completar el campo 'Descripción'", "ERROR");
+            }
+
+            else
+            {
+                if (familiaBLL.crearFamilia(textBox1.Text))
+                {
+                    MessageBox.Show("Se creó la familia correctamente", "INFORMACIÓN");
+                }
+            }
+            
 
             this.Close();
         }
@@ -36,6 +50,8 @@ namespace UI
         private void CU011___CREAR_FAMILIA_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Owner.Enabled = true;
+            
         }
+
     }
 }

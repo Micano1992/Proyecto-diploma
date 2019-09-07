@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class FamiliaBE
+    public class Terminal
     {
+        public int codTerminal { get; set; }
 
-        public int idFamilia { get; set; }
+        public string descripcionTerminal { get; set; }
 
-        public string descripcion { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace BLL
     public class UsuarioBLL
     {
         BE.UsuarioBE nUsuario = new BE.UsuarioBE();
-        DAL.UsuarioDAL nUsuDAL = new DAL.UsuarioDAL();
+        DAL.Usuario nUsuDAL = new DAL.Usuario();
 
         List<int> listaPat = new List<int>();
         List<BE.PatenteBE> lPat = new List<BE.PatenteBE>();
