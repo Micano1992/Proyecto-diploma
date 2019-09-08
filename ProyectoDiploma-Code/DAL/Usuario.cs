@@ -55,37 +55,7 @@ namespace DAL
 
         }
 
-        public void patentesFamilias(List<BE.FamiliaBE> lFam, ref List<BE.PatenteBE> lPat)
-        {
-            //sql = string.Format("Select * from dbo.FamiliaPatente where id_familia = {0}", fam.idFamilia);
 
-            //nConexion.conexionBD(1, sql);
-
-            //SqlDataReader reader = nConexion.nCom.ExecuteReader();
-
-            foreach (BE.FamiliaBE fam in lFam )
-            {
-                sql = string.Format("Select * from dbo.FamiliaPatente where id_familia = {0}", fam.idFamilia);
-
-                nConexion.conexionBD(1, sql);
-
-                SqlDataReader reader = nConexion.nCom.ExecuteReader();               
-
-                while(reader.Read())
-                {
-                    BE.PatenteBE nPat = new BE.PatenteBE();
-
-                    nPat.idPatente = int.Parse(reader[1].ToString());
-
-                    lPat.Add(nPat);
-
-                }
-
-            }
-
-            nConexion.conexionBD(0);
-
-        }
 
         public void patentesAsignadas(BE.UsuarioBE nUsu, ref List<BE.PatenteBE> lPat)
         {

@@ -31,7 +31,7 @@ namespace UI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CU013___Administrar_patente nAdm = new CU013___Administrar_patente();
+            CU013___Administrar_patente nAdm = new CU013___Administrar_patente(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()) ;
 
             this.Enabled = false;
 
@@ -108,8 +108,6 @@ namespace UI
         {
             //nCrear.FormClosed += FormClosedEventArgs(Crear_closing);
             //nCrear.ShowDialog();
-
-
 
             CU011___CREAR_FAMILIA form = new CU011___CREAR_FAMILIA();
 

@@ -74,9 +74,22 @@ namespace DAL
             return false;
 
         }
-        
 
-         
-            
+        public int obtenerIdFamilia(string desc)
+        {
+            sql = string.Format("Select id_familia from dbo.Familia where Descripcion_familia = '{0}'", desc);
+
+            nConexion.conexionBD(1, sql);
+
+            int resul = int.Parse(nConexion.nCom.ExecuteScalar().ToString());
+
+            nConexion.conexionBD(0);
+
+            return resul;
+        }
+
+
+
+
     }
 }

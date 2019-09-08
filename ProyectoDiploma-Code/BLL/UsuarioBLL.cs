@@ -10,6 +10,7 @@ namespace BLL
     {
         BE.UsuarioBE nUsuario = new BE.UsuarioBE();
         DAL.Usuario nUsuDAL = new DAL.Usuario();
+        DAL.Patente patDAL = new DAL.Patente();
 
         List<int> listaPat = new List<int>();
         List<BE.PatenteBE> lPat = new List<BE.PatenteBE>();
@@ -22,7 +23,7 @@ namespace BLL
 
             nUsuario.codUsuario = codUsuario;
 
-            nUsuDAL.patentesFamilias(nUsuDAL.familiaAsignada(nUsuario), ref lPat);
+            patDAL.patentesFamilias(nUsuDAL.familiaAsignada(nUsuario), ref lPat);
 
             nUsuDAL.patentesAsignadas(nUsuario, ref lPat);
 
