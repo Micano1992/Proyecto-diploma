@@ -89,17 +89,26 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string celad = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-
-            if(FamiliaBLL.eliminarFamilia(celad))
+            try
             {
-                MessageBox.Show("Se eliminó la familia", "INFORMACIÓN");
-            }
+                string celad = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
-            else
-            {
-                MessageBox.Show("No se ha podido eliminar la familia", "ERROR");
+                DialogResult result = MessageBox.Show("¿Desea eliminar la familia?", "INFORMACIÓN", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    FamiliaBLL.eliminarFamilia(celad);
+
+                    MessageBox.Show("Se eliminó la familia", "INFORMACIÓN");
+
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
 
             actualizarGrilla();
         }

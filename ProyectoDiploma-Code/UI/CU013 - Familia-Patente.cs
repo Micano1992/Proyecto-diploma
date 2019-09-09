@@ -31,7 +31,7 @@ namespace UI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se realizó la modificación correctamente", "INFORMACIÓN");
+            //MessageBox.Show("Se realizó la modificación correctamente", "INFORMACIÓN");
 
             this.Close();
         }
@@ -103,15 +103,34 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            patBLL.desAsignarPatenteFamilia(familiaPat, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            try
+            {
+                patBLL.desAsignarPatenteFamilia(familiaPat, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("No hay patentes seleccionadas", "ERROR");
+            }
+           
             actualizarGrillas(familiaPat);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            patBLL.asignarPatenteFamilia(familiaPat, dataGridView2.SelectedRows[0].Cells[0].Value.ToString());
+            try
+            {
+                patBLL.asignarPatenteFamilia(familiaPat, dataGridView2.SelectedRows[0].Cells[0].Value.ToString());
 
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("No hay patentes seleccionadas", "ERROR");
+            }
+
+            
             actualizarGrillas(familiaPat);
         }
     }
