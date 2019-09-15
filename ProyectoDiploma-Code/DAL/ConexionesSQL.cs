@@ -17,9 +17,12 @@ namespace DAL
 
         public string sql;
 
+        public string conex { get; set; }
+       
+
         public void conexionBD(int a, string consulta = "")
         {
-            string conex = "Data Source=DESKTOP-P3SLUJR;Initial Catalog=ProyectoAnalista;Integrated Security=True";
+            conex = "Data Source=DESKTOP-P3SLUJR;Initial Catalog=ProyectoAnalista;Integrated Security=True";
 
             nCom.CommandType = CommandType.Text;
 

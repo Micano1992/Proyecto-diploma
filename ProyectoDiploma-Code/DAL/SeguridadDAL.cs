@@ -65,7 +65,9 @@ namespace DAL
 
             nConexion.conexionBD(1, sql);
 
-            if (int.Parse(nConexion.nCom.ExecuteScalar().ToString()) == 0)
+            //int a = int.Parse(nConexion.nCom.ExecuteScalar().ToString());
+
+            if (Convert.ToInt16(nConexion.nCom.ExecuteScalar()) == 0)
             {
                 nConexion.conexionBD(0);
 
@@ -162,6 +164,28 @@ namespace DAL
 
             return lPatente;
         }
+
+        public bool bloquearUSuario(string usuario, int block)
+        {
+            sql = string.Format("Update Usuario Set Cantidad_ingresos_incorrectos = 0, bloqueado = {0} where cod_usuario = '{1}'", block, usuario );
+
+            nConexion.conexionBD(1, sql);
+
+            if(nConexion.nCom.ExecuteNonQuery() > 0)
+            {
+                nConexion.conexionBD(0);
+
+                return true;
+            }
+            else
+            {
+                nConexion.conexionBD(0);
+
+                return false;
+            }
+        }
+
+
 
 
 

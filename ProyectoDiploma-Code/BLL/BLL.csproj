@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Familia.cs" />
+    <Compile Include="Idioma.cs" />
     <Compile Include="Patente.cs" />
     <Compile Include="SeguridadBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

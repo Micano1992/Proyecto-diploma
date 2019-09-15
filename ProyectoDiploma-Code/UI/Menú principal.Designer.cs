@@ -58,7 +58,6 @@
             this.UsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarUsuarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.crearUsuarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.familasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarFamiliaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearFamiliaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -292,8 +291,7 @@
             // 
             this.UsuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consultarUsuarioToolStripMenuItem1,
-            this.crearUsuarioToolStripMenuItem1,
-            this.modificarUsuarioToolStripMenuItem});
+            this.crearUsuarioToolStripMenuItem1});
             this.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem";
             this.UsuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.UsuariosToolStripMenuItem.Text = "Usuarios";
@@ -312,13 +310,6 @@
             this.crearUsuarioToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
             this.crearUsuarioToolStripMenuItem1.Text = "Crear usuario";
             this.crearUsuarioToolStripMenuItem1.Click += new System.EventHandler(this.crearUsuarioToolStripMenuItem1_Click_1);
-            // 
-            // modificarUsuarioToolStripMenuItem
-            // 
-            this.modificarUsuarioToolStripMenuItem.Name = "modificarUsuarioToolStripMenuItem";
-            this.modificarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.modificarUsuarioToolStripMenuItem.Text = "Modificar usuario";
-            this.modificarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.modificarUsuarioToolStripMenuItem_Click_1);
             // 
             // familasToolStripMenuItem
             // 
@@ -461,7 +452,6 @@
         private System.Windows.Forms.ToolStripMenuItem generarReciboToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pedidosPendientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearUsuarioToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem modificarUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menúUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cambiarContraseñaToolStripMenuItem;

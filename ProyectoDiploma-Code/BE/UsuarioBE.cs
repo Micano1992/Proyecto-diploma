@@ -26,16 +26,16 @@ namespace BE
 
         public string mail { get; set; }
 
-        public int terminal { get; set; }
+        public Terminal terminal { get; set; }
 
-        public int bloqueado { get; set; }
+        public bool bloqueado { get; set; }
 
 
         public enum tipoDoc
         {
-            CUIT,
-            DNI,
-            CUIL,
+            CUIT = 1,
+            DNI = 2,
+            CUIL = 3,
 
         }
        

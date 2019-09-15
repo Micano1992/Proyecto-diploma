@@ -246,14 +246,6 @@ namespace UI
             nCrear.Show(this);
         }
 
-        private void modificarUsuarioToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            CU005___Modificar_usuario nMod = new CU005___Modificar_usuario();
-
-            this.Enabled = false;
-
-            nMod.Show(this);
-        }
 
         private void consultarFamiliaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -274,14 +266,6 @@ namespace UI
             nCrear.Show(this);
         }
 
-        private void familiaPorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CU006___Administrar_familia nAdm = new CU006___Administrar_familia();
-
-            this.Enabled = false;
-
-            nAdm.Show(this);
-        }
 
         private void patentePorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -403,7 +387,7 @@ namespace UI
 
                         UsuariosToolStripMenuItem.Visible = true;
 
-                        modificarUsuarioToolStripMenuItem.Visible = true;
+                        //modificarUsuarioToolStripMenuItem.Visible = true;
 
                         break;
 
@@ -658,7 +642,7 @@ namespace UI
 
             UsuariosToolStripMenuItem.Visible = false;
 
-            modificarUsuarioToolStripMenuItem.Visible = false;
+            //modificarUsuarioToolStripMenuItem.Visible = false;
 
            crearFamiliaToolStripMenuItem.Visible = false;
 

@@ -61,6 +61,11 @@ namespace BLL
             
         }
 
+        public bool bloquear(string usuario, int bloqueo)
+        {
+            return nSeg.bloquearUSuario(usuario, bloqueo);
+        }
+
 
 
     }
