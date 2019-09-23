@@ -14,6 +14,8 @@ namespace BLL
         BE.FamiliaBE FamBE = new BE.FamiliaBE();
         List<BE.PatenteBE> lisPat = new List<BE.PatenteBE>();
         List<BE.PatenteBE> lisPate = new List<BE.PatenteBE>();
+        List<BE.FamiliaBE> listaFami = new List<BE.FamiliaBE>();
+
 
         List<string> listaP = new List<string>();
         List<string> listarPate = new List<string>();
@@ -77,6 +79,48 @@ namespace BLL
             }
 
             foreach(BE.PatenteBE pat in lisPat)
+            {
+
+                listarPate.Add(pat.descripcion);
+            }
+
+            return listarPate;
+
+        }
+
+        public List<string> listarPatentesNoAsignadas(List<string> fami)
+        {
+            listaP.Clear();
+            listarPate.Clear();
+            lisPate.Clear();
+
+            lisPat = PatDAL.listarPatentes();
+
+            foreach (string i in fami)
+            {
+                FamBE.descripcion = i;
+                FamBE.idFamilia = FamDAL.obtenerIdFamilia(i);
+
+                listaFami.Add(FamBE);
+            }
+
+            PatDAL.patentesFamilias(FamBE, ref lisPate);
+
+            foreach (BE.PatenteBE pat in lisPate)
+            {
+                foreach (BE.PatenteBE pat2 in lisPat)
+                {
+                    if (pat2.idPatente == pat.idPatente)
+                    {
+                        lisPat.Remove(pat2);
+
+                        break;
+                    }
+
+                }
+            }
+
+            foreach (BE.PatenteBE pat in lisPat)
             {
 
                 listarPate.Add(pat.descripcion);

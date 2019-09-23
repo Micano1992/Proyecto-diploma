@@ -278,11 +278,11 @@ namespace UI
 
         private void otorgarPatenteAUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario();
+            //CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario();
 
-            this.Enabled = false;
+            //this.Enabled = false;
 
-            nAsg.Show(this);
+            //nAsg.Show(this);
         }
 
         #endregion

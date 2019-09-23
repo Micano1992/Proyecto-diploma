@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.FAMILIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -50,8 +48,6 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FAMILIA});
             this.dataGridView1.Location = new System.Drawing.Point(33, 63);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
@@ -59,18 +55,9 @@
             this.dataGridView1.Size = new System.Drawing.Size(153, 150);
             this.dataGridView1.TabIndex = 0;
             // 
-            // FAMILIA
-            // 
-            this.FAMILIA.HeaderText = "FAMILIA";
-            this.FAMILIA.MinimumWidth = 8;
-            this.FAMILIA.Name = "FAMILIA";
-            this.FAMILIA.Width = 150;
-            // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1});
             this.dataGridView2.Location = new System.Drawing.Point(401, 63);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
@@ -78,17 +65,10 @@
             this.dataGridView2.Size = new System.Drawing.Size(154, 150);
             this.dataGridView2.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "FAMILIA";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 150;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 23);
+            this.label1.Location = new System.Drawing.Point(30, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(188, 13);
             this.label1.TabIndex = 2;
@@ -97,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(348, 23);
+            this.label2.Location = new System.Drawing.Point(362, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(207, 13);
             this.label2.TabIndex = 3;
@@ -111,6 +91,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "QUITAR ->";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -120,6 +101,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "<- AGREGAR";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -217,9 +199,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FAMILIA;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;

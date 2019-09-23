@@ -42,9 +42,10 @@ namespace DAL
 
                 }
 
+                nConexion.conexionBD(0);
+
             }
 
-            nConexion.conexionBD(0);
 
         }
 
@@ -136,8 +137,6 @@ namespace DAL
 
             return false;
 
-
-            return true;
         }
 
         public bool desAsignarPatenteFamilia(BE.FamiliaBE fami, BE.PatenteBE pate)
@@ -156,9 +155,7 @@ namespace DAL
             nConexion.conexionBD(0);
 
             return false;
-
-
-            return true;
+            
         }
 
 

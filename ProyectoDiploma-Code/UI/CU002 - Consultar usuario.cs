@@ -22,7 +22,7 @@ namespace UI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario();
+            CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString());
 
             this.Close();
 

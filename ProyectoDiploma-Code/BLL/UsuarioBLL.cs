@@ -10,6 +10,7 @@ namespace BLL
     public class UsuarioBLL
     {
         BE.UsuarioBE nUsuario = new BE.UsuarioBE();
+        BE.PatenteBE patenteBE = new BE.PatenteBE();
         DAL.Usuario nUsuDAL = new DAL.Usuario();
         DAL.Patente patDAL = new DAL.Patente();
         DAL.Terminal TerminalDAL = new DAL.Terminal();
@@ -118,13 +119,15 @@ namespace BLL
         public string altaUsurio(string[] nUsuUI)
         {
             BE.UsuarioBE usuario = new BE.UsuarioBE();
+            BE.Terminal nTer = new BE.Terminal();
 
             usuario.nombre = nUsuUI[0].ToString();
             usuario.apellido = nUsuUI[1].ToString();
             usuario.tipoDocumento = (BE.UsuarioBE.tipoDoc)Enum.Parse(typeof(BE.UsuarioBE.tipoDoc), nUsuUI[3].ToString());
             usuario.nroDocumento = nUsuUI[2].ToString();
             usuario.mail = nUsuUI[4].ToString();
-            usuario.terminal.codTerminal = TerminalDAL.obtenerIdTerminal(nUsuUI[5].ToString());
+            nTer.codTerminal = TerminalDAL.obtenerIdTerminal(nUsuUI[5].ToString());
+            usuario.terminal = nTer;
             usuario.idioma = idiomaDAL.obtenerIdIdioma(nUsuUI[6]);
             usuario.contraseña = generarContraseña();
 
@@ -160,6 +163,57 @@ namespace BLL
             return nUsuDAL.modificarUsuario(nUsuario);
             
 
+        }
+
+        public List<string> patentesOtorgadas(string codUsu)
+        {
+            List<string> patOtor = new List<string>();
+
+            nUsuario.codUsuario = codUsu;
+
+            lPat = nUsuDAL.patentesOtorgadas(nUsuario);
+
+            foreach(BE.PatenteBE pat in lPat)
+            {
+                patOtor.Add(pat.descripcion);
+            }
+
+            return patOtor;
+            
+
+
+        }
+
+        public List<string> patentesNoOtorgadas(string codUsu)
+        {
+            List<string> patNoOtor = new List<string>();
+
+            nUsuario.codUsuario = codUsu;
+
+            lPat = nUsuDAL.patentesNoOtorgadas(nUsuario);
+
+            foreach (BE.PatenteBE pat in lPat)
+            {
+                patNoOtor.Add(pat.descripcion);
+            }
+
+            return patNoOtor;
+        }
+
+        public bool asignarPatente(string usu, string pat)
+        {
+            nUsuario.codUsuario = usu;
+            patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
+
+            return nUsuDAL.asignarPatente(nUsuario, patenteBE);
+        }
+
+        public bool desAsignarPatente(string usu, string pat)
+        {
+            nUsuario.codUsuario = usu;
+            patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
+
+            return nUsuDAL.desAsignarPatente(nUsuario, patenteBE);
         }
 
 
