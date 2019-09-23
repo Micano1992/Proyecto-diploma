@@ -11,6 +11,7 @@ namespace DAL
     {
         ConexionesSQL nConexion = new ConexionesSQL();
         List<BE.PatenteBE> lPat = new List<BE.PatenteBE>();
+        List<BE.UsuarioBE> lUsu = new List<BE.UsuarioBE>();
 
         string sql;
 
@@ -158,6 +159,26 @@ namespace DAL
             
         }
 
+        public List<BE.UsuarioBE> verificarPatentes(BE.PatenteBE pat)
+        {
+            sql = string.Format("(select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1) union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = 28 and b.Negado = 0)", pat.idPatente);
+
+            nConexion.conexionBD(1, sql);
+
+            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+
+            while (reader.Read())
+            {
+                BE.UsuarioBE nUsu = new BE.UsuarioBE();
+
+                nUsu.codUsuario = reader[0].ToString();
+
+                lUsu.Add(nUsu);
+
+            }
+
+            return lUsu;
+        }
 
 
     }

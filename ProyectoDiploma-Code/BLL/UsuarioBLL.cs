@@ -216,6 +216,57 @@ namespace BLL
             return nUsuDAL.desAsignarPatente(nUsuario, patenteBE);
         }
 
+        public bool negarPatente(string usu, string pat)
+        {
+            nUsuario.codUsuario = usu;
+            patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
+
+            return nUsuDAL.negarPatente(nUsuario, patenteBE);
+        }
+
+        public bool desNegarPatente(string usu, string pat)
+        {
+            nUsuario.codUsuario = usu;
+            patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
+
+            return nUsuDAL.desNegarPatente(nUsuario, patenteBE);
+        }
+
+        public List<string> patentesNegadas(string codUsu)
+        {
+            List<string> patNeg = new List<string>();
+
+            nUsuario.codUsuario = codUsu;
+
+            lPat = nUsuDAL.patentesNegadas(nUsuario);
+
+            foreach (BE.PatenteBE pat in lPat)
+            {
+                patNeg.Add(pat.descripcion);
+            }
+
+            return patNeg;
+
+
+
+        }
+
+        public List<string> patentesNoNegadas(string codUsu)
+        {
+            List<string> patNoNeg = new List<string>();
+
+            nUsuario.codUsuario = codUsu;
+
+            lPat = nUsuDAL.patentesNoNegadas(nUsuario);
+
+            foreach (BE.PatenteBE pat in lPat)
+            {
+                patNoNeg.Add(pat.descripcion);
+            }
+
+            return patNoNeg;
+        }
+
 
     }
 }

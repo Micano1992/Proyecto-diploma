@@ -384,5 +384,114 @@ namespace DAL
             return false;
         }
 
+        public bool negarPatente(BE.UsuarioBE usu, BE.PatenteBE pat)
+        {
+            sql = string.Format("select * from dbo.UsuarioPatente where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
+
+            nConexion.conexionBD(1, sql);
+
+            if (nConexion.nCom.ExecuteNonQuery() > 0)
+            {
+                nConexion.conexionBD(0);
+
+                sql = string.Format("update dbo.UsuarioPatente set Negado = 1 where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
+            }
+
+            else
+            {
+                nConexion.conexionBD(0);
+
+                sql = string.Format("insert into dbo.UsuarioPatente (Id_patente, cod_usuario, Negado) values({0}, '{1}', 1)", pat.idPatente, usu.codUsuario);
+
+            }
+
+            nConexion.conexionBD(1, sql);
+
+            if (nConexion.nCom.ExecuteNonQuery() > 0)
+            {
+                nConexion.conexionBD(0);
+
+                return true;
+            }
+
+            else
+            {
+                nConexion.conexionBD(0);
+
+                return false;
+            }
+
+        }
+
+        public bool desNegarPatente(BE.UsuarioBE usu, BE.PatenteBE pat)
+        {
+            sql = string.Format("delete from dbo.UsuarioPatente where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
+
+            nConexion.conexionBD(1, sql);
+
+            if (nConexion.nCom.ExecuteNonQuery() > 0)
+            {
+                nConexion.conexionBD(0);
+
+                return true;
+            }
+
+            nConexion.conexionBD(0);
+
+            return false;
+        }
+
+        public List<BE.PatenteBE> patentesNoNegadas(BE.UsuarioBE usu)
+        {
+            lPaten.Clear();
+
+            sql = string.Format("select id_patente, Descripcion_patente from dbo.patente where id_patente in (select distinct Id_patente from dbo.FamiliaPatente where Id_familia in (select Id_familia from dbo.FamiliaUsuario where Cod_usuario = '{0}')) and id_patente not in (select id_patente from dbo.UsuarioPatente where cod_usuario = '{0}' and Negado = 1) ", usu.codUsuario);
+
+            nConexion.conexionBD(1, sql);
+
+            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+
+            while (reader.Read())
+            {
+                BE.PatenteBE nPate = new BE.PatenteBE();
+
+                nPate.idPatente = Convert.ToInt16(reader[0]);
+                nPate.descripcion = reader[1].ToString();
+
+                lPaten.Add(nPate);
+            }
+
+
+            nConexion.conexionBD(0);
+
+            return lPaten;
+        }
+
+        public List<BE.PatenteBE> patentesNegadas(BE.UsuarioBE usu)
+        {
+            lPaten2.Clear();
+
+            sql = string.Format("select id_patente, Descripcion_patente from dbo.Patente where id_patente in(select Id_patente from dbo.UsuarioPatente where cod_usuario = '{0}' and Negado = 1)", usu.codUsuario);
+
+            nConexion.conexionBD(1, sql);
+
+            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+
+            while (reader.Read())
+            {
+                BE.PatenteBE nPate = new BE.PatenteBE();
+
+                nPate.idPatente = Convert.ToInt16(reader[0]);
+                nPate.descripcion = reader[1].ToString();
+
+                lPaten2.Add(nPate);
+            }
+
+            nConexion.conexionBD(0);
+
+            return lPaten2;
+
+        }
+
     }
 }

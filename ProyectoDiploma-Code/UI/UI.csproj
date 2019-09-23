@@ -246,6 +246,9 @@
     <EmbeddedResource Include="CU002 - Consultar usuario.resx">
       <DependentUpon>CU002 - Consultar usuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CU009 - Negar patente-usuario.resx">
+      <DependentUpon>CU009 - Negar patente-usuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CU012 - Consultar familia.resx">
       <DependentUpon>CU012 - Consultar familia.cs</DependentUpon>
     </EmbeddedResource>

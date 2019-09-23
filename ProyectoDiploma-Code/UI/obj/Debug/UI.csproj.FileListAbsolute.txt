@@ -167,3 +167,4 @@ C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\D
 C:\Users\matcano\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\obj\Debug\UI.csproj.CopyComplete
 C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\BE.dll
 C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\bin\Debug\BE.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\UI\obj\Debug\UI.CU009___Negar_patente_usuario.resources

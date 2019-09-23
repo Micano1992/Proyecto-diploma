@@ -147,6 +147,15 @@ namespace UI
 
             actualizarGruopBox();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            CU009___Negar_patente_usuario nNeg = new CU009___Negar_patente_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString());
+
+            this.Close();
+
+            nNeg.Show();
+        }
     }
 }
 

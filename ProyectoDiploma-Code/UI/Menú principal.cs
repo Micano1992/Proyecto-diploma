@@ -269,11 +269,11 @@ namespace UI
 
         private void patentePorUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU009___Negar_patente_usuario nNeg = new CU009___Negar_patente_usuario();
+            //CU009___Negar_patente_usuario nNeg = new CU009___Negar_patente_usuario();
 
-            this.Enabled = false;
+            //this.Enabled = false;
 
-            nNeg.Show(this);
+            //nNeg.Show(this);
         }
 
         private void otorgarPatenteAUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -699,6 +699,8 @@ namespace UI
             familasToolStripMenuItem.Visible = false;
 
             patentesToolStripMenuItem.Visible = false;
+
+            crearUsuarioToolStripMenuItem1.Visible = false;
 
         }
 
