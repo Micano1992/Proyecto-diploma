@@ -103,18 +103,27 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                patBLL.desAsignarPatenteFamilia(familiaPat, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                if(patBLL.verificarPatenteFamilia(familiaPat, dataGridView1.SelectedRows[0].Cells[0].Value.ToString()))
+                {
+                    patBLL.desAsignarPatenteFamilia(familiaPat, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    actualizarGrillas(familiaPat);
+                }
+                else
+                {
+                    MessageBox.Show("No es posible desasignar la patente porque no se encuentra asiganda a otro usuario", "ERROR");
+                }
 
             }
-            catch (Exception)
-            {
 
+            else
+            {
                 MessageBox.Show("No hay patentes seleccionadas", "ERROR");
             }
-           
-            actualizarGrillas(familiaPat);
+
+
+     
         }
 
         private void button2_Click(object sender, EventArgs e)

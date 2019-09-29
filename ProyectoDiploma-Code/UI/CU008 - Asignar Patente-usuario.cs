@@ -21,6 +21,8 @@ namespace UI
         BLL.Patente patenteBLL = new BLL.Patente();
         BLL.Familia familiaBLL = new BLL.Familia();
 
+        List<string> lisUsuarios = new List<string>();
+
         public CU008___Asignar_patente_a_usuario(String codigoUsuario, string nom, string ape)
         {
             this.codUsuario = codigoUsuario;
@@ -79,10 +81,8 @@ namespace UI
 
         private void CU008___Asignar_patente_a_usuario_FormClosing(object sender, FormClosingEventArgs e)
         {
-          
-            //patenteBLL.listarPatentesAsignadas
-              
-          
+            this.Owner.Enabled = true;
+            
         }
 
         public void actualizarGrillas(string usu)
@@ -105,9 +105,23 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            usuarioBLL.desAsignarPatente(codUsuario, dataGridView2.SelectedCells[0].Value.ToString());
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                lisUsuarios.Clear();
 
-            actualizarGrillas(codUsuario);
+                lisUsuarios = patenteBLL.verificarPatentes(dataGridView1.SelectedCells[0].Value.ToString(), codUsuario);
+
+                if (lisUsuarios.Count == 0)
+                {
+                    MessageBox.Show("No es posible quitar la patente porque solo está asignada a este usuario", "ERROR");
+                }
+                else
+                {
+                    usuarioBLL.desAsignarPatente(codUsuario, dataGridView1.SelectedCells[0].Value.ToString());
+
+                    actualizarGrillas(codUsuario);
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

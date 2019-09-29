@@ -13,10 +13,16 @@ namespace UI
     public partial class CU002___Consultar_usuario : Form
     {
         BLL.UsuarioBLL usuarioBLL = new BLL.UsuarioBLL();
-        BLL.SeguridadBLL seguridadBLL = new BLL.SeguridadBLL();
+        BLL.Seguridad seguridadBLL = new BLL.Seguridad();
+        BLL.Patente patenteBLL = new BLL.Patente();
+        List<int> listaPatentes = new List<int>();
 
-        public CU002___Consultar_usuario()
+        List<string> lisUsuarios = new List<string>();
+
+        public CU002___Consultar_usuario(List<int> listaPatentes)
         {
+            this.listaPatentes = listaPatentes;
+
             InitializeComponent();
         }
 
@@ -24,23 +30,25 @@ namespace UI
         {
             CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString());
 
-            this.Close();
+            nAsg.FormClosing += cierreFormClosing;
 
-            nAsg.Show();
+            this.Enabled = false;
+
+            nAsg.Show(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             CU005___Modificar_usuario nMod = new CU005___Modificar_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            nMod.FormClosing += nMod_FormClosing;
+            nMod.FormClosing += cierreFormClosing;
 
             this.Enabled = false;
 
             nMod.Show(this);
         }
 
-        private void nMod_FormClosing(object sender, FormClosingEventArgs e)
+        private void cierreFormClosing(object sender, FormClosingEventArgs e)
         {
             actualizarGrilla();
 
@@ -62,6 +70,10 @@ namespace UI
             actualizarGrilla();
 
             actualizarGruopBox();
+
+            bloquearPuntos();
+
+            habilitarPuntos(listaPatentes);
         }
 
         private void CU002___Consultar_usuario_FormClosing(object sender, FormClosingEventArgs e)
@@ -124,20 +136,52 @@ namespace UI
         {
             string[] usuSelec = new string[8];
 
-            usuSelec = usuarioBLL.consulUsuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            try
+            {
+                usuSelec = usuarioBLL.consulUsuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
-            label5.Text = usuSelec[6].ToString();
-            label6.Text = usuSelec[7].ToString();
-            label4.Text = usuSelec[4].ToString();
-            label7.Text = usuSelec[3].ToString();
-            label8.Text = usuSelec[5].ToString();
+                label5.Text = usuSelec[6].ToString();
+                label6.Text = usuSelec[7].ToString();
+                label4.Text = usuSelec[4].ToString();
+                label7.Text = usuSelec[3].ToString();
+                label8.Text = usuSelec[5].ToString();
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+           
+
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            seguridadBLL.bloquear(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), 1);
+            lisUsuarios.Clear();
 
-            actualizarGruopBox();
+            lisUsuarios = patenteBLL.verificarPatentes(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+
+            if (lisUsuarios.Count == 0)
+            {
+                seguridadBLL.bloquear(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), 1);
+
+                actualizarGruopBox();
+            }
+
+            else
+            {
+                string men = "No es posible bloquear el usuario debido a que las siguientes patentes no cuentan con otra asignación:\n";
+
+                foreach (string a in lisUsuarios)
+                {
+                    men += "\n" + a;
+                }
+
+                MessageBox.Show(men, "ERROR");
+            }
+
+
         }
 
 
@@ -152,9 +196,60 @@ namespace UI
         {
             CU009___Negar_patente_usuario nNeg = new CU009___Negar_patente_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString());
 
-            this.Close();
+            nNeg.FormClosing += cierreFormClosing;
 
-            nNeg.Show();
+            this.Enabled = false;
+
+            nNeg.Show(this);
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            actualizarGruopBox();
+        }
+
+        public void habilitarPuntos(List<int> patentes)
+        {
+            foreach(int i in patentes)
+            {
+                switch(i)
+                {
+                    case 3:
+                        button1.Enabled = true;
+                        break;
+                    case 4:
+                        button5.Enabled = true;
+                        break;
+                    case 5:
+                        button4.Enabled = true;
+                        break;
+                    case 37:
+                        button2.Enabled = true;
+                        break;
+                    case 10:
+                        button3.Enabled = true;
+                        break;
+                    case 11:
+                        button7.Enabled = true;
+                        break;
+                    case 38:
+                        button6.Enabled = true;
+                        break;
+
+                }
+            }
+
+        }
+
+        public void bloquearPuntos()
+        {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
         }
     }
 }

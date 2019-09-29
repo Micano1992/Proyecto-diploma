@@ -35,45 +35,54 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == string.Empty || textBox2.Text == string.Empty )
+            ingreso();           
+            
+        }
+
+        public void ingreso()
+        {
+            if (textBox1.Text == string.Empty || textBox2.Text == string.Empty)
             {
                 MessageBox.Show("Por favor completar datos de usuario y contraseña", "ERROR");
             }
 
             else
             {
-               
-                    BLL.SeguridadBLL nSeg = new SeguridadBLL();
-                    if (nSeg.login(textBox1.Text, textBox2.Text, ref mensaje))
-                    {
-                        principal nPrincipal = new principal(textBox1.Text);
 
-                        nPrincipal.Show(this);
+                BLL.Seguridad nSeg = new Seguridad();
+                if (nSeg.login(textBox1.Text, textBox2.Text, ref mensaje))
+                {
+                    principal nPrincipal = new principal(textBox1.Text);
 
-                        this.Hide();
+                    nPrincipal.Show(this);
+
+                    this.Hide();
 
 
                     textBox1.Text = null;
                     textBox2.Text = null;
 
-                    }
+                }
 
-                    else
+                else
                 {
                     MessageBox.Show(mensaje, "ERROR");
 
                     textBox2.Text = null;
                 }
 
-                
+
             }
-
-            
-
-            
         }
 
+        private void Login_Enter(object sender, EventArgs e)
+        {
+            ingreso();
+        }
 
-
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            ingreso();
+        }
     }
 }

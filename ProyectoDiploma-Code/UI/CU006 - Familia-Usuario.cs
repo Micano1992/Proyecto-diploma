@@ -26,6 +26,7 @@ namespace UI
         public string apellido { get; set; }
 
         BLL.Familia familiaBLL = new BLL.Familia();
+        BLL.Patente patenteBLL = new BLL.Patente();
 
 
 
@@ -105,6 +106,7 @@ namespace UI
         {
             if(dataGridView2.SelectedCells.Count > 0)
             {
+                
                 familiaBLL.asignarFamiliaUsuario(dataGridView2.SelectedCells[0].Value.ToString(), codUSuario);
 
             }
@@ -115,13 +117,39 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridView2.SelectedCells.Count > 0)
+            List<string> pat = new List<string>();
+
+            pat.Clear();
+
+            if (dataGridView1.SelectedCells.Count > 0)
             {
-                familiaBLL.desAsignarFamiliaUsuario(dataGridView1.SelectedCells[0].Value.ToString(), codUSuario);
+                foreach(string a in patenteBLL.verificarPatentesFamilia(dataGridView1.SelectedCells[0].Value.ToString(), codUSuario))
+                {
+                    pat.Add(a);
+                }
+
+                if(pat.Count > 0)
+                {
+                    string men = "No es posible desasignar la familia al usuario debido a que las siguientes patentes no cuentan con otra asignación:\n";
+
+                    foreach (string a in pat)
+                    {
+                        men += "\n" + a;
+                    }
+
+                    MessageBox.Show(men, "ERROR");
+                }
+
+                else
+                {
+                    familiaBLL.desAsignarFamiliaUsuario(dataGridView1.SelectedCells[0].Value.ToString(), codUSuario);
+
+                    actualizarGrillas(codUSuario);
+                }
 
             }
 
-            actualizarGrillas(codUSuario);
+            
         }
     }
 }

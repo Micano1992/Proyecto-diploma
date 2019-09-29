@@ -7,7 +7,7 @@ using DAL;
 
 namespace BLL
 {
-    public class SeguridadBLL
+    public class Seguridad
     {
         BE.UsuarioBE Usu = new BE.UsuarioBE();
 

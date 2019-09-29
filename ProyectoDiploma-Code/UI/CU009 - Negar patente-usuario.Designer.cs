@@ -187,6 +187,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "CU009___Negar_patente_usuario";
             this.Text = "NEGAR PATENTES A USUARIOS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU009___Negar_patente_usuario_FormClosing);
             this.Load += new System.EventHandler(this.CU009___Negar_patente_usuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

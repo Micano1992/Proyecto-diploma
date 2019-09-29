@@ -12,12 +12,16 @@ namespace UI
 {
     public partial class CU012___Consultar_familia : Form
     {
-        public CU012___Consultar_familia()
+        public CU012___Consultar_familia(List<int> listaPatentes)
         {
+            patentes = listaPatentes;
+
             InitializeComponent();
         }
 
         BLL.Familia FamiliaBLL = new BLL.Familia();
+        BLL.Patente PatenteBLL = new BLL.Patente();
+        List<int> patentes = new List<int>();
 
 
 
@@ -49,6 +53,10 @@ namespace UI
             setearGrilla();
 
             actualizarGrilla();
+
+            bloquearPuntos();
+
+            habilitarPuntos(patentes);
 
         }
 
@@ -88,29 +96,51 @@ namespace UI
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        {           
                 string celad = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
                 DialogResult result = MessageBox.Show("¿Desea eliminar la familia?", "INFORMACIÓN", MessageBoxButtons.YesNo);
 
-                if (result == DialogResult.Yes)
-                {
-                    FamiliaBLL.eliminarFamilia(celad);
-
-                    MessageBox.Show("Se eliminó la familia", "INFORMACIÓN");
-
-                }
-            }
-            catch (Exception)
+            if (result == DialogResult.Yes)
             {
 
-                throw;
-            }
-           
+                List<string> pat = new List<string>();
 
-            actualizarGrilla();
+                pat.Clear();
+
+                if (dataGridView1.SelectedCells.Count > 0)
+                {
+                    foreach (string a in PatenteBLL.verificarPatentesFamilia(dataGridView1.SelectedCells[0].Value.ToString()))
+                    {
+                        pat.Add(a);
+                    }
+
+                    if (pat.Count > 0)
+                    {
+                        string men = "No es posible eliminar la familia debido a que las siguientes patentes no cuentan con otra asignación:\n";
+
+                        foreach (string a in pat)
+                        {
+                            men += "\n" + a;
+                        }
+
+                        MessageBox.Show(men, "ERROR");
+                    }
+
+                    else
+                    {
+
+                        //FamiliaBLL.eliminarFamilia(celad);
+
+                        MessageBox.Show("Se eliminó la familia", "INFORMACIÓN");
+
+                        actualizarGrilla();
+                    }
+                }
+
+                
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -125,6 +155,33 @@ namespace UI
             this.Enabled = false;
 
             form.Show(this);
+
+        }
+
+        public void bloquearPuntos()
+        {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+        }
+
+        public void habilitarPuntos(List<int> patentes)
+        {
+            foreach(int i in patentes)
+            {
+                switch(i)
+                {
+                    case 8:
+                        button1.Enabled = true;
+                        break;
+                    case 7:
+                        button2.Enabled = true;
+                        break;
+                    case 9:
+                        button3.Enabled = true;
+                        break;
+                }
+            }
 
         }
     }

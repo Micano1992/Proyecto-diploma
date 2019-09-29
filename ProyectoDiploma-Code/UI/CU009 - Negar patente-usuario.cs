@@ -20,6 +20,7 @@ namespace UI
         BLL.TerminalBLL terminalBLL = new BLL.TerminalBLL();
         BLL.Patente patenteBLL = new BLL.Patente();
         BLL.Familia familiaBLL = new BLL.Familia();
+        List<string> lisUsuarios = new List<string>();
 
         public CU009___Negar_patente_usuario(String codigoUsuario, string nom, string ape)
         {
@@ -68,9 +69,34 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            usuarioBLL.negarPatente(codUsuario, dataGridView2.SelectedCells[0].Value.ToString());
+            if(dataGridView2.SelectedRows.Count > 0)
+            {
+                lisUsuarios.Clear();
 
-            actualizarGrillas(codUsuario);
+                lisUsuarios = patenteBLL.verificarPatentes(dataGridView2.SelectedCells[0].Value.ToString(), codUsuario);
+
+                if (lisUsuarios.Count == 0)
+                {
+                    MessageBox.Show("No es posible negar la patente porque solo está asignada a este usuario", "ERROR");
+                }
+
+                else
+                {
+                    usuarioBLL.negarPatente(codUsuario, dataGridView2.SelectedCells[0].Value.ToString());
+
+                    actualizarGrillas(codUsuario);
+
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("No hay registro seleccionado", "ERROR");
+
+            }
+
+
+
         }
 
         public void actualizarGrillas(string usu)
@@ -91,14 +117,29 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            usuarioBLL.desNegarPatente(codUsuario, dataGridView1.SelectedCells[0].Value.ToString());
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                usuarioBLL.desNegarPatente(codUsuario, dataGridView1.SelectedCells[0].Value.ToString());
 
-            actualizarGrillas(codUsuario);
+                actualizarGrillas(codUsuario);
+
+            }
+
+            else
+            {
+                MessageBox.Show("No hay registro seleccionado", "ERROR");
+
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CU009___Negar_patente_usuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Enabled = true;
         }
     }
 }

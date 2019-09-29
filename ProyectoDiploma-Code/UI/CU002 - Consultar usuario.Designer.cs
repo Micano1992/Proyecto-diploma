@@ -63,10 +63,11 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(323, 274);
+            this.dataGridView1.Size = new System.Drawing.Size(341, 317);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // Código
             // 
@@ -99,7 +100,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(369, 12);
+            this.groupBox1.Location = new System.Drawing.Point(381, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(363, 141);
             this.groupBox1.TabIndex = 1;
@@ -180,7 +181,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(369, 176);
+            this.button1.Location = new System.Drawing.Point(381, 176);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(173, 23);
             this.button1.TabIndex = 2;
@@ -190,7 +191,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(570, 176);
+            this.button2.Location = new System.Drawing.Point(582, 176);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(173, 23);
             this.button2.TabIndex = 3;
@@ -199,7 +200,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(570, 218);
+            this.button4.Location = new System.Drawing.Point(582, 218);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(173, 23);
             this.button4.TabIndex = 5;
@@ -209,7 +210,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(369, 218);
+            this.button5.Location = new System.Drawing.Point(381, 218);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(173, 23);
             this.button5.TabIndex = 6;
@@ -219,7 +220,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(369, 306);
+            this.button6.Location = new System.Drawing.Point(381, 306);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(173, 23);
             this.button6.TabIndex = 7;
@@ -229,7 +230,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(369, 263);
+            this.button3.Location = new System.Drawing.Point(381, 263);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(173, 23);
             this.button3.TabIndex = 4;
@@ -239,7 +240,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(570, 263);
+            this.button7.Location = new System.Drawing.Point(582, 263);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(173, 23);
             this.button7.TabIndex = 8;
@@ -252,7 +253,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(775, 366);
+            this.ClientSize = new System.Drawing.Size(788, 366);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);

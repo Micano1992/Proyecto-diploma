@@ -40,8 +40,9 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
-            deshabilitarPuntos();
+            label1.Text = usuarioLogueado;
 
+            deshabilitarPuntos();
 
             habilitarPuntosMenu(nUsuario.listarPatentes(usuarioLogueado));
 
@@ -230,7 +231,7 @@ namespace UI
 
         private void consultarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU002___Consultar_usuario nCon = new CU002___Consultar_usuario();
+            CU002___Consultar_usuario nCon = new CU002___Consultar_usuario(nUsuario.listarPatentes(usuarioLogueado));
 
             nCon.Show(this);
 
@@ -249,7 +250,7 @@ namespace UI
 
         private void consultarFamiliaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU012___Consultar_familia nCon = new CU012___Consultar_familia();
+            CU012___Consultar_familia nCon = new CU012___Consultar_familia(nUsuario.listarPatentes(usuarioLogueado));
 
             this.Enabled = false;
 
@@ -420,19 +421,12 @@ namespace UI
 
                         AdmUsuariosToolStripMenuItem.Visible = true;
 
-                        patentesToolStripMenuItem.Visible = true;
-
-                        otorgarPatenteAUsuarioToolStripMenuItem.Visible = true;
 
                         break;
 
                     case 11:
 
                         AdmUsuariosToolStripMenuItem.Visible = true;
-
-                        patentesToolStripMenuItem.Visible = true;
-
-                        NegarPatentePorUsuarioToolStripMenuItem.Visible = true;
 
                         break;
 
@@ -646,10 +640,6 @@ namespace UI
 
            crearFamiliaToolStripMenuItem.Visible = false;
 
-            otorgarPatenteAUsuarioToolStripMenuItem.Visible = false;
-
-            NegarPatentePorUsuarioToolStripMenuItem.Visible = false;
-
             restaurarCopiaToolStripMenuItem.Visible = false;
 
             generarCopiaDeSeguridadToolStripMenuItem.Visible = false;
@@ -697,8 +687,6 @@ namespace UI
             UsuariosToolStripMenuItem.Visible = false;
 
             familasToolStripMenuItem.Visible = false;
-
-            patentesToolStripMenuItem.Visible = false;
 
             crearUsuarioToolStripMenuItem1.Visible = false;
 

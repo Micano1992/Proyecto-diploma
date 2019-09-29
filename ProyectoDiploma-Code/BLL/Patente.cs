@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BLL
 {
     public class Patente
@@ -12,6 +13,8 @@ namespace BLL
         DAL.Familia FamDAL = new DAL.Familia();
         BE.PatenteBE PatBE = new BE.PatenteBE();
         BE.FamiliaBE FamBE = new BE.FamiliaBE();
+        BE.UsuarioBE UsuBE = new BE.UsuarioBE();
+        BLL.UsuarioBLL usuBLL = new UsuarioBLL();
         List<BE.PatenteBE> lisPat = new List<BE.PatenteBE>();
         List<BE.PatenteBE> lisPate = new List<BE.PatenteBE>();
         List<BE.FamiliaBE> listaFami = new List<BE.FamiliaBE>();
@@ -145,6 +148,116 @@ namespace BLL
             return PatDAL.desAsignarPatenteFamilia(FamBE, PatBE);
         }
 
+        public List<string> verificarPatentes(string pat, string usu)
+        {
+            List<string> lisUsu = new List<string>();
 
+            PatBE.idPatente = PatDAL.obtenerIdPatente(pat);
+            UsuBE.codUsuario = usu;
+
+            foreach(BE.UsuarioBE u in PatDAL.verificarPatentes(PatBE, UsuBE))
+            {
+                lisUsu.Add(u.codUsuario);
+            }
+
+            return lisUsu;
+
+        }
+
+        public List<string> verificarPatentes(string usu)
+        {
+            List<string> lisPat = new List<string>();
+
+            lisPat.Clear();
+
+            UsuBE.codUsuario = usu;
+
+            List<int> lnum = usuBLL.listarPatentes(usu);
+
+            foreach (int p in lnum)
+            {
+                BE.PatenteBE nPat = new BE.PatenteBE();
+
+                nPat.idPatente = p;
+
+                nPat.descripcion = PatDAL.obtenerDescripcionPatente(p);
+
+                if (PatDAL.verificarPatentes(nPat, UsuBE).Count == 0)
+                {
+                    lisPat.Add(nPat.descripcion);
+                }
+            }
+            
+            return lisPat;
+        }
+
+        public List<string> verificarPatentesFamilia(string fam)
+        {
+            List<string> lisPa = new List<string>();
+
+            lisPat.Clear();
+            lisPa.Clear();
+
+            FamBE.idFamilia = FamDAL.obtenerIdFamilia(fam);
+            FamBE.descripcion = fam;
+
+            PatDAL.patentesFamilias(FamBE, ref lisPat);
+          
+            foreach (BE.PatenteBE p in lisPat)
+            {
+                if (PatDAL.verificarPatentes(p, FamBE).Count == 0)
+                {
+                    lisPa.Add(PatDAL.obtenerDescripcionPatente(p.idPatente));
+                }
+            }
+
+            return lisPa;
+        }
+
+        public bool verificarPatenteFamilia(string fam, string pat)
+        {
+            lisPat.Clear();
+            List<string> lisPa = new List<string>();
+
+            FamBE.idFamilia = FamDAL.obtenerIdFamilia(fam);
+            FamBE.descripcion = fam;
+
+            PatBE.idPatente = PatDAL.obtenerIdPatente(pat);
+
+            if (PatDAL.verificarPatentes(PatBE, FamBE).Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+       
+        }
+
+        public List<string> verificarPatentesFamilia(string fam, string usu)
+        {
+            List<string> lisPa = new List<string>();
+
+            lisPat.Clear();
+            lisPa.Clear();
+
+            FamBE.idFamilia = FamDAL.obtenerIdFamilia(fam);
+            FamBE.descripcion = fam;
+
+            PatDAL.patentesFamilias(FamBE, ref lisPat);
+
+            UsuBE.codUsuario = usu;
+
+            foreach (BE.PatenteBE p in lisPat)
+            {
+                if (PatDAL.verificarPatentes(p, FamBE, UsuBE).Count == 0)
+                {
+                    lisPa.Add(PatDAL.obtenerDescripcionPatente(p.idPatente));
+                }
+            }
+
+            return lisPa;
+        }
     }
 }

@@ -390,7 +390,9 @@ namespace DAL
 
             nConexion.conexionBD(1, sql);
 
-            if (nConexion.nCom.ExecuteNonQuery() > 0)
+            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+
+            if (reader.HasRows)
             {
                 nConexion.conexionBD(0);
 
@@ -492,6 +494,8 @@ namespace DAL
             return lPaten2;
 
         }
+
+
 
     }
 }

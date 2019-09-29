@@ -71,11 +71,11 @@ namespace DAL
                 nPat.idPatente = int.Parse(reader[0].ToString());
                 nPat.descripcion = reader[1].ToString();
 
-                    lPat.Add(nPat);
+                lPat.Add(nPat);
 
-                }
+            }
 
-            
+
 
             nConexion.conexionBD(0);
 
@@ -121,6 +121,19 @@ namespace DAL
             return resul;
         }
 
+        public string obtenerDescripcionPatente(int cod)
+        {
+            sql = string.Format("Select Descripcion_patente from dbo.Patente where Id_patente = '{0}'", cod);
+
+            nConexion.conexionBD(1, sql);
+
+            string resul = nConexion.nCom.ExecuteScalar().ToString();
+
+            nConexion.conexionBD(0);
+
+            return resul;
+        }
+
         public bool asignarPatenteFamilia(BE.FamiliaBE fami, BE.PatenteBE pate)
         {
             sql = string.Format("Insert into dbo.FamiliaPatente (id_familia, id_patente) values ({0}, {1})", fami.idFamilia, pate.idPatente);
@@ -156,12 +169,14 @@ namespace DAL
             nConexion.conexionBD(0);
 
             return false;
-            
+
         }
 
-        public List<BE.UsuarioBE> verificarPatentes(BE.PatenteBE pat)
+        public List<BE.UsuarioBE> verificarPatentes(BE.PatenteBE pat, BE.UsuarioBE usu)
         {
-            sql = string.Format("select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1 union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 0)", pat.idPatente);
+            lUsu.Clear();
+
+            sql = string.Format("select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 0 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}'))", pat.idPatente, usu.codUsuario);
 
             nConexion.conexionBD(1, sql);
 
@@ -176,6 +191,55 @@ namespace DAL
                 lUsu.Add(nUsu);
 
             }
+            nConexion.conexionBD(0);
+
+            return lUsu;
+        }
+
+        public List<BE.UsuarioBE> verificarPatentes(BE.PatenteBE pat, BE.FamiliaBE fam)
+        {
+            lUsu.Clear();
+
+            sql = string.Format("select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} and a.bloqueado = 0 and b.Id_familia not in ({1}) except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1 and a.bloqueado = 0 union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 0 and a.bloqueado = 0)", pat.idPatente, fam.idFamilia);
+
+            nConexion.conexionBD(1, sql);
+
+            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+
+            while (reader.Read())
+            {
+                BE.UsuarioBE nUsu = new BE.UsuarioBE();
+
+                nUsu.codUsuario = reader[0].ToString();
+
+                lUsu.Add(nUsu);
+
+            }
+            nConexion.conexionBD(0);
+
+            return lUsu;
+        }
+
+        public List<BE.UsuarioBE> verificarPatentes(BE.PatenteBE pat, BE.FamiliaBE fam, BE.UsuarioBE usu)
+        {
+            lUsu.Clear();
+
+            sql = string.Format("select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} and a.bloqueado = 0 and a.Cod_usuario not in('{1}') except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1 and a.bloqueado = 0 union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 0 and a.bloqueado = 0)", pat.idPatente, usu.codUsuario);
+
+            nConexion.conexionBD(1, sql);
+
+            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+
+            while (reader.Read())
+            {
+                BE.UsuarioBE nUsu = new BE.UsuarioBE();
+
+                nUsu.codUsuario = reader[0].ToString();
+
+                lUsu.Add(nUsu);
+
+            }
+            nConexion.conexionBD(0);
 
             return lUsu;
         }
