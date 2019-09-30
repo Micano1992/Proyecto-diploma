@@ -10,7 +10,6 @@ namespace DAL
 {
     public class ConexionesSQL
     {
-
         public SqlConnection nCon = new SqlConnection();
 
         public SqlCommand nCom = new SqlCommand();
@@ -18,7 +17,6 @@ namespace DAL
         public string sql;
 
         public string conex { get; set; }
-       
 
         public void conexionBD(int a, string consulta = "")
         {
