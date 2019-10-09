@@ -270,11 +270,12 @@ namespace DAL
             return nUsu;
         }
 
-        public string altaUsuario(BE.UsuarioBE nUsuario)
+        public string[] altaUsuario(BE.UsuarioBE nUsuario)
         {
             string nCod = generarCodigoUsuario();
+            string[] resp = new string[2];
 
-            sql = string.Format("Insert into dbo.Usuario values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', {11})", nCod, nUsuario.nombre, nUsuario.apellido, nUsuario.contraseña, nUsuario.nroDocumento, nUsuario.tipoDocumento, "0", "0", nUsuario.idioma, "0", nUsuario.mail, nUsuario.terminal.codTerminal);
+            sql = string.Format("Insert into dbo.Usuario values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', {11})", nCod, nUsuario.nombre, nUsuario.apellido, Encriptacion.GetMD5(nUsuario.contraseña), nUsuario.nroDocumento, nUsuario.tipoDocumento, "0", "0", nUsuario.idioma, "0", nUsuario.mail, nUsuario.terminal.codTerminal);
 
             nConexion.conexionBD(1, sql);
 
@@ -282,12 +283,13 @@ namespace DAL
             {
                 nConexion.conexionBD(0);
 
-                return nCod;
+                resp[0] = nCod;
+                resp[1] = nUsuario.contraseña;
             }
 
             nConexion.conexionBD(0);
 
-            return "No se ha podido realizar el alta";
+            return resp;
         }
 
         public string generarCodigoUsuario()

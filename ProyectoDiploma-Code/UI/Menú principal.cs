@@ -208,7 +208,7 @@ namespace UI
 
         private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU024___Cambiar_contraseña nCam = new CU024___Cambiar_contraseña();
+            CU024___Cambiar_contraseña nCam = new CU024___Cambiar_contraseña(usuarioLogueado);
 
             this.Enabled = false;
 

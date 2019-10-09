@@ -78,16 +78,16 @@ namespace UI
             nuevoUsu[5] = comboBox2.Text;
             nuevoUsu[6] = comboBox3.Text;
  
-            string men = usuarioBLL.altaUsurio(nuevoUsu);
+            string[] men = usuarioBLL.altaUsurio(nuevoUsu);
 
             foreach(DataGridViewRow i in dataGridView2.Rows)
             {
-                familiaBLL.asignarFamiliaUsuario(i.Cells[0].Value.ToString(), men);
+                familiaBLL.asignarFamiliaUsuario(i.Cells[0].Value.ToString(), men[0].ToString());
 
             }
                         
 
-            MessageBox.Show("Se generó el código " + men, "INFORMACIÓN");
+            MessageBox.Show(string.Format("Se generó el usuario {0}. La clave es {1}", men[0], men[1]), "INFORMACIÓN");
 
             blanquearText();
 

@@ -251,6 +251,11 @@ namespace UI
             button6.Enabled = false;
             button7.Enabled = false;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(string.Format("Se generó la contraseña {0} para el usuario {1}", seguridadBLL.blanquearContraseña(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), "INFORMACIÓN");
+        }
     }
 }
 

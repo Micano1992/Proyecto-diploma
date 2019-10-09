@@ -101,7 +101,7 @@ namespace BLL
 
         }
 
-        private string generarContraseña()
+        public string generarContraseña()
         {
             string passwordAleatorio;
             string s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -116,7 +116,7 @@ namespace BLL
             return passwordAleatorio;
         }
 
-        public string altaUsurio(string[] nUsuUI)
+        public string[] altaUsurio(string[] nUsuUI)
         {
             BE.UsuarioBE usuario = new BE.UsuarioBE();
             BE.Terminal nTer = new BE.Terminal();

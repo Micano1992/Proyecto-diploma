@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace DAL
 {
     public class SeguridadDAL
     {
         ConexionesSQL nConexion = new ConexionesSQL();
+        Encriptacion encrip = new Encriptacion();
 
         //SqlConnection nCon = new SqlConnection();
 
@@ -83,7 +85,7 @@ namespace DAL
         {
             bool resp = false;
 
-            sql = string.Format("select count(*) from dbo.usuario where cod_usuario = '{0}' and contraseña = '{1}'", nUsuario.codUsuario, nUsuario.contraseña);
+            sql = string.Format("select count(*) from dbo.usuario where cod_usuario = '{0}' and contraseña = '{1}'", nUsuario.codUsuario, GetMD5(nUsuario.contraseña));
 
             nConexion.conexionBD(1, sql);
 
@@ -185,9 +187,37 @@ namespace DAL
             }
         }
 
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = MD5CryptoServiceProvider.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = md5.ComputeHash(encoding.GetBytes(str));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
+        }
 
+        public bool modificarContraseña(BE.UsuarioBE usu)
+        {
+            sql = string.Format("Update Usuario Set Contraseña = '{0}' where cod_usuario = '{1}'", GetMD5(usu.contraseña), usu.codUsuario);
 
+            nConexion.conexionBD(1, sql);
 
+            if (nConexion.nCom.ExecuteNonQuery() > 0)
+            {
+                nConexion.conexionBD(0);
+
+                return true;
+            }
+            else
+            {
+                nConexion.conexionBD(0);
+
+                return false;
+            }
+
+        }
 
     }
 }

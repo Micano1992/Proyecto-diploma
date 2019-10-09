@@ -12,16 +12,40 @@ namespace UI
 {
     public partial class CU024___Cambiar_contraseña : Form
     {
-        public CU024___Cambiar_contraseña()
+        public CU024___Cambiar_contraseña(string usu)
         {
+            codUsuario = usu;
+
             InitializeComponent();
         }
 
+        BLL.UsuarioBLL usuBLL = new BLL.UsuarioBLL();
+        BLL.Seguridad segBLL = new BLL.Seguridad();
+        public string codUsuario { get; set; }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se actualizó la contraseña", "INFORMACIÓN");
+            if(textBox2.Text != textBox3.Text)
+            {
+                MessageBox.Show("Las contraseñas nuevas no coinciden", "ERROR");
+            }
 
-            this.Close();
+            else
+            {
+                if (segBLL.validarContraseña(codUsuario, textBox1.Text))
+                {
+                    segBLL.modificarContraseña(codUsuario, textBox3.Text);
+
+                    MessageBox.Show("Se actualizó la contraseña", "INFORMACIÓN");
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Contraseña inválida", "ERROR");
+                }
+            }
+            
         }
 
         private void CU024___Cambiar_contraseña_Load(object sender, EventArgs e)
