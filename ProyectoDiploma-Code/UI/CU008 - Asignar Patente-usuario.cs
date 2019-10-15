@@ -16,8 +16,8 @@ namespace UI
         public string nombre { get; set; }
         public string apellido { get; set; }
 
-        BLL.UsuarioBLL usuarioBLL = new BLL.UsuarioBLL();
-        BLL.TerminalBLL terminalBLL = new BLL.TerminalBLL();
+        BLL.Usuario usuarioBLL = new BLL.Usuario();
+        BLL.Terminal terminalBLL = new BLL.Terminal();
         BLL.Patente patenteBLL = new BLL.Patente();
         BLL.Familia familiaBLL = new BLL.Familia();
 

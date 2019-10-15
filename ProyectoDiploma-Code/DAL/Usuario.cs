@@ -275,7 +275,7 @@ namespace DAL
             string nCod = generarCodigoUsuario();
             string[] resp = new string[2];
 
-            sql = string.Format("Insert into dbo.Usuario values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', {11})", nCod, nUsuario.nombre, nUsuario.apellido, Encriptacion.GetMD5(nUsuario.contraseña), nUsuario.nroDocumento, nUsuario.tipoDocumento, "0", "0", nUsuario.idioma, "0", nUsuario.mail, nUsuario.terminal.codTerminal);
+            sql = string.Format("Insert into dbo.Usuario values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', {11})", nCod, nUsuario.nombre, nUsuario.apellido, Encriptacion.GetMD5(nUsuario.contraseña), nUsuario.nroDocumento, nUsuario.tipoDocumento, "0", "0", nUsuario.idioma, nUsuario.DVH , nUsuario.mail, nUsuario.terminal.codTerminal);
 
             nConexion.conexionBD(1, sql);
 
@@ -313,7 +313,7 @@ namespace DAL
 
         public bool modificarUsuario(BE.UsuarioBE nUsuario)
         {
-            sql = string.Format("update dbo.usuario set Nombre = '{0}', Apellido = '{1}', Nro_documento = '{2}', Tipo_documento = '{3}', Email = '{4}', Terminal = {5} where Cod_usuario = '{6}'", nUsuario.nombre, nUsuario.apellido, nUsuario.nroDocumento, nUsuario.tipoDocumento, nUsuario.mail, nUsuario.terminal.codTerminal, nUsuario.codUsuario);
+            sql = string.Format("update dbo.usuario set Nombre = '{0}', Apellido = '{1}', Nro_documento = '{2}', Tipo_documento = '{3}', Email = '{4}', Terminal = {5}, DVH = {6} where Cod_usuario = '{7}'", nUsuario.nombre, nUsuario.apellido, nUsuario.nroDocumento, nUsuario.tipoDocumento, nUsuario.mail, nUsuario.terminal.codTerminal, nUsuario.DVH, nUsuario.codUsuario);
 
             nConexion.conexionBD(1, sql);
 
@@ -496,8 +496,6 @@ namespace DAL
             return lPaten2;
 
         }
-
-
 
     }
 }

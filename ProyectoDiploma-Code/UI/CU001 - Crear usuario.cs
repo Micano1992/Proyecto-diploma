@@ -17,8 +17,8 @@ namespace UI
             InitializeComponent();
         }
 
-        BLL.TerminalBLL terminalBLL = new BLL.TerminalBLL();
-        BLL.UsuarioBLL usuarioBLL = new BLL.UsuarioBLL();
+        BLL.Terminal terminalBLL = new BLL.Terminal();
+        BLL.Usuario usuarioBLL = new BLL.Usuario();
         BLL.Idioma idiomaBLL = new BLL.Idioma();
         BLL.Familia familiaBLL = new BLL.Familia();
 

@@ -7,7 +7,7 @@ using BE;
 
 namespace BLL
 {
-    public class TerminalBLL
+    public class Terminal
     {
         DAL.Terminal TerDAL = new DAL.Terminal();    
 

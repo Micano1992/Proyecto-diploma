@@ -26,7 +26,7 @@ namespace UI
 
         public string usuarioLogueado { get; set; }
 
-        BLL.UsuarioBLL nUsuario = new BLL.UsuarioBLL();
+        BLL.Usuario nUsuario = new BLL.Usuario();
 
         List<int> lPatentesUsu = new List<int>();
 

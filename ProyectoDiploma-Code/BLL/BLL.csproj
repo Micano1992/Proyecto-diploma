@@ -47,8 +47,8 @@
     <Compile Include="Patente.cs" />
     <Compile Include="Seguridad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TerminalBLL.cs" />
-    <Compile Include="UsuarioBLL.cs" />
+    <Compile Include="Terminal.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

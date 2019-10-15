@@ -30,6 +30,8 @@ namespace BE
 
         public bool bloqueado { get; set; }
 
+        public int DVH { get; set; }
+
 
         public enum tipoDoc
         {

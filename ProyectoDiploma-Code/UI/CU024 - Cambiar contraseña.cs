@@ -19,7 +19,7 @@ namespace UI
             InitializeComponent();
         }
 
-        BLL.UsuarioBLL usuBLL = new BLL.UsuarioBLL();
+        BLL.Usuario usuBLL = new BLL.Usuario();
         BLL.Seguridad segBLL = new BLL.Seguridad();
         public string codUsuario { get; set; }
 

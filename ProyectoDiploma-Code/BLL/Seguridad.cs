@@ -10,8 +10,8 @@ namespace BLL
     public class Seguridad
     {
         BE.UsuarioBE Usu = new BE.UsuarioBE();
-        DAL.SeguridadDAL nSeg = new DAL.SeguridadDAL();
-        BLL.UsuarioBLL usuBLL = new BLL.UsuarioBLL();
+        DAL.Seguridad nSeg = new DAL.Seguridad();
+        BLL.Usuario usuBLL = new BLL.Usuario();
 
 
         public bool login(string usuario, string contraseña, ref string mensaje)

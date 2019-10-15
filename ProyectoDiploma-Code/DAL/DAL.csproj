@@ -41,11 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionesSQL.cs" />
+    <Compile Include="DigitoVerificador.cs" />
     <Compile Include="Encriptacion.cs" />
     <Compile Include="Familia.cs" />
     <Compile Include="Idioma.cs" />
     <Compile Include="Patente.cs" />
-    <Compile Include="SeguridadDAL.cs" />
+    <Compile Include="Seguridad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Terminal.cs" />
     <Compile Include="Usuario.cs" />

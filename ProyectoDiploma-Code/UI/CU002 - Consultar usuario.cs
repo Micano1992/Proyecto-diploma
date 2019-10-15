@@ -12,7 +12,7 @@ namespace UI
 {
     public partial class CU002___Consultar_usuario : Form
     {
-        BLL.UsuarioBLL usuarioBLL = new BLL.UsuarioBLL();
+        BLL.Usuario usuarioBLL = new BLL.Usuario();
         BLL.Seguridad seguridadBLL = new BLL.Seguridad();
         BLL.Patente patenteBLL = new BLL.Patente();
         List<int> listaPatentes = new List<int>();

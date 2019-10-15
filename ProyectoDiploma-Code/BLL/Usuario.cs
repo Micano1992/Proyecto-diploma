@@ -7,14 +7,17 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class UsuarioBLL
+    public class Usuario
     {
+        private const string NOMBRE_ENTIDAD_USUARIO = "Usuario";
+
         BE.UsuarioBE nUsuario = new BE.UsuarioBE();
         BE.PatenteBE patenteBE = new BE.PatenteBE();
         DAL.Usuario nUsuDAL = new DAL.Usuario();
         DAL.Patente patDAL = new DAL.Patente();
         DAL.Terminal TerminalDAL = new DAL.Terminal();
         DAL.Idioma idiomaDAL = new DAL.Idioma();
+        BLL.DigitoVerificador DV = new DigitoVerificador();
 
         List<int> listaPat = new List<int>();
         List<BE.PatenteBE> lPat = new List<BE.PatenteBE>();
@@ -130,6 +133,7 @@ namespace BLL
             usuario.terminal = nTer;
             usuario.idioma = idiomaDAL.obtenerIdIdioma(nUsuUI[6]);
             usuario.contraseña = generarContraseña();
+            usuario.DVH = DV.calcularDVH(usuario.nombre + usuario.apellido + usuario.tipoDocumento + usuario.nroDocumento + usuario.mail + usuario.terminal, NOMBRE_ENTIDAD_USUARIO);
 
             return nUsuDAL.altaUsuario(usuario);
 
@@ -159,10 +163,10 @@ namespace BLL
             nUsuario.mail = nUsu[5].ToString();
             nTer.codTerminal = TerminalDAL.obtenerIdTerminal(nUsu[6].ToString());
             nUsuario.terminal = nTer;
+            nUsuario.DVH = DV.calcularDVH(nUsuario.nombre + nUsuario.apellido + nUsuario.tipoDocumento + nUsuario.nroDocumento + nUsuario.mail + nUsuario.terminal, NOMBRE_ENTIDAD_USUARIO);
 
             return nUsuDAL.modificarUsuario(nUsuario);
             
-
         }
 
         public List<string> patentesOtorgadas(string codUsu)

@@ -14,10 +14,13 @@ namespace BLL
         BE.PatenteBE PatBE = new BE.PatenteBE();
         BE.FamiliaBE FamBE = new BE.FamiliaBE();
         BE.UsuarioBE UsuBE = new BE.UsuarioBE();
-        BLL.UsuarioBLL usuBLL = new UsuarioBLL();
+        BLL.Usuario usuBLL = new Usuario();
         List<BE.PatenteBE> lisPat = new List<BE.PatenteBE>();
         List<BE.PatenteBE> lisPate = new List<BE.PatenteBE>();
         List<BE.FamiliaBE> listaFami = new List<BE.FamiliaBE>();
+        BLL.DigitoVerificador DV = new DigitoVerificador();
+
+        private const string NOMBRE_ENTIDAD_FAMILIAPATENTE = "FamiliaPatente";
 
 
         List<string> listaP = new List<string>();
@@ -137,8 +140,13 @@ namespace BLL
         {
             PatBE.idPatente = PatDAL.obtenerIdPatente(pat);
             FamBE.idFamilia = FamDAL.obtenerIdFamilia(fam);
+            int DVH = DV.calcularDVH(PatBE.idPatente.ToString() + FamBE.idFamilia.ToString(), NOMBRE_ENTIDAD_FAMILIAPATENTE);
 
-            return PatDAL.asignarPatenteFamilia(FamBE, PatBE);        }
+            DV.actualizarDVV(NOMBRE_ENTIDAD_FAMILIAPATENTE);
+
+            return PatDAL.asignarPatenteFamilia(FamBE, PatBE, DVH);
+
+        }
 
         public bool desAsignarPatenteFamilia(string fam, string pat)
         {

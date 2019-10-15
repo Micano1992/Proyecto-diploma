@@ -134,9 +134,9 @@ namespace DAL
             return resul;
         }
 
-        public bool asignarPatenteFamilia(BE.FamiliaBE fami, BE.PatenteBE pate)
+        public bool asignarPatenteFamilia(BE.FamiliaBE fami, BE.PatenteBE pate, int dv)
         {
-            sql = string.Format("Insert into dbo.FamiliaPatente (id_familia, id_patente) values ({0}, {1})", fami.idFamilia, pate.idPatente);
+            sql = string.Format("Insert into dbo.FamiliaPatente values ({0}, {1}, {2})", fami.idFamilia, pate.idPatente, dv);
 
             nConexion.conexionBD(1, sql);
 
