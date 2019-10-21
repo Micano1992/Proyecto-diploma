@@ -27,6 +27,7 @@ namespace UI
         public string usuarioLogueado { get; set; }
 
         BLL.Usuario nUsuario = new BLL.Usuario();
+        BLL.DigitoVerificador DVBLL = new BLL.DigitoVerificador();
 
         List<int> lPatentesUsu = new List<int>();
 
@@ -46,6 +47,26 @@ namespace UI
 
             habilitarPuntosMenu(nUsuario.listarPatentes(usuarioLogueado));
 
+            string[] errorDV = DVBLL.verificarDV();
+
+            string mensaje =  "";
+
+            if (errorDV[0].Length != 0)
+            {
+                mensaje = "Conflicto con registros de la base de datos: \n \n" + errorDV[0] + "\n";
+            }
+
+            if (errorDV[1].Length != 0)
+            {
+                mensaje += "Conflictos con tablas: \n \n" + errorDV[1];
+            }
+
+            if (mensaje != "")
+            {
+                MessageBox.Show(mensaje , "ERROR");
+            }
+
+            
 
         }
 

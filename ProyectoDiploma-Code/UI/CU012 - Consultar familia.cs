@@ -130,7 +130,7 @@ namespace UI
                     else
                     {
 
-                        //FamiliaBLL.eliminarFamilia(celad);
+                        FamiliaBLL.eliminarFamilia(celad);
 
                         MessageBox.Show("Se eliminó la familia", "INFORMACIÓN");
 

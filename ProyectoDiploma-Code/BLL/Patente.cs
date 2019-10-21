@@ -140,7 +140,7 @@ namespace BLL
         {
             PatBE.idPatente = PatDAL.obtenerIdPatente(pat);
             FamBE.idFamilia = FamDAL.obtenerIdFamilia(fam);
-            int DVH = DV.calcularDVH(PatBE.idPatente.ToString() + FamBE.idFamilia.ToString(), NOMBRE_ENTIDAD_FAMILIAPATENTE);
+            int DVH = DV.calcularDVH(FamBE.idFamilia.ToString() + PatBE.idPatente.ToString(), NOMBRE_ENTIDAD_FAMILIAPATENTE);
 
             DV.actualizarDVV(NOMBRE_ENTIDAD_FAMILIAPATENTE);
 

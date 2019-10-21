@@ -45,6 +45,7 @@
     <Compile Include="ICRUD.cs" />
     <Compile Include="Idioma.cs" />
     <Compile Include="PatenteBE.cs" />
+    <Compile Include="Tanque.cs" />
     <Compile Include="Terminal.cs" />
     <Compile Include="UsuarioBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

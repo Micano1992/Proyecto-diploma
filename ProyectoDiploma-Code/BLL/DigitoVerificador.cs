@@ -29,7 +29,7 @@ namespace BLL
                 valorFinal = valorFinal + valorAscPosicion;
             }
 
-            actualizarDVV(entidad);
+            //actualizarDVV(entidad);
 
             return valorFinal;
         }
@@ -55,6 +55,30 @@ namespace BLL
             {
                 return false;
             }
+        }
+
+        public string[] verificarDV()
+        {
+            string[] verificacion = new string[2];
+
+            verificacion[0] = "";
+            verificacion[1] = "";
+
+            DVDAL.verificarDVH(NOMBRE_ENTIDAD_USUARIO, ref verificacion[0]);
+            DVDAL.verificarDVH(NOMBRE_ENTIDAD_BITACORA, ref verificacion[0]);
+            DVDAL.verificarDVH(NOMBRE_ENTIDAD_USUARIOPATENTE, ref verificacion[0]);
+            DVDAL.verificarDVH(NOMBRE_ENTIDAD_FAMILIAPATENTE, ref verificacion[0]);
+            DVDAL.verificarDVH(NOMBRE_ENTIDAD_DOCUMENTO, ref verificacion[0]);
+            DVDAL.verificarDVH(NOMBRE_ENTIDAD_TANQUE, ref verificacion[0]);
+
+            DVDAL.verificarDVV(NOMBRE_ENTIDAD_USUARIO, ref verificacion[1]);
+            DVDAL.verificarDVV(NOMBRE_ENTIDAD_BITACORA, ref verificacion[1]);
+            DVDAL.verificarDVV(NOMBRE_ENTIDAD_USUARIOPATENTE, ref verificacion[1]);
+            DVDAL.verificarDVV(NOMBRE_ENTIDAD_FAMILIAPATENTE, ref verificacion[1]);
+            DVDAL.verificarDVV(NOMBRE_ENTIDAD_DOCUMENTO, ref verificacion[1]);
+            DVDAL.verificarDVV(NOMBRE_ENTIDAD_TANQUE, ref verificacion[1]);
+
+            return verificacion;
         }
 
 

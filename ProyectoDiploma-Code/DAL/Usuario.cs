@@ -329,7 +329,7 @@ namespace DAL
             return false;
         }
 
-        public bool asignarPatente(BE.UsuarioBE usu, BE.PatenteBE pat)
+        public bool asignarPatente(BE.UsuarioBE usu, BE.PatenteBE pat, int DVH)
         {
             sql = string.Format("select * from dbo.UsuarioPatente where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
 
@@ -339,14 +339,14 @@ namespace DAL
             {
                 nConexion.conexionBD(0);
 
-                sql = string.Format("update dbo.UsuarioPatente set Negado = 0 where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
+                sql = string.Format("update dbo.UsuarioPatente set Negado = 0 where Id_patente = {0} and cod_usuario = '{1}' and DVH = {2}", pat.idPatente, usu.codUsuario, DVH);
             }
 
             else
             {
                 nConexion.conexionBD(0);
 
-                sql = string.Format("insert into dbo.UsuarioPatente (Id_patente, cod_usuario, Negado) values({0}, '{1}', 0)", pat.idPatente, usu.codUsuario);
+                sql = string.Format("insert into dbo.UsuarioPatente (Id_patente, cod_usuario, Negado, DVH) values({0}, '{1}', 0, {2})", pat.idPatente, usu.codUsuario, DVH);
 
             }
 
@@ -386,7 +386,7 @@ namespace DAL
             return false;
         }
 
-        public bool negarPatente(BE.UsuarioBE usu, BE.PatenteBE pat)
+        public bool negarPatente(BE.UsuarioBE usu, BE.PatenteBE pat, int DVH)
         {
             sql = string.Format("select * from dbo.UsuarioPatente where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
 
@@ -398,14 +398,14 @@ namespace DAL
             {
                 nConexion.conexionBD(0);
 
-                sql = string.Format("update dbo.UsuarioPatente set Negado = 1 where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
+                sql = string.Format("update dbo.UsuarioPatente set Negado = 1 where Id_patente = {0} and cod_usuario = '{1}' and DVH = {2}", pat.idPatente, usu.codUsuario, DVH);
             }
 
             else
             {
                 nConexion.conexionBD(0);
 
-                sql = string.Format("insert into dbo.UsuarioPatente (Id_patente, cod_usuario, Negado) values({0}, '{1}', 1)", pat.idPatente, usu.codUsuario);
+                sql = string.Format("insert into dbo.UsuarioPatente (Id_patente, cod_usuario, Negado, DVH) values({0}, '{1}', 1, {2})", pat.idPatente, usu.codUsuario, DVH);
 
             }
 

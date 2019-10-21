@@ -10,6 +10,7 @@ namespace BLL
     public class Usuario
     {
         private const string NOMBRE_ENTIDAD_USUARIO = "Usuario";
+        private const string NOMBRE_ENTIDAD_USUARIOPATENTE = "UsuarioPatente";
 
         BE.UsuarioBE nUsuario = new BE.UsuarioBE();
         BE.PatenteBE patenteBE = new BE.PatenteBE();
@@ -133,9 +134,13 @@ namespace BLL
             usuario.terminal = nTer;
             usuario.idioma = idiomaDAL.obtenerIdIdioma(nUsuUI[6]);
             usuario.contraseña = generarContraseña();
-            usuario.DVH = DV.calcularDVH(usuario.nombre + usuario.apellido + usuario.tipoDocumento + usuario.nroDocumento + usuario.mail + usuario.terminal, NOMBRE_ENTIDAD_USUARIO);
+            usuario.DVH = DV.calcularDVH(usuario.nombre + usuario.apellido + usuario.tipoDocumento + usuario.nroDocumento + usuario.mail + usuario.terminal.codTerminal, NOMBRE_ENTIDAD_USUARIO);
 
-            return nUsuDAL.altaUsuario(usuario);
+            string[] resp = nUsuDAL.altaUsuario(usuario);
+
+            DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIO);
+
+            return resp;
 
         }
 
@@ -163,10 +168,13 @@ namespace BLL
             nUsuario.mail = nUsu[5].ToString();
             nTer.codTerminal = TerminalDAL.obtenerIdTerminal(nUsu[6].ToString());
             nUsuario.terminal = nTer;
-            nUsuario.DVH = DV.calcularDVH(nUsuario.nombre + nUsuario.apellido + nUsuario.tipoDocumento + nUsuario.nroDocumento + nUsuario.mail + nUsuario.terminal, NOMBRE_ENTIDAD_USUARIO);
+            nUsuario.DVH = DV.calcularDVH(nUsuario.nombre + nUsuario.apellido + nUsuario.tipoDocumento + nUsuario.nroDocumento + nUsuario.mail + nUsuario.terminal.codTerminal, NOMBRE_ENTIDAD_USUARIO);
 
-            return nUsuDAL.modificarUsuario(nUsuario);
-            
+            bool resp = nUsuDAL.modificarUsuario(nUsuario);
+
+            DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIO);
+
+            return resp;
         }
 
         public List<string> patentesOtorgadas(string codUsu)
@@ -208,8 +216,13 @@ namespace BLL
         {
             nUsuario.codUsuario = usu;
             patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
+            DV.calcularDVH(usu + pat, NOMBRE_ENTIDAD_USUARIOPATENTE);
 
-            return nUsuDAL.asignarPatente(nUsuario, patenteBE);
+            bool resp = nUsuDAL.asignarPatente(nUsuario, patenteBE, DV.calcularDVH(nUsuario.codUsuario + patenteBE.idPatente, NOMBRE_ENTIDAD_USUARIOPATENTE));
+
+            DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIOPATENTE);
+
+            return resp;
         }
 
         public bool desAsignarPatente(string usu, string pat)
@@ -217,15 +230,24 @@ namespace BLL
             nUsuario.codUsuario = usu;
             patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
 
-            return nUsuDAL.desAsignarPatente(nUsuario, patenteBE);
+            bool resp = nUsuDAL.desAsignarPatente(nUsuario, patenteBE);
+
+            DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIOPATENTE);
+            
+            return resp;
         }
 
         public bool negarPatente(string usu, string pat)
         {
             nUsuario.codUsuario = usu;
             patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
+            
+            bool resp = nUsuDAL.negarPatente(nUsuario, patenteBE, DV.calcularDVH(nUsuario.codUsuario + patenteBE.idPatente, NOMBRE_ENTIDAD_USUARIOPATENTE));
 
-            return nUsuDAL.negarPatente(nUsuario, patenteBE);
+            DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIOPATENTE);
+
+            return resp;
+
         }
 
         public bool desNegarPatente(string usu, string pat)
@@ -233,7 +255,11 @@ namespace BLL
             nUsuario.codUsuario = usu;
             patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
 
-            return nUsuDAL.desNegarPatente(nUsuario, patenteBE);
+            bool resp = nUsuDAL.desNegarPatente(nUsuario, patenteBE);
+
+            DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIOPATENTE);
+
+            return resp;
         }
 
         public List<string> patentesNegadas(string codUsu)
@@ -271,7 +297,12 @@ namespace BLL
             return patNoNeg;
         }
 
+        //public string verificarDVH()
+        //{
 
+
+        //    return "todo mal";
+        //}
 
 
     }

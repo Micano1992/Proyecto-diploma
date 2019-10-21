@@ -60,20 +60,45 @@ namespace DAL
 
         public bool eliminarFamilia(BE.FamiliaBE fami)
         {
+            int id = obtenerIdFamilia(fami.descripcion); 
+
             sql = string.Format("Delete from dbo.Familia where Descripcion_familia = '{0}'", fami.descripcion);
 
             nConexion.conexionBD(1, sql);
 
-            if (nConexion.nCom.ExecuteNonQuery() > 0)
+            if (nConexion.nCom.ExecuteNonQuery() == 0)
             {
                 nConexion.conexionBD(0);
 
-                return true;
+                return false;
             }
 
-            nConexion.conexionBD(0);
+            else
+            {
+                nConexion.conexionBD(0);
 
-            return false;
+                sql = string.Format("Delete from dbo.FamiliaPatente where Id_familia = '{0}'", id);
+
+                nConexion.conexionBD(1, sql);
+
+                nConexion.nCom.ExecuteNonQuery();
+
+                nConexion.conexionBD(0);
+
+                nConexion.conexionBD(0);
+
+                sql = string.Format("Delete from dbo.FamiliaUsuario where Id_familia = '{0}'", id);
+
+                nConexion.conexionBD(1, sql);
+
+                nConexion.nCom.ExecuteNonQuery();
+
+                nConexion.conexionBD(0);
+
+
+                return true;          
+
+            }
 
         }
 
@@ -158,8 +183,7 @@ namespace DAL
             return lFamilia;
 
         }
-
-
+        
         public bool asignarFamiliaUsuario(BE.FamiliaBE fami, BE.UsuarioBE usu)
         {
             sql = string.Format("Insert into dbo.FamiliaUsuario (id_familia, cod_usuario) values ({0}, '{1}')", fami.idFamilia, usu.codUsuario);

@@ -290,7 +290,7 @@
             this.consultarUsuarioToolStripMenuItem1,
             this.crearUsuarioToolStripMenuItem1});
             this.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem";
-            this.UsuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.UsuariosToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.UsuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // consultarUsuarioToolStripMenuItem1
@@ -314,7 +314,7 @@
             this.consultarFamiliaToolStripMenuItem,
             this.crearFamiliaToolStripMenuItem});
             this.familasToolStripMenuItem.Name = "familasToolStripMenuItem";
-            this.familasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.familasToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.familasToolStripMenuItem.Text = "Familias";
             // 
             // consultarFamiliaToolStripMenuItem

@@ -126,9 +126,19 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            usuarioBLL.asignarPatente(codUsuario, dataGridView2.SelectedCells[0].Value.ToString());
+            try
+            {
+                usuarioBLL.asignarPatente(codUsuario, dataGridView2.SelectedCells[0].Value.ToString());
 
-            actualizarGrillas(codUsuario);
+                actualizarGrillas(codUsuario);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("No hay registros seleccionados", "ERROR");
+            }
+
+
         }
     }
 }
