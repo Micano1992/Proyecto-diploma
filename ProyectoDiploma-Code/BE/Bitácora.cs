@@ -14,7 +14,6 @@ namespace BE
         public DateTime fecha { get; set; }
         public string funcionalidad { get; set; }
         public int id_log { get; set; }
-        public int id_usuario { get; set; }
-        public string usuario_email { get; set; }
+        public string codUsuario { get; set; }
     }
 }

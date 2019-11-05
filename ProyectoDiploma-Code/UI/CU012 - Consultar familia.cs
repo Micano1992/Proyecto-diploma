@@ -12,9 +12,10 @@ namespace UI
 {
     public partial class CU012___Consultar_familia : Form
     {
-        public CU012___Consultar_familia(List<int> listaPatentes)
+        public CU012___Consultar_familia(List<int> listaPatentes, string usuario)
         {
             patentes = listaPatentes;
+            usuarioActivo = usuario;
 
             InitializeComponent();
         }
@@ -22,7 +23,7 @@ namespace UI
         BLL.Familia FamiliaBLL = new BLL.Familia();
         BLL.Patente PatenteBLL = new BLL.Patente();
         List<int> patentes = new List<int>();
-
+        public string usuarioActivo { get; set; }
 
 
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -35,7 +36,7 @@ namespace UI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CU013___Administrar_patente nAdm = new CU013___Administrar_patente(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()) ;
+            CU013___Administrar_patente nAdm = new CU013___Administrar_patente(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), usuarioActivo) ;
 
             this.Enabled = false;
 
@@ -130,7 +131,7 @@ namespace UI
                     else
                     {
 
-                        FamiliaBLL.eliminarFamilia(celad);
+                        FamiliaBLL.eliminarFamilia(celad, usuarioActivo);
 
                         MessageBox.Show("Se eliminó la familia", "INFORMACIÓN");
 
@@ -148,7 +149,7 @@ namespace UI
             //nCrear.FormClosed += FormClosedEventArgs(Crear_closing);
             //nCrear.ShowDialog();
 
-            CU011___CREAR_FAMILIA form = new CU011___CREAR_FAMILIA();
+            CU011___CREAR_FAMILIA form = new CU011___CREAR_FAMILIA(usuarioActivo);
 
             form.FormClosing += Form_FormClosing;
 

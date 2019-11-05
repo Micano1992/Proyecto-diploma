@@ -12,16 +12,33 @@ namespace UI
 {
     public partial class CU030___Modificar_producto : Form
     {
-        public CU030___Modificar_producto()
+        public string  usuarioActivo { get; set; }
+        public string codProducto { get; set; }
+
+        BLL.Producto productoBLL = new BLL.Producto();
+
+        public CU030___Modificar_producto(string codProd, string usuarioAc)
         {
+            this.codProducto = codProd;
+
+            this.usuarioActivo = usuarioAc;
+
             InitializeComponent();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se modificó el producto", "INFORMACIÓN");
+            if(productoBLL.modificaProducto(codProducto, textBox1.Text, textBox2.Text, textBox3.Text, usuarioActivo))
+            {
+                MessageBox.Show("Se modificó el producto", "INFORMACIÓN");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido modificar el producto", "ERROR");
+            }
 
-            this.Close();
+
         }
 
         private void CU030___Modificar_producto_Load(object sender, EventArgs e)
@@ -31,6 +48,8 @@ namespace UI
             this.StartPosition = FormStartPosition.CenterParent;
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            this.label5.Text = codProducto;
         }
 
         private void CU030___Modificar_producto_FormClosed(object sender, FormClosedEventArgs e)

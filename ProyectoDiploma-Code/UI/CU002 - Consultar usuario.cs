@@ -12,6 +12,7 @@ namespace UI
 {
     public partial class CU002___Consultar_usuario : Form
     {
+        public string usuarioActivo { get; set; }
         BLL.Usuario usuarioBLL = new BLL.Usuario();
         BLL.Seguridad seguridadBLL = new BLL.Seguridad();
         BLL.Patente patenteBLL = new BLL.Patente();
@@ -19,18 +20,20 @@ namespace UI
 
         List<string> lisUsuarios = new List<string>();
 
-        public CU002___Consultar_usuario(List<int> listaPatentes)
+        public CU002___Consultar_usuario(List<int> listaPatentes, string usuario)
         {
             this.listaPatentes = listaPatentes;
+
+            usuarioActivo = usuario;
 
             InitializeComponent();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString());
+            CU008___Asignar_patente_a_usuario nAsg = new CU008___Asignar_patente_a_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString(), usuarioActivo);
 
-            nAsg.FormClosing += cierreFormClosing;
+            //nAsg.FormClosing += cierreFormClosing;
 
             this.Enabled = false;
 
@@ -39,7 +42,7 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CU005___Modificar_usuario nMod = new CU005___Modificar_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            CU005___Modificar_usuario nMod = new CU005___Modificar_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), usuarioActivo);
 
             nMod.FormClosing += cierreFormClosing;
 
@@ -83,7 +86,7 @@ namespace UI
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            CU006___Administrar_familia nAdm = new CU006___Administrar_familia(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString());
+            CU006___Administrar_familia nAdm = new CU006___Administrar_familia(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString(), usuarioActivo);
 
             this.Enabled = false;
 
@@ -164,7 +167,7 @@ namespace UI
 
             if (lisUsuarios.Count == 0)
             {
-                seguridadBLL.bloquear(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), 1);
+                seguridadBLL.bloquear(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), 1, usuarioActivo);
 
                 actualizarGruopBox();
             }
@@ -184,19 +187,18 @@ namespace UI
 
         }
 
-
         private void button4_Click_1(object sender, EventArgs e)
         {
-            seguridadBLL.bloquear(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), 0);
+            seguridadBLL.bloquear(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), 0, usuarioActivo);
 
             actualizarGruopBox();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            CU009___Negar_patente_usuario nNeg = new CU009___Negar_patente_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString());
+            CU009___Negar_patente_usuario nNeg = new CU009___Negar_patente_usuario(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), dataGridView1.SelectedRows[0].Cells[1].Value.ToString(), dataGridView1.SelectedRows[0].Cells[2].Value.ToString(), usuarioActivo);
 
-            nNeg.FormClosing += cierreFormClosing;
+            //nNeg.FormClosing += cierreFormClosing;
 
             this.Enabled = false;
 
@@ -254,7 +256,16 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(string.Format("Se generó la contraseña {0} para el usuario {1}", seguridadBLL.blanquearContraseña(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), "INFORMACIÓN");
+            //this.openFileDialog1.Filter = "Archivos de texto (*.txt)|*.txt";
+            //this.openFileDialog1.ShowDialog();
+
+            this.saveFileDialog1.Filter = "Archivos de texto (*.txt)|*.txt";
+            this.saveFileDialog1.FileName = "";
+            this.saveFileDialog1.ShowDialog();
+
+            seguridadBLL.blanquearContraseña(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), this.saveFileDialog1.FileName, usuarioActivo);
+
+            MessageBox.Show("Se generó la nueva contraseña en el archivo indicado", "INFORMACIÓN");
         }
     }
 }

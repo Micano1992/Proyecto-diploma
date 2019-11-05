@@ -16,6 +16,7 @@ namespace BLL
         private const string NOMBRE_ENTIDAD_TANQUE = "Tanque";
 
         DAL.DigitoVerificador DVDAL = new DAL.DigitoVerificador();
+        //BLL.Bitácora bitacoraBLL = new BLL.Bitácora();
 
 
         public int calcularDVH(string registroStr, string entidad)
@@ -59,7 +60,10 @@ namespace BLL
 
         public string[] verificarDV()
         {
+            BE.Bitácora bitacoraBE = new BE.Bitácora();
+
             string[] verificacion = new string[2];
+            string log = "";
 
             verificacion[0] = "";
             verificacion[1] = "";
@@ -78,9 +82,95 @@ namespace BLL
             DVDAL.verificarDVV(NOMBRE_ENTIDAD_DOCUMENTO, ref verificacion[1]);
             DVDAL.verificarDVV(NOMBRE_ENTIDAD_TANQUE, ref verificacion[1]);
 
+            #region bita
+
+            string[] separar;
+
+            if(verificacion[0] != "")
+            {
+                separar = verificacion[0].Split('\n');
+
+                for (int i = 0; i < separar.Length - 1; i++)
+                {
+                    bitacoraBE.codUsuario = "-";
+                    bitacoraBE.criticidad = "ALTA";
+                    ////bitacoraBE.descripcion = verificacion[0] + verificacion[1];
+                    bitacoraBE.descripcion = "Error DVH: " + separar[i];
+                    bitacoraBE.fecha = DateTime.Now;
+                    bitacoraBE.funcionalidad = "DV";
+                    bitacoraBE.DVH = calcularDVH(bitacoraBE.descripcion + bitacoraBE.codUsuario + bitacoraBE.criticidad, NOMBRE_ENTIDAD_BITACORA);
+
+                    DAL.Bitacora.GetInstance().guardarLog(bitacoraBE);
+                }
+
+                actualizarDVV(NOMBRE_ENTIDAD_BITACORA);
+            }
+
+            if (verificacion[1] != "")
+            {
+                separar = verificacion[1].Split('\n');
+
+                for (int i = 0; i < separar.Length - 1; i++)
+                {
+                    bitacoraBE.codUsuario = "-";
+                    bitacoraBE.criticidad = "ALTA";
+                    ////bitacoraBE.descripcion = verificacion[0] + verificacion[1];
+                    bitacoraBE.descripcion = "Error DVV: " + separar[i];
+                    bitacoraBE.fecha = DateTime.Now;
+                    bitacoraBE.funcionalidad = "DV";
+                    bitacoraBE.DVH = calcularDVH(bitacoraBE.descripcion + bitacoraBE.codUsuario + bitacoraBE.criticidad, NOMBRE_ENTIDAD_BITACORA);
+
+                    DAL.Bitacora.GetInstance().guardarLog(bitacoraBE);
+                }
+
+                actualizarDVV(NOMBRE_ENTIDAD_BITACORA);
+            }
+
+
+
+            //    if (verificacion[0] != "" || verificacion[1] != "")
+            //{
+            //    bitacoraBE.codUsuario = "-";
+            //    bitacoraBE.criticidad = "ALTA";
+            //    ////bitacoraBE.descripcion = verificacion[0] + verificacion[1];
+            //    bitacoraBE.descripcion = "Error en verificación";
+            //    bitacoraBE.fecha = DateTime.Now;
+            //    bitacoraBE.funcionalidad = "DV";
+            //    bitacoraBE.DVH = calcularDVH(bitacoraBE.descripcion + bitacoraBE.codUsuario + bitacoraBE.criticidad, NOMBRE_ENTIDAD_BITACORA);
+
+            //    DAL.Bitacora.GetInstance().guardarLog(bitacoraBE);
+
+            //    actualizarDVV(NOMBRE_ENTIDAD_BITACORA);
+            //}
+
+            #endregion
+
+
+
             return verificacion;
         }
 
+        public void recalcularDV(string codUsuario)
+        {
+            BE.Bitácora bitacoraBE = new BE.Bitácora();
+
+            DVDAL.recalcularDV(NOMBRE_ENTIDAD_USUARIO);
+            DVDAL.recalcularDV(NOMBRE_ENTIDAD_BITACORA);
+            DVDAL.recalcularDV(NOMBRE_ENTIDAD_USUARIOPATENTE);
+            DVDAL.recalcularDV(NOMBRE_ENTIDAD_FAMILIAPATENTE);
+            DVDAL.recalcularDV(NOMBRE_ENTIDAD_TANQUE);
+            DVDAL.recalcularDV(NOMBRE_ENTIDAD_DOCUMENTO);
+
+            bitacoraBE.codUsuario = codUsuario;
+            bitacoraBE.criticidad = "ALTA";
+            bitacoraBE.descripcion = "Recálculo de dígitos verificadores";
+            bitacoraBE.fecha = DateTime.Now;
+            bitacoraBE.funcionalidad = "DV";
+            bitacoraBE.DVH = calcularDVH(bitacoraBE.descripcion + bitacoraBE.codUsuario + bitacoraBE.criticidad, NOMBRE_ENTIDAD_BITACORA);
+
+            DAL.Bitacora.GetInstance().guardarLog(bitacoraBE);
+
+        }
 
     }
 }

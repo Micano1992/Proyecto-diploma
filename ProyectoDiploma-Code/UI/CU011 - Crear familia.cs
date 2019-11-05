@@ -12,12 +12,15 @@ namespace UI
 {
     public partial class CU011___CREAR_FAMILIA : Form
     {
-        public CU011___CREAR_FAMILIA()
+        public CU011___CREAR_FAMILIA(string usuario)
         {
+            usuarioActivo = usuario;
+
             InitializeComponent();
         }
 
         BLL.Familia familiaBLL = new BLL.Familia();
+        public string usuarioActivo { get; set; }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -28,7 +31,7 @@ namespace UI
 
             else
             {
-                if (familiaBLL.crearFamilia(textBox1.Text))
+                if (familiaBLL.crearFamilia(textBox1.Text, usuarioActivo))
                 {
                     MessageBox.Show("Se creó la familia correctamente", "INFORMACIÓN");
                 }

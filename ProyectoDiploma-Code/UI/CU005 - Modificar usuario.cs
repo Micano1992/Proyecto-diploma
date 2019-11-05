@@ -14,12 +14,16 @@ namespace UI
     {
         public string codUsuario { get; set; }
 
+        public string usuarioActivo { get; set; }
+
         BLL.Usuario usuarioBLL = new BLL.Usuario();
         BLL.Terminal terminalBLL = new BLL.Terminal();
 
-        public CU005___Modificar_usuario(string codigoUsuario)
+        public CU005___Modificar_usuario(string codigoUsuario, string usuarioActivo)
         {
             this.codUsuario = codigoUsuario;
+            this.usuarioActivo = usuarioActivo;
+
 
             InitializeComponent();
         }
@@ -56,7 +60,7 @@ namespace UI
             nUsuario[5] = textBox5.Text;
             nUsuario[6] = comboBox2.Text;
 
-            if (usuarioBLL.modificarUsario(nUsuario))
+            if (usuarioBLL.modificarUsario(nUsuario, usuarioActivo))
             {
                 MessageBox.Show("Se realizó la modificación", "INFORMACIÓN");
 

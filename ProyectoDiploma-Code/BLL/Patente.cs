@@ -15,6 +15,7 @@ namespace BLL
         BE.FamiliaBE FamBE = new BE.FamiliaBE();
         BE.UsuarioBE UsuBE = new BE.UsuarioBE();
         BLL.Usuario usuBLL = new Usuario();
+        BLL.Bitácora bitacoraBLL = new Bitácora();
         List<BE.PatenteBE> lisPat = new List<BE.PatenteBE>();
         List<BE.PatenteBE> lisPate = new List<BE.PatenteBE>();
         List<BE.FamiliaBE> listaFami = new List<BE.FamiliaBE>();
@@ -40,7 +41,6 @@ namespace BLL
 
         public List<string> listarPatentesAsignadas(string fami)
         {            
-
             listaP.Clear();
 
             lisPat.Clear();
@@ -136,7 +136,7 @@ namespace BLL
 
         }
 
-        public bool asignarPatenteFamilia(string fam, string pat)
+        public bool asignarPatenteFamilia(string fam, string pat, string codUsuario)
         {
             PatBE.idPatente = PatDAL.obtenerIdPatente(pat);
             FamBE.idFamilia = FamDAL.obtenerIdFamilia(fam);
@@ -144,16 +144,32 @@ namespace BLL
 
             DV.actualizarDVV(NOMBRE_ENTIDAD_FAMILIAPATENTE);
 
-            return PatDAL.asignarPatenteFamilia(FamBE, PatBE, DVH);
+            if (PatDAL.asignarPatenteFamilia(FamBE, PatBE, DVH))
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Asignación de la patente " + pat + " a la familia " + fam, "Familias");
+
+                return true;
+            }
+
+            return false;
+
 
         }
 
-        public bool desAsignarPatenteFamilia(string fam, string pat)
+        public bool desAsignarPatenteFamilia(string fam, string pat, string codUsuario)
         {
             PatBE.idPatente = PatDAL.obtenerIdPatente(pat);
             FamBE.idFamilia = FamDAL.obtenerIdFamilia(fam);
-            
-            return PatDAL.desAsignarPatenteFamilia(FamBE, PatBE);
+
+           if (PatDAL.desAsignarPatenteFamilia(FamBE, PatBE))
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Desasignación de la patente " + pat + " a la familia " + fam, "Familias");
+
+                return true;
+            }
+
+            return false;
+
         }
 
         public List<string> verificarPatentes(string pat, string usu)
@@ -267,8 +283,6 @@ namespace BLL
 
             return lisPa;
         }
-
-
 
     }
 }

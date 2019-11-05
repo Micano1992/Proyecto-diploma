@@ -12,14 +12,18 @@ namespace UI
 {
     public partial class CU006___Administrar_familia : Form
     {
-        public CU006___Administrar_familia(string a, string b, string c)
+        public CU006___Administrar_familia(string a, string b, string c, string usuario)
         {
             codUSuario = a;
             nombre = b;
             apellido = c;
 
+            usuarioActivo = usuario;
+
             InitializeComponent();
         }
+
+        public string usuarioActivo { get; set; }
 
         public string codUSuario { get; set; }
         public string nombre { get; set; }
@@ -107,7 +111,7 @@ namespace UI
             if(dataGridView2.SelectedCells.Count > 0)
             {
                 
-                familiaBLL.asignarFamiliaUsuario(dataGridView2.SelectedCells[0].Value.ToString(), codUSuario);
+                familiaBLL.asignarFamiliaUsuario(dataGridView2.SelectedCells[0].Value.ToString(), codUSuario, usuarioActivo);
 
             }
 
@@ -142,7 +146,7 @@ namespace UI
 
                 else
                 {
-                    familiaBLL.desAsignarFamiliaUsuario(dataGridView1.SelectedCells[0].Value.ToString(), codUSuario);
+                    familiaBLL.desAsignarFamiliaUsuario(dataGridView1.SelectedCells[0].Value.ToString(), codUSuario, usuarioActivo);
 
                     actualizarGrillas(codUSuario);
                 }

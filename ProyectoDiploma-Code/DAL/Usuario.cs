@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace DAL
 {
@@ -20,6 +21,8 @@ namespace DAL
         List<BE.FamiliaBE> lFamilia = new List<BE.FamiliaBE>();
         List<BE.PatenteBE> lPaten = new List<BE.PatenteBE>();
         List<BE.PatenteBE> lPaten2 = new List<BE.PatenteBE>();
+
+        Encriptacion nEncrip = new Encriptacion();
 
         public List<BE.FamiliaBE> familiaAsignada(BE.UsuarioBE nUsu)
         {
@@ -118,7 +121,6 @@ namespace DAL
         public List<BE.PatenteBE> patentesNoOtorgadas(BE.UsuarioBE usu)
         {
             lPaten.Clear();
-
             
 
             sql = string.Format("select id_patente, Descripcion_patente from dbo.patente where id_patente not in (select distinct Id_patente from dbo.FamiliaPatente where Id_familia in (select Id_familia from dbo.FamiliaUsuario where Cod_usuario = '{0}'))and id_patente not in (select id_patente from dbo.UsuarioPatente where Cod_usuario = '{0}') ", usu.codUsuario);
@@ -132,7 +134,7 @@ namespace DAL
                 BE.PatenteBE nPate = new BE.PatenteBE();
 
                 nPate.idPatente = Convert.ToInt16(reader[0]);
-                nPate.descripcion = reader[1].ToString();
+                nPate.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
 
                 lPaten.Add(nPate);
             }
@@ -159,7 +161,7 @@ namespace DAL
                 BE.PatenteBE nPate = new BE.PatenteBE();
 
                 nPate.idPatente = Convert.ToInt16(reader[0]);
-                nPate.descripcion = reader[1].ToString();
+                nPate.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
 
                 lPaten2.Add(nPate);
             }
@@ -186,7 +188,7 @@ namespace DAL
                 BE.Terminal nTer = new BE.Terminal();
 
                 nUsu.codUsuario = reader[0].ToString();
-                nUsu.nombre = reader[1].ToString();
+                nUsu.nombre = nEncrip.Desencriptar3D(reader[1].ToString());
                 nUsu.apellido =  reader[2].ToString();
                 nUsu.nroDocumento = reader[4].ToString();
 
@@ -233,10 +235,9 @@ namespace DAL
 
             while (reader.Read())
             {
-               
 
                 nUsu.codUsuario = reader[0].ToString();
-                nUsu.nombre = reader[1].ToString();
+                nUsu.nombre = nEncrip.Desencriptar3D(reader[1].ToString());
                 nUsu.apellido = reader[2].ToString();
                 nUsu.nroDocumento = reader[4].ToString();
 
@@ -270,12 +271,11 @@ namespace DAL
             return nUsu;
         }
 
-        public string[] altaUsuario(BE.UsuarioBE nUsuario)
+        public string altaUsuario(BE.UsuarioBE nUsuario, string ruta)
         {
             string nCod = generarCodigoUsuario();
-            string[] resp = new string[2];
 
-            sql = string.Format("Insert into dbo.Usuario values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', {11})", nCod, nUsuario.nombre, nUsuario.apellido, Encriptacion.GetMD5(nUsuario.contraseña), nUsuario.nroDocumento, nUsuario.tipoDocumento, "0", "0", nUsuario.idioma, nUsuario.DVH , nUsuario.mail, nUsuario.terminal.codTerminal);
+            sql = string.Format("Insert into dbo.Usuario values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', {11})", nCod, nEncrip.Encriptar3D(nUsuario.nombre), nUsuario.apellido, nEncrip.GetMD5(nUsuario.contraseña), nUsuario.nroDocumento, nUsuario.tipoDocumento, "0", "0", nUsuario.idioma, nUsuario.DVH , nUsuario.mail, nUsuario.terminal.codTerminal);
 
             nConexion.conexionBD(1, sql);
 
@@ -283,13 +283,16 @@ namespace DAL
             {
                 nConexion.conexionBD(0);
 
-                resp[0] = nCod;
-                resp[1] = nUsuario.contraseña;
+                StreamWriter sw = new StreamWriter(ruta);
+
+                sw.WriteLine(nCod + " - " + nUsuario.contraseña);
+
+                sw.Close();
             }
 
             nConexion.conexionBD(0);
 
-            return resp;
+            return nCod;
         }
 
         public string generarCodigoUsuario()
@@ -313,7 +316,7 @@ namespace DAL
 
         public bool modificarUsuario(BE.UsuarioBE nUsuario)
         {
-            sql = string.Format("update dbo.usuario set Nombre = '{0}', Apellido = '{1}', Nro_documento = '{2}', Tipo_documento = '{3}', Email = '{4}', Terminal = {5}, DVH = {6} where Cod_usuario = '{7}'", nUsuario.nombre, nUsuario.apellido, nUsuario.nroDocumento, nUsuario.tipoDocumento, nUsuario.mail, nUsuario.terminal.codTerminal, nUsuario.DVH, nUsuario.codUsuario);
+            sql = string.Format("update dbo.usuario set Nombre = '{0}', Apellido = '{1}', Nro_documento = '{2}', Tipo_documento = '{3}', Email = '{4}', Terminal = {5}, DVH = {6} where Cod_usuario = '{7}'", nEncrip.Encriptar3D(nUsuario.nombre), nUsuario.apellido, nUsuario.nroDocumento, nUsuario.tipoDocumento, nUsuario.mail, nUsuario.terminal.codTerminal, nUsuario.DVH, nUsuario.codUsuario);
 
             nConexion.conexionBD(1, sql);
 
@@ -460,7 +463,7 @@ namespace DAL
                 BE.PatenteBE nPate = new BE.PatenteBE();
 
                 nPate.idPatente = Convert.ToInt16(reader[0]);
-                nPate.descripcion = reader[1].ToString();
+                nPate.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
 
                 lPaten.Add(nPate);
             }
@@ -486,7 +489,7 @@ namespace DAL
                 BE.PatenteBE nPate = new BE.PatenteBE();
 
                 nPate.idPatente = Convert.ToInt16(reader[0]);
-                nPate.descripcion = reader[1].ToString();
+                nPate.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
 
                 lPaten2.Add(nPate);
             }
@@ -495,6 +498,21 @@ namespace DAL
 
             return lPaten2;
 
+        }
+
+        public string generarContraseña()
+        {
+            string passwordAleatorio;
+            string s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random rd = new Random();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 8; i++)
+            {
+                int idx = rd.Next(0, 10);
+                sb.Append(s.Substring(idx, 1));
+            }
+            passwordAleatorio = sb.ToString();
+            return passwordAleatorio;
         }
 
     }

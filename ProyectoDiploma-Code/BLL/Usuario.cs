@@ -18,7 +18,9 @@ namespace BLL
         DAL.Patente patDAL = new DAL.Patente();
         DAL.Terminal TerminalDAL = new DAL.Terminal();
         DAL.Idioma idiomaDAL = new DAL.Idioma();
+        DAL.Encriptacion nEncrip = new DAL.Encriptacion();
         BLL.DigitoVerificador DV = new DigitoVerificador();
+        BLL.Bitácora bitacoraBLL = new Bitácora();
 
         List<int> listaPat = new List<int>();
         List<BE.PatenteBE> lPat = new List<BE.PatenteBE>();
@@ -105,22 +107,22 @@ namespace BLL
 
         }
 
-        public string generarContraseña()
-        {
-            string passwordAleatorio;
-            string s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            Random rd = new Random();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < 8; i++)
-            {
-                int idx = rd.Next(0, 10);
-                sb.Append(s.Substring(idx, 1));
-            }
-            passwordAleatorio = sb.ToString();
-            return passwordAleatorio;
-        }
+        ////public string generarContraseña()
+        //{
+        //    string passwordAleatorio;
+        //    string s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        //    Random rd = new Random();
+        //    StringBuilder sb = new StringBuilder();
+        //    for (int i = 0; i < 8; i++)
+        //    {
+        //        int idx = rd.Next(0, 10);
+        //        sb.Append(s.Substring(idx, 1));
+        //    }
+        //    passwordAleatorio = sb.ToString();
+        //    return passwordAleatorio;
+        //}
 
-        public string[] altaUsurio(string[] nUsuUI)
+        public string altaUsurio(string[] nUsuUI, string usuarioLog, string ruta)
         {
             BE.UsuarioBE usuario = new BE.UsuarioBE();
             BE.Terminal nTer = new BE.Terminal();
@@ -133,13 +135,15 @@ namespace BLL
             nTer.codTerminal = TerminalDAL.obtenerIdTerminal(nUsuUI[5].ToString());
             usuario.terminal = nTer;
             usuario.idioma = idiomaDAL.obtenerIdIdioma(nUsuUI[6]);
-            usuario.contraseña = generarContraseña();
+            usuario.contraseña = nUsuDAL.generarContraseña();
             usuario.DVH = DV.calcularDVH(usuario.nombre + usuario.apellido + usuario.tipoDocumento + usuario.nroDocumento + usuario.mail + usuario.terminal.codTerminal, NOMBRE_ENTIDAD_USUARIO);
 
-            string[] resp = nUsuDAL.altaUsuario(usuario);
+            string resp = nUsuDAL.altaUsuario(usuario, ruta);
 
             DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIO);
 
+            bitacoraBLL.guardarLog(usuarioLog, 3, "Generación usuario " + resp, "Usuarios");
+            
             return resp;
 
         }
@@ -155,7 +159,7 @@ namespace BLL
             return lisTipos;
         }
 
-        public bool modificarUsario(string[] nUsu)
+        public bool modificarUsario(string[] nUsu, String usuarioLog)
         {
             BE.UsuarioBE nUsuario = new BE.UsuarioBE();
             BE.Terminal nTer = new BE.Terminal();
@@ -168,11 +172,13 @@ namespace BLL
             nUsuario.mail = nUsu[5].ToString();
             nTer.codTerminal = TerminalDAL.obtenerIdTerminal(nUsu[6].ToString());
             nUsuario.terminal = nTer;
-            nUsuario.DVH = DV.calcularDVH(nUsuario.nombre + nUsuario.apellido + nUsuario.tipoDocumento + nUsuario.nroDocumento + nUsuario.mail + nUsuario.terminal.codTerminal, NOMBRE_ENTIDAD_USUARIO);
+            nUsuario.DVH = DV.calcularDVH(nEncrip.Encriptar3D(nUsuario.nombre) + nUsuario.apellido + nUsuario.tipoDocumento + nUsuario.nroDocumento + nUsuario.mail + nUsuario.terminal.codTerminal, NOMBRE_ENTIDAD_USUARIO);
 
             bool resp = nUsuDAL.modificarUsuario(nUsuario);
 
             DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIO);
+
+            bitacoraBLL.guardarLog(usuarioLog, 3, "Modificación usuario " + nUsuario.codUsuario, "Usuarios");
 
             return resp;
         }
@@ -212,7 +218,7 @@ namespace BLL
             return patNoOtor;
         }
 
-        public bool asignarPatente(string usu, string pat)
+        public bool asignarPatente(string usu, string pat, string codUsuario)
         {
             nUsuario.codUsuario = usu;
             patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
@@ -222,10 +228,17 @@ namespace BLL
 
             DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIOPATENTE);
 
-            return resp;
+            if (resp)
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Asignación de la patente " + pat + " al usuario " + usu, "Usuarios");
+
+                return true;
+            }
+
+            return false;
         }
 
-        public bool desAsignarPatente(string usu, string pat)
+        public bool desAsignarPatente(string usu, string pat, string codUsuario)
         {
             nUsuario.codUsuario = usu;
             patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
@@ -233,11 +246,18 @@ namespace BLL
             bool resp = nUsuDAL.desAsignarPatente(nUsuario, patenteBE);
 
             DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIOPATENTE);
-            
-            return resp;
+
+            if (resp)
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Deasignación de la patente " + pat + " al usuario " + usu, "Usuarios");
+
+                return true;
+            }
+
+            return false;
         }
 
-        public bool negarPatente(string usu, string pat)
+        public bool negarPatente(string usu, string pat, string codUsuario)
         {
             nUsuario.codUsuario = usu;
             patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
@@ -246,11 +266,18 @@ namespace BLL
 
             DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIOPATENTE);
 
-            return resp;
+            if (resp)
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Negación de patente " + pat + " al usuario " + usu, "Usuarios");
+
+                return true;
+            }
+
+            return false;
 
         }
 
-        public bool desNegarPatente(string usu, string pat)
+        public bool desNegarPatente(string usu, string pat, string codUsuario)
         {
             nUsuario.codUsuario = usu;
             patenteBE.idPatente = patDAL.obtenerIdPatente(pat);
@@ -259,7 +286,14 @@ namespace BLL
 
             DV.actualizarDVV(NOMBRE_ENTIDAD_USUARIOPATENTE);
 
-            return resp;
+            if (resp)
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Desnegación de la patente " + pat + " al usuario " + usu, "Usuarios");
+
+                return true;
+            }
+
+            return false;
         }
 
         public List<string> patentesNegadas(string codUsu)
@@ -285,11 +319,22 @@ namespace BLL
         {
             List<string> patNoNeg = new List<string>();
 
+            List<BE.PatenteBE> patentes = new List<BE.PatenteBE>();
+
             nUsuario.codUsuario = codUsu;
 
-            lPat = nUsuDAL.patentesNoNegadas(nUsuario);
+            //lPat = nUsuDAL.patentesNoNegadas(nUsuario);
+            lPat = nUsuDAL.patentesNegadas(nUsuario);
 
+
+            patentes = patDAL.listarPatentes();
+            
             foreach (BE.PatenteBE pat in lPat)
+            {
+                patentes.Remove(pat);                
+            }
+
+            foreach(BE.PatenteBE pat in patentes)
             {
                 patNoNeg.Add(pat.descripcion);
             }

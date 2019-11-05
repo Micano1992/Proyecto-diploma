@@ -45,7 +45,23 @@ namespace UI
 
             deshabilitarPuntos();
 
-            habilitarPuntosMenu(nUsuario.listarPatentes(usuarioLogueado));
+            List<int> patentesUsu = new List<int>();
+
+            patentesUsu = nUsuario.listarPatentes(usuarioLogueado);
+
+            lPatentesUsu = patentesUsu;
+
+            bool patRecalculuar = false;
+
+            foreach(int i in patentesUsu)
+            {
+                if (i == 39)
+                {
+                    patRecalculuar = true;
+
+                    break;
+                }
+            }
 
             string[] errorDV = DVBLL.verificarDV();
 
@@ -63,10 +79,30 @@ namespace UI
 
             if (mensaje != "")
             {
-                MessageBox.Show(mensaje , "ERROR");
+                if (patRecalculuar == true)
+                {
+                    MessageBox.Show(mensaje, "ERROR");
+
+                    DialogResult result = MessageBox.Show("¿Desea recalcular los dígitos verificadores?", "Salir", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        DVBLL.recalcularDV(usuarioLogueado);
+                        habilitarPuntosMenu(patentesUsu);
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("Error en la base de datos, por favor comunicarse con un administrador", "ERROR");
+                }
+
+            }
+            else
+            {
+                habilitarPuntosMenu(patentesUsu);
             }
 
-            
 
         }
 
@@ -74,7 +110,7 @@ namespace UI
         #region Producto
         private void consultarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU028___Consultar_producto nCon = new CU028___Consultar_producto();
+            CU028___Consultar_producto nCon = new CU028___Consultar_producto(lPatentesUsu, usuarioLogueado);
 
             nCon.Show(this);
 
@@ -83,7 +119,7 @@ namespace UI
 
         private void altaDeProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU027___Alta_de_productos nAlt = new CU027___Alta_de_productos();
+            CU027___Alta_de_productos nAlt = new CU027___Alta_de_productos(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -91,14 +127,14 @@ namespace UI
 
         }
 
-        private void modificarProductoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CU030___Modificar_producto nMod = new CU030___Modificar_producto();
+        //private void modificarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    CU030___Modificar_producto nMod = new CU030___Modificar_producto(usuarioLogueado);
 
-            this.Enabled = false;
+        //    this.Enabled = false;
 
-            nMod.Show(this);
-        }
+        //    nMod.Show(this);
+        //}
 
         private void verificarProductoterminalToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -252,7 +288,7 @@ namespace UI
 
         private void consultarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU002___Consultar_usuario nCon = new CU002___Consultar_usuario(nUsuario.listarPatentes(usuarioLogueado));
+            CU002___Consultar_usuario nCon = new CU002___Consultar_usuario(nUsuario.listarPatentes(usuarioLogueado), usuarioLogueado);
 
             nCon.Show(this);
 
@@ -261,7 +297,7 @@ namespace UI
 
         private void crearUsuarioToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            CU001_Crear_usuario nCrear = new CU001_Crear_usuario();
+            CU001_Crear_usuario nCrear = new CU001_Crear_usuario(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -271,7 +307,7 @@ namespace UI
 
         private void consultarFamiliaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU012___Consultar_familia nCon = new CU012___Consultar_familia(nUsuario.listarPatentes(usuarioLogueado));
+            CU012___Consultar_familia nCon = new CU012___Consultar_familia(nUsuario.listarPatentes(usuarioLogueado), usuarioLogueado);
 
             this.Enabled = false;
 
@@ -281,7 +317,7 @@ namespace UI
         private void crearFamiliaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            CU011___CREAR_FAMILIA nCrear = new CU011___CREAR_FAMILIA();
+            CU011___CREAR_FAMILIA nCrear = new CU011___CREAR_FAMILIA(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -340,9 +376,7 @@ namespace UI
 
         #endregion
 
-
-
-
+                
         private void principal_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Desea cerrar sesión?", "Salir", MessageBoxButtons.YesNo);
@@ -358,8 +392,7 @@ namespace UI
 
             }
         }
-
-
+        
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -513,7 +546,7 @@ namespace UI
 
                         productosToolStripMenuItem.Visible = true;
 
-                        modificarProductoToolStripMenuItem.Visible = true;
+                        //modificarProductoToolStripMenuItem.Visible = true;
 
                         break;
                         
@@ -675,7 +708,7 @@ namespace UI
 
             altaDeProductoToolStripMenuItem.Visible = false;
 
-            modificarProductoToolStripMenuItem.Visible = false;
+            //modificarProductoToolStripMenuItem.Visible = false;
 
             verificarProductoterminalToolStripMenuItem.Visible = false;
 
@@ -712,7 +745,6 @@ namespace UI
             crearUsuarioToolStripMenuItem1.Visible = false;
 
         }
-
 
     }
 }

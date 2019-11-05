@@ -12,18 +12,34 @@ namespace UI
 {
     public partial class CU027___Alta_de_productos : Form
     {
-        public CU027___Alta_de_productos()
+        public string usuarioActivo { get; set; }
+
+        public CU027___Alta_de_productos(string usuAc)
         {
+            this.usuarioActivo = usuAc;
+
             InitializeComponent();
         }
 
+        BLL.Producto productoBLL = new BLL.Producto();
+
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se creó el producto", "INFORMACIÓN");
+            if(productoBLL.crearProducto(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, usuarioActivo))
+            {
+                MessageBox.Show("Se creó el producto", "INFORMACIÓN");
 
-            this.Owner.Enabled = true;
+                this.Owner.Enabled = true;
 
-            this.Close();
+                this.Close();
+            }
+
+            else
+            {
+                MessageBox.Show("No se creó el producto", "ERROR");
+            }
+
+
 
         }
 

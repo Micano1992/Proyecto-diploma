@@ -13,6 +13,8 @@ namespace DAL
         List<BE.PatenteBE> lPat = new List<BE.PatenteBE>();
         List<BE.UsuarioBE> lUsu = new List<BE.UsuarioBE>();
 
+        Encriptacion nEncrip = new Encriptacion();
+
         string sql;
 
         //string sql2;
@@ -58,7 +60,7 @@ namespace DAL
 
             //SqlDataReader reader = nConexion.nCom.ExecuteReader();
 
-            sql = String.Format("Select a.Id_patente, b.Descripcion_patente from dbo.FamiliaPatente a left join dbo.Patente b on b.Id_patente = a.Id_patente where id_familia = (Select id_familia from dbo.Familia where descripcion_familia = '{0}')", familia.descripcion);
+            sql = String.Format("Select a.Id_patente, b.Descripcion_patente from dbo.FamiliaPatente a left join dbo.Patente b on b.Id_patente = a.Id_patente where id_familia = (Select id_familia from dbo.Familia where descripcion_familia = '{0}')", nEncrip.Encriptar3D(familia.descripcion));
 
             nConexion.conexionBD(1, sql);
 
@@ -69,7 +71,7 @@ namespace DAL
                 BE.PatenteBE nPat = new BE.PatenteBE();
 
                 nPat.idPatente = int.Parse(reader[0].ToString());
-                nPat.descripcion = reader[1].ToString();
+                nPat.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
 
                 lPat.Add(nPat);
 
@@ -96,7 +98,7 @@ namespace DAL
                 BE.PatenteBE nPat = new BE.PatenteBE();
 
                 nPat.idPatente = int.Parse(reader[0].ToString());
-                nPat.descripcion = reader[1].ToString();
+                nPat.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
 
                 lPat.Add(nPat);
 
@@ -110,7 +112,7 @@ namespace DAL
 
         public int obtenerIdPatente(string desc)
         {
-            sql = string.Format("Select * from dbo.Patente where Descripcion_patente = '{0}'", desc);
+            sql = string.Format("Select * from dbo.Patente where Descripcion_patente = '{0}'", nEncrip.Encriptar3D(desc));
 
             nConexion.conexionBD(1, sql);
 
@@ -127,7 +129,7 @@ namespace DAL
 
             nConexion.conexionBD(1, sql);
 
-            string resul = nConexion.nCom.ExecuteScalar().ToString();
+            string resul = nEncrip.Desencriptar3D(nConexion.nCom.ExecuteScalar().ToString());
 
             nConexion.conexionBD(0);
 
@@ -244,6 +246,20 @@ namespace DAL
             return lUsu;
         }
 
+        //public void encrep(List<BE.PatenteBE> pate)
+        //{
+        //    foreach (BE.PatenteBE nPat in pate)
+        //    {
+        //        sql = string.Format("Update dbo.Patente set Descripcion_patente = '{0}' where Id_patente = {1}", nEncrip.Encriptar3D(nPat.descripcion), nPat.idPatente);
+
+        //        nConexion.conexionBD(1, sql);
+
+        //        nConexion.nCom.ExecuteNonQuery();
+
+        //        nConexion.conexionBD(0);
+        //    }
+
+        //}
 
     }
 }

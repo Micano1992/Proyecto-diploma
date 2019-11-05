@@ -16,18 +16,20 @@ namespace UI
         public string nombre { get; set; }
         public string apellido { get; set; }
 
+        public string usuarioActivo { get; set; }
+
         BLL.Usuario usuarioBLL = new BLL.Usuario();
         BLL.Terminal terminalBLL = new BLL.Terminal();
         BLL.Patente patenteBLL = new BLL.Patente();
         BLL.Familia familiaBLL = new BLL.Familia();
         List<string> lisUsuarios = new List<string>();
 
-        public CU009___Negar_patente_usuario(String codigoUsuario, string nom, string ape)
+        public CU009___Negar_patente_usuario(String codigoUsuario, string nom, string ape, string usuarioAc)
         {
             this.codUsuario = codigoUsuario;
             this.nombre = nom;
             this.apellido = ape;
-
+            this.usuarioActivo = usuarioAc;
 
             InitializeComponent();
         }
@@ -82,7 +84,7 @@ namespace UI
 
                 else
                 {
-                    usuarioBLL.negarPatente(codUsuario, dataGridView2.SelectedCells[0].Value.ToString());
+                    usuarioBLL.negarPatente(codUsuario, dataGridView2.SelectedCells[0].Value.ToString(), usuarioActivo);
 
                     actualizarGrillas(codUsuario);
 
@@ -119,7 +121,7 @@ namespace UI
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                usuarioBLL.desNegarPatente(codUsuario, dataGridView1.SelectedCells[0].Value.ToString());
+                usuarioBLL.desNegarPatente(codUsuario, dataGridView1.SelectedCells[0].Value.ToString(), usuarioActivo);
 
                 actualizarGrillas(codUsuario);
 

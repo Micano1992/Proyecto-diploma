@@ -33,7 +33,6 @@
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaDeProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosOperadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verificarProductoterminalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asignarProductoterminalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +92,6 @@
             this.productosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consultarProductoToolStripMenuItem,
             this.altaDeProductoToolStripMenuItem,
-            this.modificarProductoToolStripMenuItem,
             this.productosOperadosToolStripMenuItem});
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
             this.productosToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
@@ -112,13 +110,6 @@
             this.altaDeProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.altaDeProductoToolStripMenuItem.Text = "Alta de producto";
             this.altaDeProductoToolStripMenuItem.Click += new System.EventHandler(this.altaDeProductoToolStripMenuItem_Click);
-            // 
-            // modificarProductoToolStripMenuItem
-            // 
-            this.modificarProductoToolStripMenuItem.Name = "modificarProductoToolStripMenuItem";
-            this.modificarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.modificarProductoToolStripMenuItem.Text = "Modificar producto";
-            this.modificarProductoToolStripMenuItem.Click += new System.EventHandler(this.modificarProductoToolStripMenuItem_Click);
             // 
             // productosOperadosToolStripMenuItem
             // 
@@ -384,7 +375,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(789, 293);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -416,7 +407,6 @@
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarProductoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaDeProductoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarProductoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosOperadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verificarProductoterminalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asignarProductoterminalToolStripMenuItem;

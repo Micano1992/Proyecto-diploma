@@ -17,13 +17,17 @@ namespace UI
             InitializeComponent();
         }
 
-        public CU013___Administrar_patente(string familia)
+        public CU013___Administrar_patente(string familia, string codUSuario)
         {
+            this.usuarioActivo = codUSuario;
+
             this.familiaPat = familia;
 
             InitializeComponent();
         }
 
+
+        public string usuarioActivo { get; set; }
 
         BLL.Patente patBLL = new BLL.Patente();
 
@@ -73,6 +77,7 @@ namespace UI
             dataGridView2.AutoGenerateColumns = false;
 
             actualizarGrillas(familiaPat);
+
         }
 
         private void CU013___Administrar_patente_FormClosing(object sender, FormClosingEventArgs e)
@@ -107,7 +112,7 @@ namespace UI
             {
                 if(patBLL.verificarPatenteFamilia(familiaPat, dataGridView1.SelectedRows[0].Cells[0].Value.ToString()))
                 {
-                    patBLL.desAsignarPatenteFamilia(familiaPat, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    patBLL.desAsignarPatenteFamilia(familiaPat, dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), usuarioActivo);
                     actualizarGrillas(familiaPat);
                 }
                 else
@@ -130,7 +135,7 @@ namespace UI
         {
             try
             {
-                patBLL.asignarPatenteFamilia(familiaPat, dataGridView2.SelectedRows[0].Cells[0].Value.ToString());
+                patBLL.asignarPatenteFamilia(familiaPat, dataGridView2.SelectedRows[0].Cells[0].Value.ToString(), usuarioActivo);
 
             }
             catch (Exception)

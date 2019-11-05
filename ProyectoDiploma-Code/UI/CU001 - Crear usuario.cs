@@ -12,10 +12,14 @@ namespace UI
 {
     public partial class CU001_Crear_usuario : Form
     {
-        public CU001_Crear_usuario()
+        public CU001_Crear_usuario(string usuario)
         {
+            usuarioActivo = usuario;
+
             InitializeComponent();
         }
+
+        public string usuarioActivo { get; set; }
 
         BLL.Terminal terminalBLL = new BLL.Terminal();
         BLL.Usuario usuarioBLL = new BLL.Usuario();
@@ -77,17 +81,22 @@ namespace UI
             nuevoUsu[4] = textBox5.Text;
             nuevoUsu[5] = comboBox2.Text;
             nuevoUsu[6] = comboBox3.Text;
- 
-            string[] men = usuarioBLL.altaUsurio(nuevoUsu);
+
+            MessageBox.Show("Por favor indicar donde debe guardarse la contraseña", "INFORMACIÓN");
+
+            this.saveFileDialog1.Filter = "Archivos de texto (*.txt)|*.txt";
+            this.saveFileDialog1.FileName = "";
+            this.saveFileDialog1.ShowDialog();
+
+            string men = usuarioBLL.altaUsurio(nuevoUsu, usuarioActivo, this.saveFileDialog1.FileName);
 
             foreach(DataGridViewRow i in dataGridView2.Rows)
             {
-                familiaBLL.asignarFamiliaUsuario(i.Cells[0].Value.ToString(), men[0].ToString());
+                familiaBLL.asignarFamiliaUsuario(i.Cells[0].Value.ToString(), men, usuarioActivo);
 
-            }
-                        
+            } 
 
-            MessageBox.Show(string.Format("Se generó el usuario {0}. La clave es {1}", men[0], men[1]), "INFORMACIÓN");
+            MessageBox.Show(string.Format("Se generó el usuario {0}", men), "INFORMACIÓN");
 
             blanquearText();
 

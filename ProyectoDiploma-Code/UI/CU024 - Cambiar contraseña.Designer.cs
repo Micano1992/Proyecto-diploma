@@ -67,6 +67,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(246, 41);
+            this.textBox1.MaxLength = 32;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
             this.textBox1.Size = new System.Drawing.Size(119, 20);
@@ -75,6 +76,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(246, 94);
+            this.textBox2.MaxLength = 32;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(119, 20);
@@ -83,6 +85,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(246, 147);
+            this.textBox3.MaxLength = 32;
             this.textBox3.Name = "textBox3";
             this.textBox3.PasswordChar = '*';
             this.textBox3.Size = new System.Drawing.Size(119, 20);

@@ -18,6 +18,8 @@ namespace UI
 
         string mensaje;
 
+        BLL.ConexionesSQL conexionBD = new ConexionesSQL();
+
         public void Login_Load(object sender, EventArgs e)
         {
             this.MaximizeBox = false;
@@ -35,8 +37,45 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ingreso();           
-            
+            //button1.Enabled = false;
+
+            try
+            {
+                bool conex = conexionBD.ProbarConnectionString();
+                if (!conex)
+                {
+                    errorBD();
+                }
+
+                else
+                {
+                    ingreso();
+
+                }
+            }
+            catch
+            {
+
+                errorBD();
+            }            
+
+        }
+
+        public void errorBD()
+        {
+            MessageBox.Show("No es posible conectarse con la BD", "ERROR");
+
+            this.Hide();
+
+            ConexionBD nCon = new ConexionBD();
+
+            nCon.Show(this);
+
+            this.Hide();
+
+
+            textBox1.Text = null;
+            textBox2.Text = null;
         }
 
         public void ingreso()
@@ -83,6 +122,11 @@ namespace UI
         private void textBox2_Leave(object sender, EventArgs e)
         {
             ingreso();
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+            ProgressBar pBar = new ProgressBar();
         }
     }
 }

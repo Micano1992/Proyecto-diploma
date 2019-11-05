@@ -16,6 +16,8 @@ namespace UI
         public string nombre { get; set; }
         public string apellido { get; set; }
 
+        public string usuarioActivo { get; set; }
+
         BLL.Usuario usuarioBLL = new BLL.Usuario();
         BLL.Terminal terminalBLL = new BLL.Terminal();
         BLL.Patente patenteBLL = new BLL.Patente();
@@ -23,11 +25,12 @@ namespace UI
 
         List<string> lisUsuarios = new List<string>();
 
-        public CU008___Asignar_patente_a_usuario(String codigoUsuario, string nom, string ape)
+        public CU008___Asignar_patente_a_usuario(String codigoUsuario, string nom, string ape, string usuarioAc)
         {
             this.codUsuario = codigoUsuario;
             this.nombre = nom;
             this.apellido = ape;
+            this.usuarioActivo = usuarioAc;
 
             InitializeComponent();
         }
@@ -117,7 +120,7 @@ namespace UI
                 }
                 else
                 {
-                    usuarioBLL.desAsignarPatente(codUsuario, dataGridView1.SelectedCells[0].Value.ToString());
+                    usuarioBLL.desAsignarPatente(codUsuario, dataGridView1.SelectedCells[0].Value.ToString(), usuarioActivo);
 
                     actualizarGrillas(codUsuario);
                 }
@@ -128,7 +131,7 @@ namespace UI
         {
             try
             {
-                usuarioBLL.asignarPatente(codUsuario, dataGridView2.SelectedCells[0].Value.ToString());
+                usuarioBLL.asignarPatente(codUsuario, dataGridView2.SelectedCells[0].Value.ToString(), usuarioActivo);
 
                 actualizarGrillas(codUsuario);
             }

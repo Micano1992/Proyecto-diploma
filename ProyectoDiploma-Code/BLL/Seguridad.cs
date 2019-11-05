@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using System.Xml;
 
 namespace BLL
 {
     public class Seguridad
     {
         BE.UsuarioBE Usu = new BE.UsuarioBE();
+        BLL.Bitácora bitacoraBLL = new Bitácora();
         DAL.Seguridad nSeg = new DAL.Seguridad();
-        BLL.Usuario usuBLL = new BLL.Usuario();
+        DAL.Usuario usuDAL = new DAL.Usuario();
 
 
         public bool login(string usuario, string contraseña, ref string mensaje)
@@ -31,12 +33,18 @@ namespace BLL
                     {
                         nSeg.actualizarIngresosError(Usu, acceso);
 
+                        bitacoraBLL.guardarLog(usuario, 3, "Ingreso a aplicación", "Login");
+
                         return true;
                     }
 
                     else
                     {
                         mensaje = "Contraseña inválida";
+
+                        bitacoraBLL.guardarLog(usuario, 2, "Contraseña errónea", "Login");
+
+
                         return false;
                     }
 
@@ -45,6 +53,9 @@ namespace BLL
                 else
                 {
                     mensaje = "Usuario bloqueado";
+
+                    bitacoraBLL.guardarLog(usuario, 2, "Usuario bloqueado", "Login");
+
                     return false;
                 }                  
                                     
@@ -53,6 +64,8 @@ namespace BLL
             else
             {
                 mensaje = "Usuario inválido";
+
+                bitacoraBLL.guardarLog(usuario, 2, "Usuario inválido", "Login");
 
                 return false;
  
@@ -69,24 +82,35 @@ namespace BLL
 
         }
 
-        public bool bloquear(string usuario, int bloqueo)
+        public bool bloquear(string usuarioBloq, int bloqueo, string usuarioLog)
         {
-            return nSeg.bloquearUSuario(usuario, bloqueo);
-        }
 
-        public string blanquearContraseña(string usuario)
-        {
-            Usu.codUsuario = usuario;
-
-            Usu.contraseña = usuBLL.generarContraseña();
-
-            if(nSeg.modificarContraseña(Usu))
+            if(nSeg.bloquearUSuario(usuarioBloq, bloqueo))
             {
-                return Usu.contraseña;
+                if(bloqueo == 1)
+                {
+                    bitacoraBLL.guardarLog(usuarioLog, 2, "Bloqueo al usuario " + usuarioBloq, "Usuarios");
+                }
+                else
+                {
+                    bitacoraBLL.guardarLog(usuarioLog, 2, "Desbloqueo al usuario " + usuarioBloq, "Usuarios");
+                }
+
+                return true;
             }
 
-            return "No se ha podido blanquear la contraseña";
-            
+            return false;
+        }
+
+        public void blanquearContraseña(string usuarioBlan, string ruta, string usuarioLog)
+        {
+            Usu.codUsuario = usuarioBlan;
+            Usu.contraseña = usuDAL.generarContraseña();
+
+            nSeg.blanquerContraseña(Usu, ruta);
+
+            bitacoraBLL.guardarLog(usuarioLog, 3, "Se blanqueo la contraseña del usuario " + usuarioBlan, "Usuarios");
+
         }
 
         public bool modificarContraseña(string usuario, string contraseña)
@@ -94,8 +118,18 @@ namespace BLL
             Usu.codUsuario = usuario;
             Usu.contraseña = contraseña;
 
-            return nSeg.modificarContraseña(Usu);
+            if(nSeg.modificarContraseña(Usu))
+            {
+                bitacoraBLL.guardarLog(usuario, 3, "Modificación de contraseña", "Usuarios");
+
+
+                return true;
+            }
+
+            return false;
         }
+
+
 
 
     }

@@ -39,6 +39,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(361, 140);
+            this.textBox1.MaxLength = 6;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(116, 20);
             this.textBox1.TabIndex = 0;
@@ -46,6 +47,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(361, 185);
+            this.textBox2.MaxLength = 32;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(116, 20);
@@ -75,7 +77,7 @@
             this.label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label3.Font = new System.Drawing.Font("Calibri", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(248, 58);
+            this.label3.Location = new System.Drawing.Point(247, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(157, 49);
             this.label3.TabIndex = 3;
@@ -83,7 +85,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(216, 244);
+            this.button1.Location = new System.Drawing.Point(210, 249);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(218, 25);
             this.button1.TabIndex = 4;
@@ -96,7 +98,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(670, 326);
+            this.ClientSize = new System.Drawing.Size(670, 315);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

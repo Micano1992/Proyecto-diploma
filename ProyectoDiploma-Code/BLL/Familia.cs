@@ -8,7 +8,11 @@ namespace BLL
 {
     public class Familia
     {
+
         DAL.Familia FamiliaDAL = new DAL.Familia();
+
+        BLL.DigitoVerificador DV = new DigitoVerificador();
+        BLL.Bitácora bitacoraBLL = new Bitácora();
 
         List<string> lFami = new List<string>();
         List<BE.FamiliaBE> lFamilia = new List<BE.FamiliaBE>();
@@ -16,13 +20,23 @@ namespace BLL
 
         BE.UsuarioBE nUsu = new BE.UsuarioBE();
         BE.FamiliaBE familiaBE = new BE.FamiliaBE();
+        BE.Bitácora bitacoraBE = new BE.Bitácora();
 
-        public bool crearFamilia(string desc)
+        private const string NOMBRE_ENTIDAD_BITACORA = "Bitacora";
+
+
+        public bool crearFamilia(string desc, string codUsuario)
         {
             BE.FamiliaBE nFam = new BE.FamiliaBE() { descripcion = desc };
 
-            return FamiliaDAL.crearFamilia(nFam);
+            if(FamiliaDAL.crearFamilia(nFam))
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Generación familia " + desc, "Familias");
+                
+                return true;
+            }
 
+            return false;
         }
 
         public List<string> listarFamilia()
@@ -37,12 +51,19 @@ namespace BLL
             return lFami;
         } 
 
-        public bool eliminarFamilia(string descFam)
+        public bool eliminarFamilia(string descFam, string codUsuario)
         {
             BE.FamiliaBE nFam = new BE.FamiliaBE() { descripcion = descFam };
+                        
+            if (FamiliaDAL.eliminarFamilia(nFam))
+            {
+                bitacoraBLL.guardarLog(codUsuario, 2, "Se eliminó la familia " + descFam, "Familias");
 
-            return FamiliaDAL.eliminarFamilia(nFam);
-            
+                return true;
+            }
+
+            return false;
+
         }
 
         public List<string> listarFamiliasAsignadas(string usua)
@@ -96,21 +117,36 @@ namespace BLL
 
         }
 
-        public bool asignarFamiliaUsuario(string fam, string codUsu)
+        public bool asignarFamiliaUsuario(string fam, string codUsu, string codUsuario)
         {
             familiaBE.idFamilia = FamiliaDAL.obtenerIdFamilia(fam);
             nUsu.codUsuario = codUsu;
 
-            return FamiliaDAL.asignarFamiliaUsuario(familiaBE, nUsu);
+            if (FamiliaDAL.asignarFamiliaUsuario(familiaBE, nUsu))
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Asignación de familia " + fam + " al usuario " + codUsu, "Familias");
+
+                return true;
+            }
+
+            return false;
 
         }
 
-        public bool desAsignarFamiliaUsuario(string fam, string codUsu)
+        public bool desAsignarFamiliaUsuario(string fam, string codUsu, string codUsuario)
         {
             familiaBE.idFamilia = FamiliaDAL.obtenerIdFamilia(fam);
             nUsu.codUsuario = codUsu;
 
-            return FamiliaDAL.desAsignarFamiliaUsuario(familiaBE, nUsu);
+            if (FamiliaDAL.desAsignarFamiliaUsuario(familiaBE, nUsu))
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Desasignación de familia " + fam + " al usuario " + codUsu, "Familias");
+                              
+                return true;
+            }
+
+            return false;
         }
+
     }
 }

@@ -14,10 +14,11 @@ namespace DAL
         List<BE.FamiliaBE> lFamilia = new List<BE.FamiliaBE>();
 
         ConexionesSQL nConexion = new ConexionesSQL();
+        Encriptacion nEncrip = new Encriptacion();
 
         public bool crearFamilia(BE.FamiliaBE fami)
         {
-            sql = string.Format("Insert into dbo.Familia (Descripcion_familia) values ('{0}')", fami.descripcion);
+            sql = string.Format("Insert into dbo.Familia (Descripcion_familia) values ('{0}')", nEncrip.Encriptar3D(fami.descripcion));
 
             nConexion.conexionBD(1, sql);
 
@@ -48,7 +49,7 @@ namespace DAL
                 BE.FamiliaBE nFam = new BE.FamiliaBE();
 
                 nFam.idFamilia = int.Parse( reader[0].ToString());
-                nFam.descripcion = reader[1].ToString();
+                nFam.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
 
                 lFamilia.Add(nFam);
             }
@@ -60,51 +61,46 @@ namespace DAL
 
         public bool eliminarFamilia(BE.FamiliaBE fami)
         {
-            int id = obtenerIdFamilia(fami.descripcion); 
+            int id = obtenerIdFamilia(fami.descripcion);
+
+            sql = string.Format("Delete from dbo.FamiliaPatente where Id_familia = '{0}'", id);
+
+            
+            nConexion.conexionBD(1, sql);
+
+            nConexion.nCom.ExecuteNonQuery();
+
+            nConexion.conexionBD(0);
+
+            sql = string.Format("Delete from dbo.FamiliaUsuario where Id_familia = '{0}'", id);
+
+            nConexion.conexionBD(1, sql);
+
+            nConexion.nCom.ExecuteNonQuery();
+
+            nConexion.conexionBD(0);
 
             sql = string.Format("Delete from dbo.Familia where Descripcion_familia = '{0}'", fami.descripcion);
 
             nConexion.conexionBD(1, sql);
 
-            if (nConexion.nCom.ExecuteNonQuery() == 0)
+            if(nConexion.nCom.ExecuteNonQuery() > 0)
+            {
+                nConexion.conexionBD(0);
+
+                return true;
+            }
+            else
             {
                 nConexion.conexionBD(0);
 
                 return false;
             }
-
-            else
-            {
-                nConexion.conexionBD(0);
-
-                sql = string.Format("Delete from dbo.FamiliaPatente where Id_familia = '{0}'", id);
-
-                nConexion.conexionBD(1, sql);
-
-                nConexion.nCom.ExecuteNonQuery();
-
-                nConexion.conexionBD(0);
-
-                nConexion.conexionBD(0);
-
-                sql = string.Format("Delete from dbo.FamiliaUsuario where Id_familia = '{0}'", id);
-
-                nConexion.conexionBD(1, sql);
-
-                nConexion.nCom.ExecuteNonQuery();
-
-                nConexion.conexionBD(0);
-
-
-                return true;          
-
-            }
-
         }
 
         public int obtenerIdFamilia(string desc)
         {
-            sql = string.Format("Select id_familia from dbo.Familia where Descripcion_familia = '{0}'", desc);
+            sql = string.Format("Select id_familia from dbo.Familia where Descripcion_familia = '{0}'", nEncrip.Encriptar3D(desc));
 
             nConexion.conexionBD(1, sql);
 
@@ -172,7 +168,7 @@ namespace DAL
                 BE.FamiliaBE nFam = new BE.FamiliaBE();
 
                 nFam.idFamilia = int.Parse(reader[0].ToString());
-                nFam.descripcion = reader[1].ToString();
+                nFam.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
 
                 lFamilia.Add(nFam);
 
@@ -222,6 +218,20 @@ namespace DAL
 
         }
 
+        //public void encriptar(List<BE.FamiliaBE> fami)
+        //{
+        //    foreach(BE.FamiliaBE nFam in fami)
+        //    {
+        //        sql = string.Format("Update dbo.Familia set Descripcion_familia = '{0}' where Id_familia = {1}", nEncrip.Encriptar3D(nFam.descripcion), nFam.idFamilia);
 
+        //        nConexion.conexionBD(1, sql);
+
+        //        nConexion.nCom.ExecuteNonQuery();
+
+        //        nConexion.conexionBD(0);
+        //    }
+
+            
+        //}
     }
 }
