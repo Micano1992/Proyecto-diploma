@@ -54,7 +54,54 @@ namespace DAL
             throw new NotImplementedException();
         }
 
+        public void mensajesIdioma(ref BE.Idioma idiom)
+        {
+            sql = string.Format("Select * from dbo.IdiomaMensaje where id_idioma = {0}", idiom.idIdioma);
 
+            //BE.Idioma nIdiom = new BE.Idioma();
+
+            List<string[]> lista = new List<string[]>();
+
+            nConexion.conexionBD(1, sql);
+
+            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string[] nMen = new string[2];
+
+                nMen[0] = reader[1].ToString();
+                nMen[1] = reader[2].ToString();
+
+               lista.Add(nMen);
+
+            }
+
+            idiom.mensajes = lista;
+
+        }
+
+        public BE.Idioma obtenerDescripcion(BE.Idioma idi)
+        {
+            sql = "Select * from dbo.Idioma where Id_idioma = " + idi.idIdioma;
+
+            nConexion.conexionBD(1, sql);
+
+            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+
+            BE.Idioma nIdiom = new BE.Idioma();
+
+            while (reader.Read())
+            {
+
+                nIdiom.idIdioma = int.Parse(reader[0].ToString());
+                nIdiom.descripcion_idioma = reader[1].ToString();
+            }
+
+            nConexion.conexionBD(0);
+
+            return nIdiom;
+        }
 
     }
 }

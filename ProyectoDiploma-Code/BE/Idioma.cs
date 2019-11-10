@@ -10,5 +10,7 @@ namespace BE
     {
         public int idIdioma { get; set; }
         public string descripcion_idioma { get; set; }
+        public List<string[]> mensajes { get; set; }
+
     }
 }

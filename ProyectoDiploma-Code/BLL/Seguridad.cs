@@ -129,6 +129,39 @@ namespace BLL
             return false;
         }
 
+        public void backup(int partes, string direc, string usuario)
+        {
+            try
+            {
+                nSeg.ejecutarBackUp(partes, direc);
+
+                bitacoraBLL.guardarLog(usuario, 1, "Generación copia de seguridad", "Seguridad");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+        public void restore(int partes, string direc, string usuario)
+        {
+            try
+            {
+                nSeg.restaurarBackup(direc, partes);
+                
+                bitacoraBLL.guardarLog(usuario, 1, "Restauración de copia de seguridad", "Seguridad");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }       
+
+
+        }
 
 
 

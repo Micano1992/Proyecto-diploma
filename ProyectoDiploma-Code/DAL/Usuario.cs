@@ -258,6 +258,7 @@ namespace DAL
 
 
                 nUsu.bloqueado = Convert.ToBoolean(reader[7]);
+                nUsu.idioma = Convert.ToInt16(reader[8]);
                 nUsu.mail = reader[10].ToString();
                 nTer.codTerminal = Convert.ToInt16(reader[11]);
                 nTer.descripcionTerminal = reader[12].ToString();
@@ -513,6 +514,24 @@ namespace DAL
             }
             passwordAleatorio = sb.ToString();
             return passwordAleatorio;
+        }
+
+        public bool modificarIdioma(BE.UsuarioBE usu, BE.Idioma idi)
+        {
+            sql = string.Format("update dbo.usuario set Idioma = {0} where Cod_usuario = '{1}'", idi.idIdioma , usu.codUsuario);
+
+            nConexion.conexionBD(1, sql);
+
+            if (nConexion.nCom.ExecuteNonQuery() > 0)
+            {
+                nConexion.conexionBD(0);
+
+                return true;
+            }
+
+            nConexion.conexionBD(0);
+
+            return false;
         }
 
     }

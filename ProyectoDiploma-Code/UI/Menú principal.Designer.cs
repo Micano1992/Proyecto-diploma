@@ -39,12 +39,10 @@
             this.tanqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarTanqueToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.altaTanqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarTanqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transferenciaDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conductorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarConductorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaDeConductorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarConductorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionTerminalToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.verificarDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarRemitoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,7 +137,6 @@
             this.tanqueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consultarTanqueToolStripMenuItem1,
             this.altaTanqueToolStripMenuItem,
-            this.modificarTanqueToolStripMenuItem,
             this.transferenciaDeStockToolStripMenuItem});
             this.tanqueToolStripMenuItem.Name = "tanqueToolStripMenuItem";
             this.tanqueToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
@@ -159,13 +156,6 @@
             this.altaTanqueToolStripMenuItem.Text = "Alta de tanque";
             this.altaTanqueToolStripMenuItem.Click += new System.EventHandler(this.altaTanqueToolStripMenuItem_Click);
             // 
-            // modificarTanqueToolStripMenuItem
-            // 
-            this.modificarTanqueToolStripMenuItem.Name = "modificarTanqueToolStripMenuItem";
-            this.modificarTanqueToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.modificarTanqueToolStripMenuItem.Text = "Modificar ttanque";
-            this.modificarTanqueToolStripMenuItem.Click += new System.EventHandler(this.modificarTanqueToolStripMenuItem_Click);
-            // 
             // transferenciaDeStockToolStripMenuItem
             // 
             this.transferenciaDeStockToolStripMenuItem.Name = "transferenciaDeStockToolStripMenuItem";
@@ -177,8 +167,7 @@
             // 
             this.conductorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consultarConductorToolStripMenuItem,
-            this.altaDeConductorToolStripMenuItem1,
-            this.modificarConductorToolStripMenuItem});
+            this.altaDeConductorToolStripMenuItem1});
             this.conductorToolStripMenuItem.Name = "conductorToolStripMenuItem";
             this.conductorToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.conductorToolStripMenuItem.Text = "Conductor";
@@ -196,13 +185,6 @@
             this.altaDeConductorToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
             this.altaDeConductorToolStripMenuItem1.Text = "Alta de conductor";
             this.altaDeConductorToolStripMenuItem1.Click += new System.EventHandler(this.altaDeConductorToolStripMenuItem1_Click);
-            // 
-            // modificarConductorToolStripMenuItem
-            // 
-            this.modificarConductorToolStripMenuItem.Name = "modificarConductorToolStripMenuItem";
-            this.modificarConductorToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.modificarConductorToolStripMenuItem.Text = "Modificar conductor";
-            this.modificarConductorToolStripMenuItem.Click += new System.EventHandler(this.modificarConductorToolStripMenuItem_Click);
             // 
             // gestionTerminalToolStripMenuItem2
             // 
@@ -281,7 +263,7 @@
             this.consultarUsuarioToolStripMenuItem1,
             this.crearUsuarioToolStripMenuItem1});
             this.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem";
-            this.UsuariosToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.UsuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.UsuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // consultarUsuarioToolStripMenuItem1
@@ -305,7 +287,7 @@
             this.consultarFamiliaToolStripMenuItem,
             this.crearFamiliaToolStripMenuItem});
             this.familasToolStripMenuItem.Name = "familasToolStripMenuItem";
-            this.familasToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.familasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.familasToolStripMenuItem.Text = "Familias";
             // 
             // consultarFamiliaToolStripMenuItem
@@ -413,12 +395,10 @@
         private System.Windows.Forms.ToolStripMenuItem tanqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarTanqueToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem altaTanqueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarTanqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transferenciaDeStockToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem conductorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarConductorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaDeConductorToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem modificarConductorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionTerminalToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem verificarDocumentoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generarRemitoToolStripMenuItem;

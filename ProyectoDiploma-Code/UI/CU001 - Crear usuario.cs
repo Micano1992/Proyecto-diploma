@@ -35,10 +35,18 @@ namespace UI
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
             comboBox2.DataSource = terminalBLL.Retrieve();
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
 
             comboBox1.DataSource = usuarioBLL.tiposDoc();
 
-            comboBox3.DataSource = idiomaBLL.listadoIdiomas();
+            foreach(string[] nIdi in idiomaBLL.listadoIdiomas())
+            {
+                comboBox3.Items.Add(nIdi[1]);
+            }
+
+            comboBox3.SelectedIndex = 1;
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+
 
             dataGridView1.Columns.Add("FamAsg", "FAMILIA");
             dataGridView1.Columns["FamAsg"].Width = 190;
@@ -72,39 +80,58 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] nuevoUsu = new string[8];
 
-            nuevoUsu[0] = textBox1.Text;
-            nuevoUsu[1] = textBox2.Text;
-            nuevoUsu[2] = textBox3.Text;
-            nuevoUsu[3] = comboBox1.Text;
-            nuevoUsu[4] = textBox5.Text;
-            nuevoUsu[5] = comboBox2.Text;
-            nuevoUsu[6] = comboBox3.Text;
-
-            MessageBox.Show("Por favor indicar donde debe guardarse la contraseña", "INFORMACIÓN");
-
-            this.saveFileDialog1.Filter = "Archivos de texto (*.txt)|*.txt";
-            this.saveFileDialog1.FileName = "";
-            this.saveFileDialog1.ShowDialog();
-
-            string men = usuarioBLL.altaUsurio(nuevoUsu, usuarioActivo, this.saveFileDialog1.FileName);
-
-            foreach(DataGridViewRow i in dataGridView2.Rows)
+            if (textBox1.Text.Trim(' ') =="" & textBox2.Text.Trim(' ') == "" & textBox3.Text.Trim(' ') == "" & textBox5.Text.Trim(' ') == "")
             {
-                familiaBLL.asignarFamiliaUsuario(i.Cells[0].Value.ToString(), men, usuarioActivo);
+                MessageBox.Show("Completar todos los campos", "ERROR");
+            }
 
-            } 
+            else
+            {
 
-            MessageBox.Show(string.Format("Se generó el usuario {0}", men), "INFORMACIÓN");
+                string[] nuevoUsu = new string[8];
 
-            blanquearText();
+                nuevoUsu[0] = textBox1.Text;
+                nuevoUsu[1] = textBox2.Text;
+                nuevoUsu[2] = textBox3.Text;
+                nuevoUsu[3] = comboBox1.Text;
+                nuevoUsu[4] = textBox5.Text;
+                nuevoUsu[5] = comboBox2.Text;
+                nuevoUsu[6] = comboBox3.Text;
 
-            actualizarGrillas();
+                MessageBox.Show("Por favor indicar donde debe guardarse la contraseña", "INFORMACIÓN");
 
-            //this.Close();
+                this.saveFileDialog1.Filter = "Archivos de texto (*.txt)|*.txt";
+                this.saveFileDialog1.FileName = "";
+                DialogResult result = this.saveFileDialog1.ShowDialog();
+
+                if (result == DialogResult.Cancel)
+                {
+                    MessageBox.Show("Se canceló el alta de usuario", "INFORMACIÓN");
+                }
+
+                else
+                {
+                    string men = usuarioBLL.altaUsurio(nuevoUsu, usuarioActivo, this.saveFileDialog1.FileName);
+
+                    foreach (DataGridViewRow i in dataGridView2.Rows)
+                    {
+                        familiaBLL.asignarFamiliaUsuario(i.Cells[0].Value.ToString(), men, usuarioActivo);
+
+                    }
+
+                    MessageBox.Show(string.Format("Se generó el usuario {0}", men), "INFORMACIÓN");
+
+                    blanquearText();
+
+                    actualizarGrillas();
+
+                    //this.Close();
+                }
+
+            }
+
         }
-
 
 
         private void CU001_Crear_usuario_FormClosing(object sender, FormClosingEventArgs e)

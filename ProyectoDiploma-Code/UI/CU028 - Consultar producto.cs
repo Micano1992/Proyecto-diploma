@@ -135,19 +135,19 @@ namespace UI
         {
             string[] prodElec = new string[8];
 
-            //try
-            //{
-            prodElec = productoBLL.consultarProducto(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            try
+            {
+                prodElec = productoBLL.consultarProducto(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
 
             label2.Text = prodElec[3].ToString();
             label5.Text = prodElec[2].ToString();
             label6.Text = prodElec[4].ToString();
 
-            //}
-            //catch
-            //{
+            }
+            catch
+            {
 
-            //}
+            }
 
 
 

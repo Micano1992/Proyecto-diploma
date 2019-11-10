@@ -26,10 +26,12 @@ namespace UI
 
         public string usuarioLogueado { get; set; }
 
-        BLL.Usuario nUsuario = new BLL.Usuario();
+        BLL.Usuario usuarioBLL = new BLL.Usuario();
         BLL.DigitoVerificador DVBLL = new BLL.DigitoVerificador();
+        BLL.Idioma idiomaBLL = new BLL.Idioma();
 
         List<int> lPatentesUsu = new List<int>();
+        List<string[]> lisMensajes = new List<string[]>();
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
@@ -47,7 +49,7 @@ namespace UI
 
             List<int> patentesUsu = new List<int>();
 
-            patentesUsu = nUsuario.listarPatentes(usuarioLogueado);
+            patentesUsu = usuarioBLL.listarPatentes(usuarioLogueado);
 
             lPatentesUsu = patentesUsu;
 
@@ -103,6 +105,7 @@ namespace UI
                 habilitarPuntosMenu(patentesUsu);
             }
 
+            actualizarIdioma();
 
         }
 
@@ -275,7 +278,7 @@ namespace UI
 
         private void cambiarIdiomaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU025___Cambiar_idioma nCam = new CU025___Cambiar_idioma();
+            CU025___Cambiar_idioma nCam = new CU025___Cambiar_idioma(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -288,7 +291,7 @@ namespace UI
 
         private void consultarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU002___Consultar_usuario nCon = new CU002___Consultar_usuario(nUsuario.listarPatentes(usuarioLogueado), usuarioLogueado);
+            CU002___Consultar_usuario nCon = new CU002___Consultar_usuario(usuarioBLL.listarPatentes(usuarioLogueado), usuarioLogueado, lisMensajes);
 
             nCon.Show(this);
 
@@ -307,7 +310,7 @@ namespace UI
 
         private void consultarFamiliaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU012___Consultar_familia nCon = new CU012___Consultar_familia(nUsuario.listarPatentes(usuarioLogueado), usuarioLogueado);
+            CU012___Consultar_familia nCon = new CU012___Consultar_familia(usuarioBLL.listarPatentes(usuarioLogueado), usuarioLogueado);
 
             this.Enabled = false;
 
@@ -358,7 +361,7 @@ namespace UI
 
         private void GenerarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU020___Generar_copia_seguridad nGen = new CU020___Generar_copia_seguridad();
+            CU020___Generar_copia_seguridad nGen = new CU020___Generar_copia_seguridad(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -367,7 +370,7 @@ namespace UI
 
         private void RestaurarCopiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU021___Restaurar_copia nRes = new CU021___Restaurar_copia();
+            CU021___Restaurar_copia nRes = new CU021___Restaurar_copia(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -554,7 +557,7 @@ namespace UI
 
                         productosToolStripMenuItem.Visible = true;
 
-                        productosToolStripMenuItem.Visible = true;
+                        productosOperadosToolStripMenuItem.Visible = true;
 
                         verificarProductoterminalToolStripMenuItem.Visible = true;
 
@@ -565,7 +568,7 @@ namespace UI
 
                         productosToolStripMenuItem.Visible = true;
 
-                        productosToolStripMenuItem.Visible = true;
+                        productosOperadosToolStripMenuItem.Visible = true;
 
                         asignarProductoterminalToolStripMenuItem.Visible = true;
 
@@ -592,7 +595,7 @@ namespace UI
 
                         tanqueToolStripMenuItem.Visible = true;
 
-                        modificarTanqueToolStripMenuItem.Visible = true;
+                        //modificarTanqueToolStripMenuItem.Visible = true;
 
                         break;
 
@@ -648,7 +651,7 @@ namespace UI
 
                         conductorToolStripMenuItem.Visible = true;
 
-                        modificarConductorToolStripMenuItem.Visible = true;
+                        //modificarConductorToolStripMenuItem.Visible = true;
 
                         break;
 
@@ -718,7 +721,7 @@ namespace UI
 
             altaTanqueToolStripMenuItem.Visible = false;
 
-            modificarTanqueToolStripMenuItem.Visible = false;
+            //modificarTanqueToolStripMenuItem.Visible = false;
 
             transferenciaDeStockToolStripMenuItem.Visible = false;
 
@@ -732,7 +735,7 @@ namespace UI
 
             altaDeConductorToolStripMenuItem1.Visible = false;
 
-            modificarConductorToolStripMenuItem.Visible = false;
+            //modificarConductorToolStripMenuItem.Visible = false;
 
             pedidosPendientesToolStripMenuItem.Visible = false;
 
@@ -744,6 +747,158 @@ namespace UI
 
             crearUsuarioToolStripMenuItem1.Visible = false;
 
+        }
+
+        public void actualizarIdioma()
+        {
+            lisMensajes.Clear();
+
+            lisMensajes = idiomaBLL.mensajesIdioma((int.Parse(usuarioBLL.consulUsuario(usuarioLogueado)[8])));
+
+            foreach(string[] men in lisMensajes)
+            {
+                switch(int.Parse(men[0]))
+                {
+                    case 4:
+                        this.Text = men[1];
+                        break;
+
+                    case 5:
+                        this.productosToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 6:
+                        this.consultarProductoToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 7:
+                        this.altaDeProductoToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 8:
+                        this.productosOperadosToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 9:
+                        this.verificarProductoterminalToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 10:
+                        this.asignarProductoterminalToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 11:
+                        this.tanqueToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 12:
+                        this.consultarTanqueToolStripMenuItem1.Text = men[1];
+                        break;
+
+                    case 13:
+                        this.altaTanqueToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 14:
+                        this.transferenciaDeStockToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 15:
+                        this.conductorToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 16:
+                        this.consultarConductorToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 17:
+                        this.altaDeConductorToolStripMenuItem1.Text = men[1];
+                        break;
+
+                    case 18:
+                        this.gestionTerminalToolStripMenuItem2.Text = men[1];
+                        break;
+
+                    case 19:
+                        this.verificarDocumentoToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 20:
+                        this.generarRemitoToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 21:
+                        this.generarReciboToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 22:
+                        this.pedidosPendientesToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 23:
+                        this.menúUsuarioToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 24:
+                        this.cambiarIdiomaToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 25:
+                        this.cambiarContraseñaToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 26:
+                        this.AdmUsuariosToolStripMenuItem.Text = men[1];
+                        break;
+                        
+                    case 27:
+                        this.UsuariosToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 28:
+                        this.consultarUsuarioToolStripMenuItem1.Text = men[1];
+                        break;
+
+                    case 29:
+                        this.crearUsuarioToolStripMenuItem1.Text = men[1];
+                        break;
+
+                    case 30:
+                        this.familasToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 31:
+                        this.consultarFamiliaToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 32:
+                        this.crearFamiliaToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 33:
+                        this.seguridadDeSistemaToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 34:
+                        this.consultarBitácoraToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 35:
+                        this.generarCopiaDeSeguridadToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 36:
+                        this.restaurarCopiaToolStripMenuItem.Text = men[1];
+                        break;
+
+                    case 37:
+                        this.cerrarSesiónToolStripMenuItem.Text = men[1];
+                        break;
+
+
+                }
+
+            }
         }
 
     }

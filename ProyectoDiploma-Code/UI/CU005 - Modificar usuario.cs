@@ -84,7 +84,7 @@ namespace UI
 
         private void datosUsuario()
         {
-            string[] usuario = new string[8];
+            string[] usuario = new string[9];
 
             usuario = usuarioBLL.consulUsuario(codUsuario);
 

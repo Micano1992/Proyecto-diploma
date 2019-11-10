@@ -83,7 +83,7 @@ namespace BLL
 
                usu = nUsuDAL.consultarUSuario(usu);
 
-            string[] nUsuario = new string[8];
+            string[] nUsuario = new string[9];
 
             nUsuario[0] = "";
             nUsuario[1] = "";
@@ -93,6 +93,7 @@ namespace BLL
             nUsuario[5] = "";
             nUsuario[6] = "";
             nUsuario[7] = "";
+            nUsuario[8] = "";
 
             nUsuario[0] = usu.codUsuario;
             nUsuario[1] = usu.nombre;
@@ -102,6 +103,7 @@ namespace BLL
             nUsuario[5] = usu.bloqueado.ToString();
             nUsuario[6] = usu.mail;
             nUsuario[7] = usu.terminal.descripcionTerminal.ToString();
+            nUsuario[8] = usu.idioma.ToString();
 
             return nUsuario;
 
@@ -342,12 +344,25 @@ namespace BLL
             return patNoNeg;
         }
 
-        //public string verificarDVH()
-        //{
+        public bool modificarIdioma(string idioma, string usuario)
+        {
+            BE.UsuarioBE nUsuario = new BE.UsuarioBE();
+            BE.Idioma nIdioma = new BE.Idioma();
+
+            nUsuario.codUsuario = usuario;
+            nIdioma.idIdioma = idiomaDAL.obtenerIdIdioma(idioma);
+
+            if(nUsuDAL.modificarIdioma(nUsuario, nIdioma))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
 
-        //    return "todo mal";
-        //}
+        }
 
 
     }

@@ -19,10 +19,14 @@ namespace UI
         List<int> listaPatentes = new List<int>();
 
         List<string> lisUsuarios = new List<string>();
+        List<string[]> lisMensajes = new List<string[]>();
 
-        public CU002___Consultar_usuario(List<int> listaPatentes, string usuario)
+
+        public CU002___Consultar_usuario(List<int> listaPatentes, string usuario, List<string[]> listaIdiom)
         {
             this.listaPatentes = listaPatentes;
+            this.lisMensajes.Clear();
+            this.lisMensajes = listaIdiom;
 
             usuarioActivo = usuario;
 
@@ -105,9 +109,82 @@ namespace UI
 
         public void setearGrilla()
         {
-
             //dataGridView1.Columns.Add("USUARIO", "usuario");
             //dataGridView1.Columns[0].Width = 160;
+
+
+            foreach (string[] men in lisMensajes)
+            {
+                switch (int.Parse(men[0]))
+                {
+                    case 38:
+                        this.Text = men[1];
+                        break;
+
+                    case 39:
+                        dataGridView1.Columns[0].HeaderText = men[1];
+                        break;
+
+                    case 40:
+                        dataGridView1.Columns[1].HeaderText = men[1];
+                        break;
+
+                    case 41:
+                        dataGridView1.Columns[2].HeaderText = men[1];
+                        break;
+
+                    case 42:
+                        groupBox1.Text = men[1];
+                        break;
+
+                    case 43:
+                        label1.Text = men[1];
+                        break;
+
+                    case 44:
+                        label2.Text = men[1];
+                        break;
+
+                    case 45:
+                        label4.Text = men[1];
+                        break;
+
+                    case 46:
+                        label3.Text = men[1];
+                        break;
+
+                    case 47:
+                        button1.Text = men[1];
+                        break;
+
+                    case 48:
+                        button2.Text = men[1];
+                        break;
+
+                    case 49:
+                        button5.Text = men[1];
+                        break;
+
+                    case 50:
+                        button4.Text = men[1];
+                        break;
+
+                    case 51:
+                        button3.Text = men[1];
+                        break;
+
+                    case 52:
+                        button7.Text = men[1];
+                        break;
+
+                    case 53:
+                        button6.Text = men[1];
+                        break;
+
+                }
+
+            }
+
 
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AllowUserToAddRows = false;
@@ -137,7 +214,7 @@ namespace UI
 
         public void actualizarGruopBox()
         {
-            string[] usuSelec = new string[8];
+            string[] usuSelec = new string[9];
 
             try
             {
