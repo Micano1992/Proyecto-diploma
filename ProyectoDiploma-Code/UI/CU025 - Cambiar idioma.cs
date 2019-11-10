@@ -33,10 +33,7 @@ namespace UI
             {
                 MessageBox.Show("Se actualizó el idioma. Para visualizar el cambio por favor reinicir la aplicación", "INFORMACIÓN");
             }
-
-
-
-
+            
             this.Close();
         }
 

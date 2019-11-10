@@ -354,6 +354,8 @@ namespace BLL
 
             if(nUsuDAL.modificarIdioma(nUsuario, nIdioma))
             {
+                bitacoraBLL.guardarLog(usuario, 3, "Cambio de idioma", "Usuarios");
+
                 return true;
             }
             else
