@@ -382,7 +382,24 @@ namespace UI
                 
         private void principal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Desea cerrar sesión?", "Salir", MessageBoxButtons.YesNo);
+            string men1 = "";
+            string men2 = "";
+
+            foreach (string[] men in lisMensajes)
+            {
+                switch (int.Parse(men[0]))
+                {
+                    case 54:
+                        men1 = men[1];
+                        break;
+
+                    case 55:
+                        men2 = men[1];
+                        break;
+                }
+            }
+
+            DialogResult result = MessageBox.Show(men1, men2, MessageBoxButtons.YesNo);
 
             if (result == DialogResult.No)
             {
