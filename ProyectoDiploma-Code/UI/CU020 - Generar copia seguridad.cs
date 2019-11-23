@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace UI
 {
@@ -40,13 +41,17 @@ namespace UI
         {
             try
             {
-                if (textBox1.Text.Trim(' ') == "" & comboBox1.Text.Trim(' ') == "")
+                if (textBox1.Text.Trim(' ') == "" || comboBox1.Text.Trim(' ') == "")
                 {
                     MessageBox.Show("Completar todos los campos", "ERROR");
                 }
                 else
                 {
-                    seguridadBLL.backup(Convert.ToInt16(comboBox1.Text), textBox1.Text, usuarioActivo);
+                    string direc = textBox1.Text + @"\" + DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + " " + DateTime.Now.Hour + "-" + DateTime.Now.Minute.ToString() + "-" + DateTime.Now.Second.ToString();
+
+                    Directory.CreateDirectory(direc);
+
+                    seguridadBLL.backup(Convert.ToInt16(comboBox1.Text), direc, usuarioActivo);
 
                     MessageBox.Show("Se realizó la copia de seguridad", "INFORMACIÓN");
                 }

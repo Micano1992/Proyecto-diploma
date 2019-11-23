@@ -31,7 +31,6 @@ namespace DAL
 
             return false;
         }
-
         public bool modificaProducto(BE.Producto prod)
         {
             sql = string.Format("update dbo.Producto set Descripcion_producto = '{0}', Temperatura_natural = '{1}', Magnitud_medida = '{2}' where Cod_Producto = '{3}'", prod.descripcion, prod.temperatura, prod.magnitud, prod.codPRoducto);

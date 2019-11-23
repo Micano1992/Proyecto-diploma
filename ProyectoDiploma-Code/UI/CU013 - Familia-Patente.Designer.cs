@@ -35,14 +35,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button3, "CU013__FamiliaPatente.htm#button3");
+            this.HelpProviderHG.SetHelpNavigator(this.button3, System.Windows.Forms.HelpNavigator.Topic);
             this.button3.Location = new System.Drawing.Point(274, 272);
             this.button3.Name = "button3";
+            this.HelpProviderHG.SetShowHelp(this.button3, true);
             this.button3.Size = new System.Drawing.Size(142, 41);
             this.button3.TabIndex = 18;
             this.button3.Text = "VOLVER";
@@ -51,8 +55,11 @@
             // 
             // button2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button2, "CU013__FamiliaPatente.htm#button2");
+            this.HelpProviderHG.SetHelpNavigator(this.button2, System.Windows.Forms.HelpNavigator.Topic);
             this.button2.Location = new System.Drawing.Point(290, 174);
             this.button2.Name = "button2";
+            this.HelpProviderHG.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(103, 23);
             this.button2.TabIndex = 17;
             this.button2.Text = "<- AGREGAR";
@@ -61,8 +68,11 @@
             // 
             // button1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button1, "CU013__FamiliaPatente.htm#button1");
+            this.HelpProviderHG.SetHelpNavigator(this.button1, System.Windows.Forms.HelpNavigator.Topic);
             this.button1.Location = new System.Drawing.Point(290, 101);
             this.button1.Name = "button1";
+            this.HelpProviderHG.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(103, 23);
             this.button1.TabIndex = 16;
             this.button1.Text = "QUITAR ->";
@@ -72,10 +82,13 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HelpProviderHG.SetHelpKeyword(this.dataGridView1, "CU013__FamiliaPatente.htm#dataGridView1");
+            this.HelpProviderHG.SetHelpNavigator(this.dataGridView1, System.Windows.Forms.HelpNavigator.Topic);
             this.dataGridView1.Location = new System.Drawing.Point(12, 61);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
+            this.HelpProviderHG.SetShowHelp(this.dataGridView1, true);
             this.dataGridView1.Size = new System.Drawing.Size(212, 252);
             this.dataGridView1.TabIndex = 15;
             // 
@@ -102,12 +115,19 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HelpProviderHG.SetHelpKeyword(this.dataGridView2, "CU013__FamiliaPatente.htm#dataGridView2");
+            this.HelpProviderHG.SetHelpNavigator(this.dataGridView2, System.Windows.Forms.HelpNavigator.Topic);
             this.dataGridView2.Location = new System.Drawing.Point(467, 61);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 62;
+            this.HelpProviderHG.SetShowHelp(this.dataGridView2, true);
             this.dataGridView2.Size = new System.Drawing.Size(212, 252);
             this.dataGridView2.TabIndex = 22;
+            // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
             // 
             // CU013___Administrar_patente
             // 
@@ -121,7 +141,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU013__FamiliaPatente.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU013___Administrar_patente";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "ADMINISTRAR PATENTE DE FAMILIA";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU013___Administrar_patente_FormClosing);
             this.Load += new System.EventHandler(this.CU013___Administrar_patente_Load);
@@ -140,5 +163,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

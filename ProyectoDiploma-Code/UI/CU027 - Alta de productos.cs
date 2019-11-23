@@ -25,21 +25,31 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(productoBLL.crearProducto(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, usuarioActivo))
+            if (textBox1.Text.Trim(' ') == "" || textBox2.Text.Trim(' ') == "" || textBox3.Text.Trim(' ') == "" || textBox4.Text.Trim(' ') == "")
             {
-                MessageBox.Show("Se creó el producto", "INFORMACIÓN");
-
-                this.Owner.Enabled = true;
-
-                this.Close();
+                MessageBox.Show("Completar todos los campos", "ERROR");
             }
 
             else
             {
-                MessageBox.Show("No se creó el producto", "ERROR");
+
+
+
+                if (productoBLL.crearProducto(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, usuarioActivo))
+                {
+                    MessageBox.Show("Se creó el producto", "INFORMACIÓN");
+
+                    this.Owner.Enabled = true;
+
+                    this.Close();
+                }
+
+                else
+                {
+                    MessageBox.Show("No se creó el producto", "ERROR");
+                }
+
             }
-
-
 
         }
 

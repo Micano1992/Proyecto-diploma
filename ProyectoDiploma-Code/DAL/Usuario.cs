@@ -16,15 +16,15 @@ namespace DAL
 
         string sql;
 
-        BE.PatenteBE nPat = new BE.PatenteBE();
+        BE.Patente nPat = new BE.Patente();
         //BE.FamiliaBE nFam = new BE.FamiliaBE();
-        List<BE.FamiliaBE> lFamilia = new List<BE.FamiliaBE>();
-        List<BE.PatenteBE> lPaten = new List<BE.PatenteBE>();
-        List<BE.PatenteBE> lPaten2 = new List<BE.PatenteBE>();
+        List<BE.Familia> lFamilia = new List<BE.Familia>();
+        List<BE.Patente> lPaten = new List<BE.Patente>();
+        List<BE.Patente> lPaten2 = new List<BE.Patente>();
 
         Encriptacion nEncrip = new Encriptacion();
 
-        public List<BE.FamiliaBE> familiaAsignada(BE.UsuarioBE nUsu)
+        public List<BE.Familia> familiaAsignada(BE.UsuarioBE nUsu)
         {
 
             lFamilia.Clear();
@@ -45,7 +45,7 @@ namespace DAL
                     //nFam.idFamilia = int.Parse(reader.GetInt16(0).ToString());
                     //BE.FamiliaBE nFam = new BE.FamiliaBE() { idFamilia = int.Parse(reader[0].ToString()) };
 
-                    BE.FamiliaBE nFam = new BE.FamiliaBE();
+                    BE.Familia nFam = new BE.Familia();
 
                     nFam.idFamilia = int.Parse(reader[0].ToString());
 
@@ -62,7 +62,7 @@ namespace DAL
 
         }
 
-        public void patentesAsignadas(BE.UsuarioBE nUsu, ref List<BE.PatenteBE> lPat)
+        public void patentesAsignadas(BE.UsuarioBE nUsu, ref List<BE.Patente> lPat)
         {
             sql = string.Format("Select * from dbo.UsuarioPatente where negado = 0 and cod_usuario = '{0}'", nUsu.codUsuario);
 
@@ -74,7 +74,7 @@ namespace DAL
 
             while (reader.Read())
             {
-                BE.PatenteBE nPat = new BE.PatenteBE();
+                BE.Patente nPat = new BE.Patente();
 
                 nPat.idPatente = int.Parse(reader[0].ToString());
 
@@ -86,7 +86,7 @@ namespace DAL
 
         }
 
-        public void patentesNegadas(BE.UsuarioBE nUsu, ref List<BE.PatenteBE> lPat)
+        public void patentesNegadas(BE.UsuarioBE nUsu, ref List<BE.Patente> lPat)
         {
             sql = string.Format("Select * from dbo.UsuarioPatente where negado = 1 and cod_usuario = '{0}'", nUsu.codUsuario);
 
@@ -98,11 +98,11 @@ namespace DAL
 
             while (reader.Read())
             {
-                BE.PatenteBE nPat = new BE.PatenteBE();
+                BE.Patente nPat = new BE.Patente();
 
                 nPat.idPatente = int.Parse(reader[0].ToString());
 
-                foreach (BE.PatenteBE negar in lPat)
+                foreach (BE.Patente negar in lPat)
 
                 {
                     if (negar.idPatente == nPat.idPatente)
@@ -118,7 +118,7 @@ namespace DAL
             nConexion.conexionBD(0);
         }
 
-        public List<BE.PatenteBE> patentesNoOtorgadas(BE.UsuarioBE usu)
+        public List<BE.Patente> patentesNoOtorgadas(BE.UsuarioBE usu)
         {
             lPaten.Clear();
             
@@ -131,7 +131,7 @@ namespace DAL
 
             while (reader.Read())
             {
-                BE.PatenteBE nPate = new BE.PatenteBE();
+                BE.Patente nPate = new BE.Patente();
 
                 nPate.idPatente = Convert.ToInt16(reader[0]);
                 nPate.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
@@ -144,7 +144,7 @@ namespace DAL
             return lPaten;
         }
 
-        public List<BE.PatenteBE> patentesOtorgadas(BE.UsuarioBE usu)
+        public List<BE.Patente> patentesOtorgadas(BE.UsuarioBE usu)
         {
             lPaten2.Clear();
 
@@ -158,7 +158,7 @@ namespace DAL
 
             while (reader.Read())
             {
-                BE.PatenteBE nPate = new BE.PatenteBE();
+                BE.Patente nPate = new BE.Patente();
 
                 nPate.idPatente = Convert.ToInt16(reader[0]);
                 nPate.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
@@ -333,7 +333,7 @@ namespace DAL
             return false;
         }
 
-        public bool asignarPatente(BE.UsuarioBE usu, BE.PatenteBE pat, int DVH)
+        public bool asignarPatente(BE.UsuarioBE usu, BE.Patente pat, int DVH)
         {
             sql = string.Format("select * from dbo.UsuarioPatente where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
 
@@ -372,7 +372,7 @@ namespace DAL
 
         }
 
-        public bool desAsignarPatente(BE.UsuarioBE usu, BE.PatenteBE pat)
+        public bool desAsignarPatente(BE.UsuarioBE usu, BE.Patente pat)
         {
             sql = string.Format("delete from dbo.UsuarioPatente where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
 
@@ -389,8 +389,7 @@ namespace DAL
 
             return false;
         }
-
-        public bool negarPatente(BE.UsuarioBE usu, BE.PatenteBE pat, int DVH)
+        public bool negarPatente(BE.UsuarioBE usu, BE.Patente pat, int DVH)
         {
             sql = string.Format("select * from dbo.UsuarioPatente where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
 
@@ -430,8 +429,7 @@ namespace DAL
             }
 
         }
-
-        public bool desNegarPatente(BE.UsuarioBE usu, BE.PatenteBE pat)
+        public bool desNegarPatente(BE.UsuarioBE usu, BE.Patente pat)
         {
             sql = string.Format("delete from dbo.UsuarioPatente where Id_patente = {0} and cod_usuario = '{1}'", pat.idPatente, usu.codUsuario);
 
@@ -449,7 +447,7 @@ namespace DAL
             return false;
         }
 
-        public List<BE.PatenteBE> patentesNoNegadas(BE.UsuarioBE usu)
+        public List<BE.Patente> patentesNoNegadas(BE.UsuarioBE usu)
         {
             lPaten.Clear();
 
@@ -461,7 +459,7 @@ namespace DAL
 
             while (reader.Read())
             {
-                BE.PatenteBE nPate = new BE.PatenteBE();
+                BE.Patente nPate = new BE.Patente();
 
                 nPate.idPatente = Convert.ToInt16(reader[0]);
                 nPate.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
@@ -475,7 +473,7 @@ namespace DAL
             return lPaten;
         }
 
-        public List<BE.PatenteBE> patentesNegadas(BE.UsuarioBE usu)
+        public List<BE.Patente> patentesNegadas(BE.UsuarioBE usu)
         {
             lPaten2.Clear();
 
@@ -487,7 +485,7 @@ namespace DAL
 
             while (reader.Read())
             {
-                BE.PatenteBE nPate = new BE.PatenteBE();
+                BE.Patente nPate = new BE.Patente();
 
                 nPate.idPatente = Convert.ToInt16(reader[0]);
                 nPate.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
@@ -533,6 +531,8 @@ namespace DAL
 
             return false;
         }
+
+
 
     }
 }

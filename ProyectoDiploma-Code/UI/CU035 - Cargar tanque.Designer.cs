@@ -30,7 +30,6 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,12 +41,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button1, "CU035__Cargar_tanque.htm#button1");
+            this.HelpProviderHG.SetHelpNavigator(this.button1, System.Windows.Forms.HelpNavigator.Topic);
             this.button1.Location = new System.Drawing.Point(30, 183);
             this.button1.Name = "button1";
+            this.HelpProviderHG.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(249, 40);
             this.button1.TabIndex = 23;
             this.button1.Text = "CONFIRMAR ALTA";
@@ -56,32 +60,34 @@
             // 
             // textBox4
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox4, "CU035__Cargar_tanque.htm#label8");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox4, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox4.Location = new System.Drawing.Point(158, 136);
-            this.textBox4.MaxLength = 10;
+            this.textBox4.MaxLength = 6;
             this.textBox4.Name = "textBox4";
+            this.HelpProviderHG.SetShowHelp(this.textBox4, true);
             this.textBox4.Size = new System.Drawing.Size(121, 20);
             this.textBox4.TabIndex = 20;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(158, 98);
-            this.textBox3.MaxLength = 10;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 20);
-            this.textBox3.TabIndex = 19;
-            // 
             // textBox2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox2, "CU035__Cargar_tanque.htm#label9");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox2.Location = new System.Drawing.Point(158, 62);
             this.textBox2.MaxLength = 30;
             this.textBox2.Name = "textBox2";
+            this.HelpProviderHG.SetShowHelp(this.textBox2, true);
             this.textBox2.Size = new System.Drawing.Size(121, 20);
             this.textBox2.TabIndex = 18;
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU035__Cargar_tanque.htm#label10");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(158, 26);
+            this.textBox1.MaxLength = 10;
             this.textBox1.Name = "textBox1";
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(121, 20);
             this.textBox1.TabIndex = 17;
             // 
@@ -166,19 +172,31 @@
             this.label10.TabIndex = 24;
             this.label10.Text = "CÓDIGO";
             // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(158, 98);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 28;
+            // 
             // CU035___Cargar_tanque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(323, 262);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
@@ -186,7 +204,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU035__Cargar_tanque.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU035___Cargar_tanque";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "TANQUE";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU035___Cargar_tanque_FormClosed);
             this.Load += new System.EventHandler(this.CU035___Cargar_tanque_Load);
@@ -199,7 +220,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5;
@@ -211,5 +231,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

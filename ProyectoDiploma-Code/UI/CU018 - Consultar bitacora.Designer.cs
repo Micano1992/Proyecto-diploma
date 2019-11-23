@@ -50,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,10 +65,13 @@
             this.FECHA,
             this.CRITICIDAD,
             this.FUNCIONALIDAD});
+            this.HelpProviderHG.SetHelpKeyword(this.dataGridView1, "CU018__Consultar_bitacora.htm#dataGridView1");
+            this.HelpProviderHG.SetHelpNavigator(this.dataGridView1, System.Windows.Forms.HelpNavigator.Topic);
             this.dataGridView1.Location = new System.Drawing.Point(36, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
+            this.HelpProviderHG.SetShowHelp(this.dataGridView1, true);
             this.dataGridView1.Size = new System.Drawing.Size(771, 209);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -138,17 +142,23 @@
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU018__Consultar_bitacora.htm#label3");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(536, 58);
             this.textBox1.MaxLength = 6;
             this.textBox1.Name = "textBox1";
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(121, 20);
             this.textBox1.TabIndex = 14;
             // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
+            this.HelpProviderHG.SetHelpKeyword(this.checkBox4, "CU018__Consultar_bitacora.htm#checkBox4");
+            this.HelpProviderHG.SetHelpNavigator(this.checkBox4, System.Windows.Forms.HelpNavigator.Topic);
             this.checkBox4.Location = new System.Drawing.Point(415, 60);
             this.checkBox4.Name = "checkBox4";
+            this.HelpProviderHG.SetShowHelp(this.checkBox4, true);
             this.checkBox4.Size = new System.Drawing.Size(15, 14);
             this.checkBox4.TabIndex = 13;
             this.checkBox4.UseVisualStyleBackColor = true;
@@ -157,8 +167,11 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
+            this.HelpProviderHG.SetHelpKeyword(this.checkBox3, "CU018__Consultar_bitacora.htm#checkBox3");
+            this.HelpProviderHG.SetHelpNavigator(this.checkBox3, System.Windows.Forms.HelpNavigator.Topic);
             this.checkBox3.Location = new System.Drawing.Point(415, 25);
             this.checkBox3.Name = "checkBox3";
+            this.HelpProviderHG.SetShowHelp(this.checkBox3, true);
             this.checkBox3.Size = new System.Drawing.Size(15, 14);
             this.checkBox3.TabIndex = 12;
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -167,8 +180,11 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
+            this.HelpProviderHG.SetHelpKeyword(this.checkBox2, "CU018__Consultar_bitacora.htm#checkBox2");
+            this.HelpProviderHG.SetHelpNavigator(this.checkBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.checkBox2.Location = new System.Drawing.Point(6, 60);
             this.checkBox2.Name = "checkBox2";
+            this.HelpProviderHG.SetShowHelp(this.checkBox2, true);
             this.checkBox2.Size = new System.Drawing.Size(15, 14);
             this.checkBox2.TabIndex = 11;
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -177,8 +193,11 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.HelpProviderHG.SetHelpKeyword(this.checkBox1, "CU018__Consultar_bitacora.htm#checkBox1");
+            this.HelpProviderHG.SetHelpNavigator(this.checkBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.checkBox1.Location = new System.Drawing.Point(6, 25);
             this.checkBox1.Name = "checkBox1";
+            this.HelpProviderHG.SetShowHelp(this.checkBox1, true);
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 10;
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -186,8 +205,11 @@
             // 
             // button2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button2, "CU018__Consultar_bitacora.htm#button2");
+            this.HelpProviderHG.SetHelpNavigator(this.button2, System.Windows.Forms.HelpNavigator.Topic);
             this.button2.Location = new System.Drawing.Point(216, 132);
             this.button2.Name = "button2";
+            this.HelpProviderHG.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(291, 23);
             this.button2.TabIndex = 9;
             this.button2.Text = "DESCARGAR";
@@ -196,8 +218,11 @@
             // 
             // button1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button1, "CU018__Consultar_bitacora.htm#button1");
+            this.HelpProviderHG.SetHelpNavigator(this.button1, System.Windows.Forms.HelpNavigator.Topic);
             this.button1.Location = new System.Drawing.Point(216, 103);
             this.button1.Name = "button1";
+            this.HelpProviderHG.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(291, 23);
             this.button1.TabIndex = 8;
             this.button1.Text = "FILTRAR";
@@ -207,12 +232,15 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.HelpProviderHG.SetHelpKeyword(this.comboBox1, "CU018__Consultar_bitacora.htm#label4");
+            this.HelpProviderHG.SetHelpNavigator(this.comboBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.comboBox1.Items.AddRange(new object[] {
             "BAJA",
             "MEDIA",
             "ALTA"});
             this.comboBox1.Location = new System.Drawing.Point(536, 22);
             this.comboBox1.Name = "comboBox1";
+            this.HelpProviderHG.SetShowHelp(this.comboBox1, true);
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 6;
             // 
@@ -236,8 +264,11 @@
             // 
             // dateTimePicker2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.dateTimePicker2, "CU018__Consultar_bitacora.htm#label2");
+            this.HelpProviderHG.SetHelpNavigator(this.dateTimePicker2, System.Windows.Forms.HelpNavigator.Topic);
             this.dateTimePicker2.Location = new System.Drawing.Point(180, 54);
             this.dateTimePicker2.Name = "dateTimePicker2";
+            this.HelpProviderHG.SetShowHelp(this.dateTimePicker2, true);
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 3;
             // 
@@ -261,10 +292,17 @@
             // 
             // dateTimePicker1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.dateTimePicker1, "CU018__Consultar_bitacora.htm#label1");
+            this.HelpProviderHG.SetHelpNavigator(this.dateTimePicker1, System.Windows.Forms.HelpNavigator.Topic);
             this.dateTimePicker1.Location = new System.Drawing.Point(180, 19);
             this.dateTimePicker1.Name = "dateTimePicker1";
+            this.HelpProviderHG.SetShowHelp(this.dateTimePicker1, true);
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 0;
+            // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
             // 
             // CU018___Consultar_bitacora
             // 
@@ -274,7 +312,10 @@
             this.ClientSize = new System.Drawing.Size(830, 420);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU018__Consultar_bitacora.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU018___Consultar_bitacora";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "BITÁCORA";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU018___Consultar_bitacora_FormClosing);
             this.Load += new System.EventHandler(this.CU018___Consultar_bitacora_Load);
@@ -309,5 +350,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
         private System.Windows.Forms.DataGridViewTextBoxColumn CRITICIDAD;
         private System.Windows.Forms.DataGridViewTextBoxColumn FUNCIONALIDAD;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

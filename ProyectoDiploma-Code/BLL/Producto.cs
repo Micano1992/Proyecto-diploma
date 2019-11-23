@@ -46,18 +46,38 @@ namespace BLL
 
         }
 
-        public bool inactivarProducto(string prod)
+        public bool inactivarProducto(string prod, string codUsuario)
         {
             nProd.codPRoducto = prod;
 
-            return productoDAL.inactivarProducto(nProd, 0);
+            if (productoDAL.inactivarProducto(nProd, 1))
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Inactivación producto " + prod, "Productos");
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public bool activarProducto(string prod)
+        public bool activarProducto(string prod, string codUsuario)
         {
             nProd.codPRoducto = prod;
 
-            return productoDAL.inactivarProducto(nProd, 1);
+            if (productoDAL.inactivarProducto(nProd, 0))
+            {
+                bitacoraBLL.guardarLog(codUsuario, 3, "Activación producto " + prod, "Productos");
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
         }
 
         public string[] consultarProducto(string codPro)
@@ -84,10 +104,12 @@ namespace BLL
         {
             List<string[]> lProd = new List<string[]>();
 
-            string[] nProd = new string[5];
+
 
             foreach (BE.Producto prod in productoDAL.listarProductos())
             {
+                string[] nProd = new string[5];
+
                 nProd[0] = prod.codPRoducto;
                 nProd[1] = prod.descripcion;
                 nProd[2] = prod.temperatura;

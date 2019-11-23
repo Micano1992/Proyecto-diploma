@@ -232,7 +232,44 @@ namespace DAL
                 #region Documento
                 case "Documento":
 
+                    sql = "select tipoDocumento, producto, cantidad, nroDocumento, DVH from dbo.Documento";
+
+                    nConexion.conexionBD(1, sql);
+
+                    reader = nConexion.nCom.ExecuteReader();
+
+                    calcul = 0;
+                    entr = 0;
+
+                    while (reader.Read())
+                    {
+                        regis = "";
+
+                        calcul = 0;
+
+                        entr = 0;
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            regis += reader[i].ToString();
+                        }
+
+                        calcul = calcularDVH(regis);
+
+                        entr = Convert.ToInt32(reader[4].ToString());
+
+                        if (calcul != entr)
+                        {
+                            verificacion += entidad + " - " + reader[0] + " " + reader[3] + "\n";
+                        }
+
+                    }
+
+
+                    nConexion.conexionBD(0);
+
                     break;
+
                 #endregion
 
                 #region Tanque
@@ -459,6 +496,45 @@ namespace DAL
                 #region Documento
                 case "Documento":
 
+                    sql = "select tipoDocumento, producto, cantidad, nroDocumento, DVH from dbo.Documento";
+
+                    nConexion.conexionBD(1, sql);
+
+                    reader = nConexion.nCom.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        regis = "";
+                        int calcu, entr = 0;
+
+                        string idF = reader[0].ToString();
+                        string idP = reader[3].ToString();
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            regis += reader[i].ToString();
+                        }
+
+                        calcu = calcularDVH(regis);
+
+                        entr = Convert.ToInt32(reader[4].ToString());
+
+                        if (calcu != entr)
+                        {
+                            sqlm += string.Format("Update Documento set DVH = {0} where nroDocumento = {1} and tipoDocumento = '{2}';", calcu, idP, idF);
+                        }
+                    }
+
+                    nConexion.conexionBD(0);
+
+                    if (sqlm != "")
+                    {
+                        nConexion.conexionBD(1, sqlm);
+
+                        nConexion.nCom.ExecuteNonQuery();
+
+                        nConexion.conexionBD(0);
+                    }
                     break;
                 #endregion
 

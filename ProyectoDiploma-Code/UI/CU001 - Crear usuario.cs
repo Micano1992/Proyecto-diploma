@@ -81,7 +81,7 @@ namespace UI
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (textBox1.Text.Trim(' ') =="" & textBox2.Text.Trim(' ') == "" & textBox3.Text.Trim(' ') == "" & textBox5.Text.Trim(' ') == "")
+            if (textBox1.Text.Trim(' ') =="" || textBox2.Text.Trim(' ') == "" || textBox3.Text.Trim(' ') == "" || textBox5.Text.Trim(' ') == "")
             {
                 MessageBox.Show("Completar todos los campos", "ERROR");
             }

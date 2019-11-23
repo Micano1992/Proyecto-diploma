@@ -15,19 +15,20 @@ namespace BLL
         BLL.Bitácora bitacoraBLL = new Bitácora();
 
         List<string> lFami = new List<string>();
-        List<BE.FamiliaBE> lFamilia = new List<BE.FamiliaBE>();
-        List<BE.FamiliaBE> lFamilia2 = new List<BE.FamiliaBE>();
+        List<BE.Familia> lFamilia = new List<BE.Familia>();
+        List<BE.Familia> lFamilia2 = new List<BE.Familia>();
 
         BE.UsuarioBE nUsu = new BE.UsuarioBE();
-        BE.FamiliaBE familiaBE = new BE.FamiliaBE();
+        BE.Familia familiaBE = new BE.Familia();
         BE.Bitácora bitacoraBE = new BE.Bitácora();
 
         private const string NOMBRE_ENTIDAD_BITACORA = "Bitacora";
+        private const string NOMBRE_ENTIDAD_FAMILIAPATENTE = "FamiliaPatente";
 
 
         public bool crearFamilia(string desc, string codUsuario)
         {
-            BE.FamiliaBE nFam = new BE.FamiliaBE() { descripcion = desc };
+            BE.Familia nFam = new BE.Familia() { descripcion = desc };
 
             if(FamiliaDAL.crearFamilia(nFam))
             {
@@ -43,7 +44,7 @@ namespace BLL
         {
             lFami.Clear();
 
-            foreach(BE.FamiliaBE fam in FamiliaDAL.listarFamilia())
+            foreach(BE.Familia fam in FamiliaDAL.listarFamilia())
             {
                 lFami.Add(fam.descripcion);
             }
@@ -53,11 +54,13 @@ namespace BLL
 
         public bool eliminarFamilia(string descFam, string codUsuario)
         {
-            BE.FamiliaBE nFam = new BE.FamiliaBE() { descripcion = descFam };
+            BE.Familia nFam = new BE.Familia() { descripcion = descFam };
                         
             if (FamiliaDAL.eliminarFamilia(nFam))
             {
                 bitacoraBLL.guardarLog(codUsuario, 2, "Se eliminó la familia " + descFam, "Familias");
+
+                DV.actualizarDVV(NOMBRE_ENTIDAD_FAMILIAPATENTE);
 
                 return true;
             }
@@ -74,7 +77,7 @@ namespace BLL
 
             lFamilia = FamiliaDAL.listarFamiliaUsuario(nUsu);
 
-            foreach (BE.FamiliaBE fam in lFamilia)
+            foreach (BE.Familia fam in lFamilia)
             {
                 lFami.Add(fam.descripcion);
             }
@@ -93,9 +96,9 @@ namespace BLL
             lFamilia2 = FamiliaDAL.listarFamiliaUsuario(nUsu);
 
 
-            foreach (BE.FamiliaBE fam in lFamilia2)
+            foreach (BE.Familia fam in lFamilia2)
             {
-                foreach (BE.FamiliaBE fam2 in lFamilia)
+                foreach (BE.Familia fam2 in lFamilia)
                 {
                     if (fam2.idFamilia == fam.idFamilia)
                     {
@@ -107,7 +110,7 @@ namespace BLL
                 }
             }
 
-            foreach (BE.FamiliaBE fam in lFamilia)
+            foreach (BE.Familia fam in lFamilia)
             {
 
                 lFami.Add(fam.descripcion);

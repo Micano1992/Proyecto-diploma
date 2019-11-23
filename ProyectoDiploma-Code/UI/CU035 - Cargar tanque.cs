@@ -12,18 +12,35 @@ namespace UI
 {
     public partial class CU035___Cargar_tanque : Form
     {
-        public CU035___Cargar_tanque()
+        public string usuarioActivo { get; set; }
+
+        BLL.Tanque tanqueBLL = new BLL.Tanque();
+        BLL.Producto productoBLL = new BLL.Producto();
+
+        public CU035___Cargar_tanque(string usu)
         {
+            usuarioActivo = usu;
+
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se creó el tanque", "INFORMACIÓN");
+            if (textBox1.Text.Trim(' ') == "" || textBox2.Text.Trim(' ') == "" || comboBox1.Text.Trim(' ') == "" || textBox4.Text.Trim(' ') == "")
+            {
+                MessageBox.Show("Completar todos los campos", "ERROR");
+            }
 
-            this.Owner.Enabled = true;
+            else
+            {
+                tanqueBLL.crearTanque(textBox1.Text, textBox2.Text, comboBox1.Text, int.Parse(textBox4.Text), usuarioActivo);
 
-            this.Close();
+                MessageBox.Show("Se creó el tanque", "INFORMACIÓN");
+
+                this.Owner.Enabled = true;
+
+                this.Close();
+            }
 
         }
 
@@ -34,6 +51,14 @@ namespace UI
             this.StartPosition = FormStartPosition.CenterParent;
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            foreach(string[] prod in productoBLL.listarProducto())
+            {
+                comboBox1.Items.Add(prod[0]);
+            }
+
+
+
         }
 
         private void CU035___Cargar_tanque_FormClosed(object sender, FormClosedEventArgs e)

@@ -63,7 +63,7 @@ namespace BLL
             BE.Bitácora bitacoraBE = new BE.Bitácora();
 
             string[] verificacion = new string[2];
-            string log = "";
+            //string log = "";
 
             verificacion[0] = "";
             verificacion[1] = "";

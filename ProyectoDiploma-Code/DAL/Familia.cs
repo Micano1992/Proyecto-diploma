@@ -11,12 +11,12 @@ namespace DAL
     {
         string sql;
 
-        List<BE.FamiliaBE> lFamilia = new List<BE.FamiliaBE>();
+        List<BE.Familia> lFamilia = new List<BE.Familia>();
 
         ConexionesSQL nConexion = new ConexionesSQL();
         Encriptacion nEncrip = new Encriptacion();
 
-        public bool crearFamilia(BE.FamiliaBE fami)
+        public bool crearFamilia(BE.Familia fami)
         {
             sql = string.Format("Insert into dbo.Familia (Descripcion_familia) values ('{0}')", nEncrip.Encriptar3D(fami.descripcion));
 
@@ -34,9 +34,9 @@ namespace DAL
             return false;
         }
 
-        public List<BE.FamiliaBE> listarFamilia()
+        public List<BE.Familia> listarFamilia()
         {
-            List<BE.FamiliaBE> lFamilia = new List<BE.FamiliaBE>();
+            List<BE.Familia> lFamilia = new List<BE.Familia>();
 
             sql = "Select * from dbo.Familia";
 
@@ -46,7 +46,7 @@ namespace DAL
 
             while(reader.Read())
             {
-                BE.FamiliaBE nFam = new BE.FamiliaBE();
+                BE.Familia nFam = new BE.Familia();
 
                 nFam.idFamilia = int.Parse( reader[0].ToString());
                 nFam.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
@@ -59,7 +59,7 @@ namespace DAL
             return lFamilia;
         }
 
-        public bool eliminarFamilia(BE.FamiliaBE fami)
+        public bool eliminarFamilia(BE.Familia fami)
         {
             int id = obtenerIdFamilia(fami.descripcion);
 
@@ -80,7 +80,7 @@ namespace DAL
 
             nConexion.conexionBD(0);
 
-            sql = string.Format("Delete from dbo.Familia where Descripcion_familia = '{0}'", fami.descripcion);
+            sql = string.Format("Delete from dbo.Familia where Id_familia = '{0}'", id);
 
             nConexion.conexionBD(1, sql);
 
@@ -153,7 +153,7 @@ namespace DAL
         //    return true;
         //}
 
-        public List<BE.FamiliaBE> listarFamiliaUsuario(BE.UsuarioBE usuar)
+        public List<BE.Familia> listarFamiliaUsuario(BE.UsuarioBE usuar)
         {
             sql = String.Format("select b.* from dbo.FamiliaUsuario a left join dbo.Familia b on b.Id_familia = a.Id_familia where a.Cod_usuario = '{0}'", usuar.codUsuario);
 
@@ -165,7 +165,7 @@ namespace DAL
 
             while (reader.Read())
             {
-                BE.FamiliaBE nFam = new BE.FamiliaBE();
+                BE.Familia nFam = new BE.Familia();
 
                 nFam.idFamilia = int.Parse(reader[0].ToString());
                 nFam.descripcion = nEncrip.Desencriptar3D(reader[1].ToString());
@@ -180,7 +180,7 @@ namespace DAL
 
         }
         
-        public bool asignarFamiliaUsuario(BE.FamiliaBE fami, BE.UsuarioBE usu)
+        public bool asignarFamiliaUsuario(BE.Familia fami, BE.UsuarioBE usu)
         {
             sql = string.Format("Insert into dbo.FamiliaUsuario (id_familia, cod_usuario) values ({0}, '{1}')", fami.idFamilia, usu.codUsuario);
 
@@ -199,7 +199,7 @@ namespace DAL
 
         }
 
-        public bool desAsignarFamiliaUsuario(BE.FamiliaBE fami, BE.UsuarioBE usu)
+        public bool desAsignarFamiliaUsuario(BE.Familia fami, BE.UsuarioBE usu)
         {
             sql = string.Format("Delete from dbo.FamiliaUsuario where id_familia = {0} and Cod_usuario = '{1}'", fami.idFamilia, usu.codUsuario);
 

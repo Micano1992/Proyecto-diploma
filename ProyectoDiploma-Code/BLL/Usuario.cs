@@ -13,7 +13,7 @@ namespace BLL
         private const string NOMBRE_ENTIDAD_USUARIOPATENTE = "UsuarioPatente";
 
         BE.UsuarioBE nUsuario = new BE.UsuarioBE();
-        BE.PatenteBE patenteBE = new BE.PatenteBE();
+        BE.Patente patenteBE = new BE.Patente();
         DAL.Usuario nUsuDAL = new DAL.Usuario();
         DAL.Patente patDAL = new DAL.Patente();
         DAL.Terminal TerminalDAL = new DAL.Terminal();
@@ -23,7 +23,7 @@ namespace BLL
         BLL.Bitácora bitacoraBLL = new Bitácora();
 
         List<int> listaPat = new List<int>();
-        List<BE.PatenteBE> lPat = new List<BE.PatenteBE>();
+        List<BE.Patente> lPat = new List<BE.Patente>();
 
         public List<int> listarPatentes(string codUsuario)
         {
@@ -39,7 +39,7 @@ namespace BLL
 
             nUsuDAL.patentesNegadas(nUsuario, ref lPat);
 
-            foreach(BE.PatenteBE pat in lPat)
+            foreach(BE.Patente pat in lPat)
             {
                 listaPat.Add(pat.idPatente);
             }
@@ -138,7 +138,7 @@ namespace BLL
             usuario.terminal = nTer;
             usuario.idioma = idiomaDAL.obtenerIdIdioma(nUsuUI[6]);
             usuario.contraseña = nUsuDAL.generarContraseña();
-            usuario.DVH = DV.calcularDVH(usuario.nombre + usuario.apellido + usuario.tipoDocumento + usuario.nroDocumento + usuario.mail + usuario.terminal.codTerminal, NOMBRE_ENTIDAD_USUARIO);
+            usuario.DVH = DV.calcularDVH(nEncrip.Encriptar3D(usuario.nombre) + usuario.apellido + usuario.tipoDocumento + usuario.nroDocumento + usuario.mail + usuario.terminal.codTerminal, NOMBRE_ENTIDAD_USUARIO);
 
             string resp = nUsuDAL.altaUsuario(usuario, ruta);
 
@@ -193,7 +193,7 @@ namespace BLL
 
             lPat = nUsuDAL.patentesOtorgadas(nUsuario);
 
-            foreach(BE.PatenteBE pat in lPat)
+            foreach(BE.Patente pat in lPat)
             {
                 patOtor.Add(pat.descripcion);
             }
@@ -212,7 +212,7 @@ namespace BLL
 
             lPat = nUsuDAL.patentesNoOtorgadas(nUsuario);
 
-            foreach (BE.PatenteBE pat in lPat)
+            foreach (BE.Patente pat in lPat)
             {
                 patNoOtor.Add(pat.descripcion);
             }
@@ -306,7 +306,7 @@ namespace BLL
 
             lPat = nUsuDAL.patentesNegadas(nUsuario);
 
-            foreach (BE.PatenteBE pat in lPat)
+            foreach (BE.Patente pat in lPat)
             {
                 patNeg.Add(pat.descripcion);
             }
@@ -321,7 +321,7 @@ namespace BLL
         {
             List<string> patNoNeg = new List<string>();
 
-            List<BE.PatenteBE> patentes = new List<BE.PatenteBE>();
+            List<BE.Patente> patentes = new List<BE.Patente>();
 
             nUsuario.codUsuario = codUsu;
 
@@ -331,12 +331,12 @@ namespace BLL
 
             patentes = patDAL.listarPatentes();
             
-            foreach (BE.PatenteBE pat in lPat)
+            foreach (BE.Patente pat in lPat)
             {
                 patentes.Remove(pat);                
             }
 
-            foreach(BE.PatenteBE pat in patentes)
+            foreach(BE.Patente pat in patentes)
             {
                 patNoNeg.Add(pat.descripcion);
             }

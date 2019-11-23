@@ -43,12 +43,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 27);
+            this.label1.Location = new System.Drawing.Point(37, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 13);
             this.label1.TabIndex = 0;
@@ -92,32 +93,44 @@
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU005__Modificar_usuario.htm#label2");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(200, 56);
             this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(149, 20);
             this.textBox1.TabIndex = 5;
             // 
             // textBox2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox2, "CU005__Modificar_usuario.htm#label4");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox2.Location = new System.Drawing.Point(200, 82);
             this.textBox2.MaxLength = 20;
             this.textBox2.Name = "textBox2";
+            this.HelpProviderHG.SetShowHelp(this.textBox2, true);
             this.textBox2.Size = new System.Drawing.Size(149, 20);
             this.textBox2.TabIndex = 6;
             // 
             // textBox4
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox4, "CU005__Modificar_usuario.htm#label5");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox4, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox4.Location = new System.Drawing.Point(200, 135);
             this.textBox4.MaxLength = 20;
             this.textBox4.Name = "textBox4";
+            this.HelpProviderHG.SetShowHelp(this.textBox4, true);
             this.textBox4.Size = new System.Drawing.Size(149, 20);
             this.textBox4.TabIndex = 8;
             // 
             // button2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button2, "CU005__Modificar_usuario.htm#button2");
+            this.HelpProviderHG.SetHelpNavigator(this.button2, System.Windows.Forms.HelpNavigator.Topic);
             this.button2.Location = new System.Drawing.Point(40, 234);
             this.button2.Name = "button2";
+            this.HelpProviderHG.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(309, 42);
             this.button2.TabIndex = 10;
             this.button2.Text = "GUARDA CAMBIOS";
@@ -126,9 +139,12 @@
             // 
             // textBox5
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox5, "CU005__Modificar_usuario.htm#label6");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox5, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox5.Location = new System.Drawing.Point(200, 161);
             this.textBox5.MaxLength = 40;
             this.textBox5.Name = "textBox5";
+            this.HelpProviderHG.SetShowHelp(this.textBox5, true);
             this.textBox5.Size = new System.Drawing.Size(149, 20);
             this.textBox5.TabIndex = 12;
             // 
@@ -144,8 +160,11 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.HelpProviderHG.SetHelpKeyword(this.comboBox1, "CU005__Modificar_usuario.htm#label3");
+            this.HelpProviderHG.SetHelpNavigator(this.comboBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.comboBox1.Location = new System.Drawing.Point(200, 108);
             this.comboBox1.Name = "comboBox1";
+            this.HelpProviderHG.SetShowHelp(this.comboBox1, true);
             this.comboBox1.Size = new System.Drawing.Size(149, 21);
             this.comboBox1.TabIndex = 15;
             // 
@@ -161,7 +180,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(228, 26);
+            this.label8.Location = new System.Drawing.Point(228, 30);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 16;
@@ -170,10 +189,17 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.HelpProviderHG.SetHelpKeyword(this.comboBox2, "CU005__Modificar_usuario.htm#label7");
+            this.HelpProviderHG.SetHelpNavigator(this.comboBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.comboBox2.Location = new System.Drawing.Point(200, 187);
             this.comboBox2.Name = "comboBox2";
+            this.HelpProviderHG.SetShowHelp(this.comboBox2, true);
             this.comboBox2.Size = new System.Drawing.Size(149, 21);
             this.comboBox2.TabIndex = 17;
+            // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
             // 
             // CU005___Modificar_usuario
             // 
@@ -195,7 +221,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU005__Modificar_usuario.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU005___Modificar_usuario";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "MODIFICAR USUARIO";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU005___Modificar_usuario_FormClosing);
             this.Load += new System.EventHandler(this.CU005___Mod_usuario_Load);
@@ -221,5 +250,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

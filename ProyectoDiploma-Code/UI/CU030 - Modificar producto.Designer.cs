@@ -37,12 +37,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // button2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button2, "CU030__Modificar_producto.htm#button2");
+            this.HelpProviderHG.SetHelpNavigator(this.button2, System.Windows.Forms.HelpNavigator.Topic);
             this.button2.Location = new System.Drawing.Point(54, 174);
             this.button2.Name = "button2";
+            this.HelpProviderHG.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(288, 42);
             this.button2.TabIndex = 20;
             this.button2.Text = "GUARDA CAMBIOS";
@@ -51,25 +55,34 @@
             // 
             // textBox3
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox3, "CU030__Modificar_producto.htm#label3");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox3, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox3.Location = new System.Drawing.Point(242, 118);
             this.textBox3.MaxLength = 10;
             this.textBox3.Name = "textBox3";
+            this.HelpProviderHG.SetShowHelp(this.textBox3, true);
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 18;
             // 
             // textBox2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox2, "CU030__Modificar_producto.htm#label4");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox2.Location = new System.Drawing.Point(242, 85);
             this.textBox2.MaxLength = 2;
             this.textBox2.Name = "textBox2";
+            this.HelpProviderHG.SetShowHelp(this.textBox2, true);
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 17;
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU030__Modificar_producto.htm#label2");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(242, 53);
             this.textBox1.MaxLength = 20;
             this.textBox1.Name = "textBox1";
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 16;
             // 
@@ -118,6 +131,10 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "label5";
             // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
+            // 
             // CU030___Modificar_producto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,7 +149,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU030__Modificar_producto.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU030___Modificar_producto";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "MODIFICACIÓN DE PRODUCTO";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU030___Modificar_producto_FormClosed);
             this.Load += new System.EventHandler(this.CU030___Modificar_producto_Load);
@@ -152,5 +172,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

@@ -35,12 +35,16 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button1, "CU039__Transferir_stock.htm#button1");
+            this.HelpProviderHG.SetHelpNavigator(this.button1, System.Windows.Forms.HelpNavigator.Topic);
             this.button1.Location = new System.Drawing.Point(106, 183);
             this.button1.Name = "button1";
+            this.HelpProviderHG.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(143, 56);
             this.button1.TabIndex = 0;
             this.button1.Text = "CONFIRMAR TRANSFERENCIA";
@@ -68,24 +72,33 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.HelpProviderHG.SetHelpKeyword(this.comboBox1, "CU039__Transferir_stock.htm#label1");
+            this.HelpProviderHG.SetHelpNavigator(this.comboBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.comboBox1.Location = new System.Drawing.Point(177, 26);
             this.comboBox1.Name = "comboBox1";
+            this.HelpProviderHG.SetShowHelp(this.comboBox1, true);
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 3;
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.HelpProviderHG.SetHelpKeyword(this.comboBox2, "CU039__Transferir_stock.htm#label2");
+            this.HelpProviderHG.SetHelpNavigator(this.comboBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.comboBox2.Location = new System.Drawing.Point(177, 75);
             this.comboBox2.Name = "comboBox2";
+            this.HelpProviderHG.SetShowHelp(this.comboBox2, true);
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 4;
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU039__Transferir_stock.htm#label3");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(177, 125);
             this.textBox1.MaxLength = 10;
             this.textBox1.Name = "textBox1";
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(121, 20);
             this.textBox1.TabIndex = 5;
             // 
@@ -97,6 +110,10 @@
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "CANTIDAD";
+            // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
             // 
             // CU039___Transferir_stock
             // 
@@ -110,7 +127,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU039__Transferir_stock.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU039___Transferir_stock";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "TRANSFERENCIA DE STOCK";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU039___Transferir_stock_FormClosed);
             this.Load += new System.EventHandler(this.CU039___Transferir_stock_Load);
@@ -128,5 +148,6 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

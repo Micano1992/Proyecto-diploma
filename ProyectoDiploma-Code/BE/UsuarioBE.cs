@@ -8,7 +8,7 @@ namespace BE
 {
     public class UsuarioBE
     {
-        public List<BE.PatenteBE> lPatente = new List<PatenteBE>();
+        public List<BE.Patente> lPatente = new List<Patente>();
 
         public string codUsuario { get; set; }
 

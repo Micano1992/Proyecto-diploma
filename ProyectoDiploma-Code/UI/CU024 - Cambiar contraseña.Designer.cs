@@ -35,6 +35,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // label1
@@ -66,40 +67,56 @@
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU024__Cambiar_contrasena.htm#label1");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(246, 41);
             this.textBox1.MaxLength = 32;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(119, 20);
             this.textBox1.TabIndex = 3;
             // 
             // textBox2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox2, "CU024__Cambiar_contrasena.htm#label2");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox2.Location = new System.Drawing.Point(246, 94);
             this.textBox2.MaxLength = 32;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
+            this.HelpProviderHG.SetShowHelp(this.textBox2, true);
             this.textBox2.Size = new System.Drawing.Size(119, 20);
             this.textBox2.TabIndex = 4;
             // 
             // textBox3
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox3, "CU024__Cambiar_contrasena.htm#label3");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox3, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox3.Location = new System.Drawing.Point(246, 147);
             this.textBox3.MaxLength = 32;
             this.textBox3.Name = "textBox3";
             this.textBox3.PasswordChar = '*';
+            this.HelpProviderHG.SetShowHelp(this.textBox3, true);
             this.textBox3.Size = new System.Drawing.Size(119, 20);
             this.textBox3.TabIndex = 5;
             // 
             // button1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button1, "CU024__Cambiar_contrasena.htm#button1");
+            this.HelpProviderHG.SetHelpNavigator(this.button1, System.Windows.Forms.HelpNavigator.Topic);
             this.button1.Location = new System.Drawing.Point(113, 202);
             this.button1.Name = "button1";
+            this.HelpProviderHG.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(179, 34);
             this.button1.TabIndex = 6;
             this.button1.Text = "CAMBIAR";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
             // 
             // CU024___Cambiar_contraseña
             // 
@@ -113,7 +130,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU024__Cambiar_contrasena.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU024___Cambiar_contraseña";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "CAMBIAR CONTRASEÑA";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU024___Cambiar_contraseña_FormClosing);
             this.Load += new System.EventHandler(this.CU024___Cambiar_contraseña_Load);
@@ -131,5 +151,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

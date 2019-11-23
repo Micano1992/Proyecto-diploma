@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class FamiliaBE
+    public class Familia
     {
 
         public int idFamilia { get; set; }

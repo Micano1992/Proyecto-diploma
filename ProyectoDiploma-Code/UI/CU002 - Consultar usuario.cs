@@ -224,7 +224,17 @@ namespace UI
                 label6.Text = usuSelec[7].ToString();
                 label4.Text = usuSelec[4].ToString();
                 label7.Text = usuSelec[3].ToString();
-                label8.Text = usuSelec[5].ToString();
+
+                if(usuSelec[5].ToString() == "True")
+                {
+                    label8.Text = "Si";
+                }
+                else
+                {
+                    label8.Text = "No";
+                }
+
+                
 
             }
             catch (Exception)
@@ -338,11 +348,22 @@ namespace UI
 
             this.saveFileDialog1.Filter = "Archivos de texto (*.txt)|*.txt";
             this.saveFileDialog1.FileName = "";
-            this.saveFileDialog1.ShowDialog();
+            DialogResult result = this.saveFileDialog1.ShowDialog();
 
-            seguridadBLL.blanquearContraseña(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), this.saveFileDialog1.FileName, usuarioActivo);
 
-            MessageBox.Show("Se generó la nueva contraseña en el archivo indicado", "INFORMACIÓN");
+            if (result == DialogResult.Cancel)
+            {
+                MessageBox.Show("Se canceló el blanqueo de contraseña", "INFORMACIÓN");
+
+            }
+            else
+            {
+
+
+                seguridadBLL.blanquearContraseña(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), this.saveFileDialog1.FileName, usuarioActivo);
+
+                MessageBox.Show("Se generó la nueva contraseña en el archivo indicado", "INFORMACIÓN");
+            }
         }
     }
 }

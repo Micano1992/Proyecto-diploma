@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class PatenteBE 
+    public class Patente 
     {
         public int idPatente { get; set; }
 

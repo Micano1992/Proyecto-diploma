@@ -37,12 +37,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(69, 196);
+            this.HelpProviderHG.SetHelpKeyword(this.button1, "CU046__Cargar_conductor.htm#button1");
+            this.HelpProviderHG.SetHelpNavigator(this.button1, System.Windows.Forms.HelpNavigator.Topic);
+            this.button1.Location = new System.Drawing.Point(69, 189);
             this.button1.Name = "button1";
+            this.HelpProviderHG.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(202, 40);
             this.button1.TabIndex = 22;
             this.button1.Text = "CONFIRMAR ALTA";
@@ -51,36 +55,48 @@
             // 
             // textBox4
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox4, "CU046__Cargar_conductor.htm#label3");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox4, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox4.Location = new System.Drawing.Point(190, 135);
             this.textBox4.MaxLength = 12;
             this.textBox4.Name = "textBox4";
+            this.HelpProviderHG.SetShowHelp(this.textBox4, true);
             this.textBox4.Size = new System.Drawing.Size(121, 20);
             this.textBox4.TabIndex = 20;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox3
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox3, "CU046__Cargar_conductor.htm#label4");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox3, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox3.Location = new System.Drawing.Point(190, 97);
             this.textBox3.MaxLength = 10;
             this.textBox3.Name = "textBox3";
+            this.HelpProviderHG.SetShowHelp(this.textBox3, true);
             this.textBox3.Size = new System.Drawing.Size(121, 20);
             this.textBox3.TabIndex = 19;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox2, "CU046__Cargar_conductor.htm#label2");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox2.Location = new System.Drawing.Point(190, 61);
             this.textBox2.MaxLength = 50;
             this.textBox2.Name = "textBox2";
+            this.HelpProviderHG.SetShowHelp(this.textBox2, true);
             this.textBox2.Size = new System.Drawing.Size(121, 20);
             this.textBox2.TabIndex = 18;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU046__Cargar_conductor.htm#label1");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(190, 25);
             this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(121, 20);
             this.textBox1.TabIndex = 17;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -125,6 +141,10 @@
             this.label1.Text = "NOMBRE";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
+            // 
             // CU046___Cargar_conductor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,7 +159,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU046__Cargar_conductor.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU046___Cargar_conductor";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "CONDUCTOR";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU046___Cargar_conductor_FormClosed);
             this.Load += new System.EventHandler(this.CU046___Cargar_conductor_Load);
@@ -159,5 +182,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

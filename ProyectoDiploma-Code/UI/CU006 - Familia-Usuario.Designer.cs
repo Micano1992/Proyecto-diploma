@@ -41,6 +41,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -48,20 +49,26 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HelpProviderHG.SetHelpKeyword(this.dataGridView1, "CU006__FamiliaUsuario.htm#dataGridView1");
+            this.HelpProviderHG.SetHelpNavigator(this.dataGridView1, System.Windows.Forms.HelpNavigator.Topic);
             this.dataGridView1.Location = new System.Drawing.Point(33, 63);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 62;
+            this.HelpProviderHG.SetShowHelp(this.dataGridView1, true);
             this.dataGridView1.Size = new System.Drawing.Size(153, 150);
             this.dataGridView1.TabIndex = 0;
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HelpProviderHG.SetHelpKeyword(this.dataGridView2, "CU006__FamiliaUsuario.htm#dataGridView2");
+            this.HelpProviderHG.SetHelpNavigator(this.dataGridView2, System.Windows.Forms.HelpNavigator.Topic);
             this.dataGridView2.Location = new System.Drawing.Point(401, 63);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 62;
+            this.HelpProviderHG.SetShowHelp(this.dataGridView2, true);
             this.dataGridView2.Size = new System.Drawing.Size(154, 150);
             this.dataGridView2.TabIndex = 1;
             // 
@@ -85,8 +92,11 @@
             // 
             // button1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button1, "CU006__FamiliaUsuario.htm#button1");
+            this.HelpProviderHG.SetHelpNavigator(this.button1, System.Windows.Forms.HelpNavigator.Topic);
             this.button1.Location = new System.Drawing.Point(33, 252);
             this.button1.Name = "button1";
+            this.HelpProviderHG.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(153, 23);
             this.button1.TabIndex = 4;
             this.button1.Text = "QUITAR ->";
@@ -95,8 +105,11 @@
             // 
             // button2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button2, "CU006__FamiliaUsuario.htm#button2");
+            this.HelpProviderHG.SetHelpNavigator(this.button2, System.Windows.Forms.HelpNavigator.Topic);
             this.button2.Location = new System.Drawing.Point(401, 252);
             this.button2.Name = "button2";
+            this.HelpProviderHG.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(154, 23);
             this.button2.TabIndex = 5;
             this.button2.Text = "<- AGREGAR";
@@ -132,8 +145,11 @@
             // 
             // button3
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button3, "CU006__FamiliaUsuario.htm#button3");
+            this.HelpProviderHG.SetHelpNavigator(this.button3, System.Windows.Forms.HelpNavigator.Topic);
             this.button3.Location = new System.Drawing.Point(220, 298);
             this.button3.Name = "button3";
+            this.HelpProviderHG.SetShowHelp(this.button3, true);
             this.button3.Size = new System.Drawing.Size(142, 41);
             this.button3.TabIndex = 6;
             this.button3.Text = "VOLVER";
@@ -167,6 +183,10 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "label8";
             // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
+            // 
             // CU006___Administrar_familia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,7 +205,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU006__FamiliaUsuario.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU006___Administrar_familia";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "ADMINISTRAR FAMILIAS DE USUARIO";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU006___Administrar_familia_FormClosing);
             this.Load += new System.EventHandler(this.CU006___Administrar_familia_Load);
@@ -211,5 +234,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

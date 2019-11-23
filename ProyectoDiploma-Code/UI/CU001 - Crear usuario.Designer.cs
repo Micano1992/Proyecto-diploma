@@ -49,6 +49,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -101,25 +102,34 @@
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU001__Crear_usuario.htm#label1");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(168, 35);
             this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(121, 20);
             this.textBox1.TabIndex = 5;
             // 
             // textBox2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox2, "CU001__Crear_usuario.htm#label2");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox2.Location = new System.Drawing.Point(168, 61);
             this.textBox2.MaxLength = 20;
             this.textBox2.Name = "textBox2";
+            this.HelpProviderHG.SetShowHelp(this.textBox2, true);
             this.textBox2.Size = new System.Drawing.Size(121, 20);
             this.textBox2.TabIndex = 6;
             // 
             // textBox3
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox3, "CU001__Crear_usuario.htm#label3");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox3, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox3.Location = new System.Drawing.Point(168, 113);
             this.textBox3.MaxLength = 20;
             this.textBox3.Name = "textBox3";
+            this.HelpProviderHG.SetShowHelp(this.textBox3, true);
             this.textBox3.Size = new System.Drawing.Size(121, 20);
             this.textBox3.TabIndex = 7;
             // 
@@ -139,18 +149,24 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HelpProviderHG.SetHelpKeyword(this.dataGridView2, "CU001__Crear_usuario.htm#dataGridView2");
+            this.HelpProviderHG.SetHelpNavigator(this.dataGridView2, System.Windows.Forms.HelpNavigator.Topic);
             this.dataGridView2.Location = new System.Drawing.Point(227, 39);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 62;
+            this.HelpProviderHG.SetShowHelp(this.dataGridView2, true);
             this.dataGridView2.Size = new System.Drawing.Size(210, 97);
             this.dataGridView2.TabIndex = 4;
             // 
             // button3
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button3, "CU001__Crear_usuario.htm#button3");
+            this.HelpProviderHG.SetHelpNavigator(this.button3, System.Windows.Forms.HelpNavigator.Topic);
             this.button3.Location = new System.Drawing.Point(286, 148);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
+            this.HelpProviderHG.SetShowHelp(this.button3, true);
             this.button3.Size = new System.Drawing.Size(105, 23);
             this.button3.TabIndex = 3;
             this.button3.Text = "<- QUITAR";
@@ -159,9 +175,12 @@
             // 
             // button2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button2, "CU001__Crear_usuario.htm#button2");
+            this.HelpProviderHG.SetHelpNavigator(this.button2, System.Windows.Forms.HelpNavigator.Topic);
             this.button2.Location = new System.Drawing.Point(76, 148);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
+            this.HelpProviderHG.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(105, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "AGREGAR ->";
@@ -171,17 +190,23 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HelpProviderHG.SetHelpKeyword(this.dataGridView1, "CU001__Crear_usuario.htm#dataGridView1");
+            this.HelpProviderHG.SetHelpNavigator(this.dataGridView1, System.Windows.Forms.HelpNavigator.Topic);
             this.dataGridView1.Location = new System.Drawing.Point(13, 39);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
+            this.HelpProviderHG.SetShowHelp(this.dataGridView1, true);
             this.dataGridView1.Size = new System.Drawing.Size(210, 97);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button1, "CU001__Crear_usuario.htm#button1");
+            this.HelpProviderHG.SetHelpNavigator(this.button1, System.Windows.Forms.HelpNavigator.Topic);
             this.button1.Location = new System.Drawing.Point(168, 258);
             this.button1.Name = "button1";
+            this.HelpProviderHG.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(429, 40);
             this.button1.TabIndex = 11;
             this.button1.Text = "CONFIRMAR ALTA";
@@ -191,8 +216,11 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.HelpProviderHG.SetHelpKeyword(this.comboBox2, "CU001__Crear_usuario.htm#label6");
+            this.HelpProviderHG.SetHelpNavigator(this.comboBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.comboBox2.Location = new System.Drawing.Point(168, 166);
             this.comboBox2.Name = "comboBox2";
+            this.HelpProviderHG.SetShowHelp(this.comboBox2, true);
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 13;
             // 
@@ -216,27 +244,40 @@
             // 
             // textBox5
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox5, "CU001__Crear_usuario.htm#label5");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox5, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox5.Location = new System.Drawing.Point(168, 139);
             this.textBox5.MaxLength = 40;
             this.textBox5.Name = "textBox5";
+            this.HelpProviderHG.SetShowHelp(this.textBox5, true);
             this.textBox5.Size = new System.Drawing.Size(121, 20);
             this.textBox5.TabIndex = 16;
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.HelpProviderHG.SetHelpKeyword(this.comboBox1, "CU001__Crear_usuario.htm#label4");
+            this.HelpProviderHG.SetHelpNavigator(this.comboBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.comboBox1.Location = new System.Drawing.Point(168, 87);
             this.comboBox1.Name = "comboBox1";
+            this.HelpProviderHG.SetShowHelp(this.comboBox1, true);
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 18;
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
+            this.HelpProviderHG.SetHelpKeyword(this.comboBox3, "CU001__Crear_usuario.htm#label7");
+            this.HelpProviderHG.SetHelpNavigator(this.comboBox3, System.Windows.Forms.HelpNavigator.Topic);
             this.comboBox3.Location = new System.Drawing.Point(168, 193);
             this.comboBox3.Name = "comboBox3";
+            this.HelpProviderHG.SetShowHelp(this.comboBox3, true);
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 19;
+            // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
             // 
             // CU001_Crear_usuario
             // 
@@ -259,7 +300,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU001__Crear_usuario.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU001_Crear_usuario";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "USUARIO";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU001_Crear_usuario_FormClosing);
             this.Load += new System.EventHandler(this.CU001_Crear_usuario_Load);
@@ -294,5 +338,6 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

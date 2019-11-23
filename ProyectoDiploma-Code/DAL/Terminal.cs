@@ -66,6 +66,19 @@ namespace DAL
             return resul;
         }
 
+        public string obtenerDescripcionTerminal(int id)
+        {
+            sql = string.Format("Select descripcion from dbo.Terminal where codTerminal = {0}", id);
+
+            nConexion.conexionBD(1, sql);
+
+            string resul = nConexion.nCom.ExecuteScalar().ToString();
+
+            nConexion.conexionBD(0);
+        
+            return resul;
+        }
+
         public bool Update(BE.Terminal objUpdate)
         {
             throw new NotImplementedException();

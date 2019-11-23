@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // label1
@@ -48,15 +49,21 @@
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU020__Generar_copia_seguridad.htm#label1");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(89, 80);
             this.textBox1.Name = "textBox1";
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(205, 20);
             this.textBox1.TabIndex = 1;
             // 
             // button1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button1, "CU020__Generar_copia_seguridad.htm#button1");
+            this.HelpProviderHG.SetHelpNavigator(this.button1, System.Windows.Forms.HelpNavigator.Topic);
             this.button1.Location = new System.Drawing.Point(366, 60);
             this.button1.Name = "button1";
+            this.HelpProviderHG.SetShowHelp(this.button1, true);
             this.button1.Size = new System.Drawing.Size(97, 59);
             this.button1.TabIndex = 2;
             this.button1.Text = "EXAMINAR";
@@ -65,8 +72,11 @@
             // 
             // button2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button2, "CU020__Generar_copia_seguridad.htm#button2");
+            this.HelpProviderHG.SetHelpNavigator(this.button2, System.Windows.Forms.HelpNavigator.Topic);
             this.button2.Location = new System.Drawing.Point(139, 210);
             this.button2.Name = "button2";
+            this.HelpProviderHG.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(202, 42);
             this.button2.TabIndex = 5;
             this.button2.Text = "REALIZAR COPIA";
@@ -85,14 +95,21 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.HelpProviderHG.SetHelpKeyword(this.comboBox1, "CU020__Generar_copia_seguridad.htm#label3");
+            this.HelpProviderHG.SetHelpNavigator(this.comboBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.comboBox1.Items.AddRange(new object[] {
             "1",
             "2",
             "3"});
             this.comboBox1.Location = new System.Drawing.Point(89, 144);
             this.comboBox1.Name = "comboBox1";
+            this.HelpProviderHG.SetShowHelp(this.comboBox1, true);
             this.comboBox1.Size = new System.Drawing.Size(205, 21);
             this.comboBox1.TabIndex = 7;
+            // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
             // 
             // CU020___Generar_copia_seguridad
             // 
@@ -105,7 +122,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU020__Generar_copia_seguridad.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU020___Generar_copia_seguridad";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "REALIZAR COPIA DE SEGURIDAD";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CU020___Generar_copia_seguridad_FormClosing);
             this.Load += new System.EventHandler(this.CU020___Generar_copia_seguridad_Load);
@@ -123,5 +143,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
     }
 }

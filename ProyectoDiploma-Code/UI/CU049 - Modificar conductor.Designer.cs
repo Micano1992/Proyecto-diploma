@@ -38,12 +38,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.HelpProviderHG = new System.Windows.Forms.HelpProvider();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.button2, "CU049__Modificar_conductor.htm#button2");
+            this.HelpProviderHG.SetHelpNavigator(this.button2, System.Windows.Forms.HelpNavigator.Topic);
             this.button2.Location = new System.Drawing.Point(69, 214);
             this.button2.Name = "button2";
+            this.HelpProviderHG.SetShowHelp(this.button2, true);
             this.button2.Size = new System.Drawing.Size(288, 42);
             this.button2.TabIndex = 20;
             this.button2.Text = "GUARDA CAMBIOS";
@@ -52,33 +57,45 @@
             // 
             // textBox4
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox4, "CU049__Modificar_conductor.htm#label5");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox4, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox4.Location = new System.Drawing.Point(257, 166);
             this.textBox4.MaxLength = 12;
             this.textBox4.Name = "textBox4";
+            this.HelpProviderHG.SetShowHelp(this.textBox4, true);
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 19;
             // 
             // textBox3
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox3, "CU049__Modificar_conductor.htm#label3");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox3, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox3.Location = new System.Drawing.Point(257, 131);
             this.textBox3.MaxLength = 10;
             this.textBox3.Name = "textBox3";
+            this.HelpProviderHG.SetShowHelp(this.textBox3, true);
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 18;
             // 
             // textBox2
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox2, "CU049__Modificar_conductor.htm#label4");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox2, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox2.Location = new System.Drawing.Point(257, 98);
             this.textBox2.MaxLength = 50;
             this.textBox2.Name = "textBox2";
+            this.HelpProviderHG.SetShowHelp(this.textBox2, true);
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 17;
             // 
             // textBox1
             // 
+            this.HelpProviderHG.SetHelpKeyword(this.textBox1, "CU049__Modificar_conductor.htm#label2");
+            this.HelpProviderHG.SetHelpNavigator(this.textBox1, System.Windows.Forms.HelpNavigator.Topic);
             this.textBox1.Location = new System.Drawing.Point(257, 66);
             this.textBox1.MaxLength = 50;
             this.textBox1.Name = "textBox1";
+            this.HelpProviderHG.SetShowHelp(this.textBox1, true);
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 16;
             // 
@@ -127,11 +144,25 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "ID CONDUCTOR:";
             // 
+            // HelpProviderHG
+            // 
+            this.HelpProviderHG.HelpNamespace = "ProyectoDiploma.chm";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(257, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "label6";
+            // 
             // CU049___Modificar_conductor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 286);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -142,7 +173,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.HelpProviderHG.SetHelpKeyword(this, "CU049__Modificar_conductor.htm");
+            this.HelpProviderHG.SetHelpNavigator(this, System.Windows.Forms.HelpNavigator.Topic);
             this.Name = "CU049___Modificar_conductor";
+            this.HelpProviderHG.SetShowHelp(this, true);
             this.Text = "MODIFICACIÓN DE CONDUCTOR";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CU049___Modificar_conductor_FormClosed);
             this.Load += new System.EventHandler(this.CU049___Modificar_conductor_Load);
@@ -163,5 +197,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.HelpProvider HelpProviderHG;
+        private System.Windows.Forms.Label label6;
     }
 }

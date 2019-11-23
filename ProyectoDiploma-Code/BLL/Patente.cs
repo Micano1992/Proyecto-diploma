@@ -11,14 +11,14 @@ namespace BLL
     {
         DAL.Patente PatDAL = new DAL.Patente();
         DAL.Familia FamDAL = new DAL.Familia();
-        BE.PatenteBE PatBE = new BE.PatenteBE();
-        BE.FamiliaBE FamBE = new BE.FamiliaBE();
+        BE.Patente PatBE = new BE.Patente();
+        BE.Familia FamBE = new BE.Familia();
         BE.UsuarioBE UsuBE = new BE.UsuarioBE();
         BLL.Usuario usuBLL = new Usuario();
         BLL.Bitácora bitacoraBLL = new Bitácora();
-        List<BE.PatenteBE> lisPat = new List<BE.PatenteBE>();
-        List<BE.PatenteBE> lisPate = new List<BE.PatenteBE>();
-        List<BE.FamiliaBE> listaFami = new List<BE.FamiliaBE>();
+        List<BE.Patente> lisPat = new List<BE.Patente>();
+        List<BE.Patente> lisPate = new List<BE.Patente>();
+        List<BE.Familia> listaFami = new List<BE.Familia>();
         BLL.DigitoVerificador DV = new DigitoVerificador();
 
         private const string NOMBRE_ENTIDAD_FAMILIAPATENTE = "FamiliaPatente";
@@ -31,7 +31,7 @@ namespace BLL
         {
             listaP.Clear();
 
-            foreach(BE.PatenteBE pat in PatDAL.listarPatentes())
+            foreach(BE.Patente pat in PatDAL.listarPatentes())
             {
                 listaP.Add(pat.descripcion);
             }
@@ -49,7 +49,7 @@ namespace BLL
 
             PatDAL.patentesFamilias(FamBE, ref lisPat);
 
-            foreach (BE.PatenteBE pat in lisPat)
+            foreach (BE.Patente pat in lisPat)
             {
                 listaP.Add(pat.descripcion);
             }
@@ -70,9 +70,9 @@ namespace BLL
 
             PatDAL.patentesFamilias(FamBE, ref lisPate);
 
-            foreach (BE.PatenteBE pat in lisPate)
+            foreach (BE.Patente pat in lisPate)
             {
-                foreach(BE.PatenteBE pat2 in lisPat)
+                foreach(BE.Patente pat2 in lisPat)
                 {
                     if(pat2.idPatente == pat.idPatente)
                     {
@@ -84,7 +84,7 @@ namespace BLL
                 }
             }
 
-            foreach(BE.PatenteBE pat in lisPat)
+            foreach(BE.Patente pat in lisPat)
             {
 
                 listarPate.Add(pat.descripcion);
@@ -112,9 +112,9 @@ namespace BLL
 
             PatDAL.patentesFamilias(FamBE, ref lisPate);
 
-            foreach (BE.PatenteBE pat in lisPate)
+            foreach (BE.Patente pat in lisPate)
             {
-                foreach (BE.PatenteBE pat2 in lisPat)
+                foreach (BE.Patente pat2 in lisPat)
                 {
                     if (pat2.idPatente == pat.idPatente)
                     {
@@ -126,7 +126,7 @@ namespace BLL
                 }
             }
 
-            foreach (BE.PatenteBE pat in lisPat)
+            foreach (BE.Patente pat in lisPat)
             {
 
                 listarPate.Add(pat.descripcion);
@@ -200,7 +200,7 @@ namespace BLL
 
             foreach (int p in lnum)
             {
-                BE.PatenteBE nPat = new BE.PatenteBE();
+                BE.Patente nPat = new BE.Patente();
 
                 nPat.idPatente = p;
 
@@ -227,7 +227,7 @@ namespace BLL
 
             PatDAL.patentesFamilias(FamBE, ref lisPat);
           
-            foreach (BE.PatenteBE p in lisPat)
+            foreach (BE.Patente p in lisPat)
             {
                 if (PatDAL.verificarPatentes(p, FamBE).Count == 0)
                 {
@@ -273,7 +273,7 @@ namespace BLL
 
             UsuBE.codUsuario = usu;
 
-            foreach (BE.PatenteBE p in lisPat)
+            foreach (BE.Patente p in lisPat)
             {
                 if (PatDAL.verificarPatentes(p, FamBE, UsuBE).Count == 0)
                 {
@@ -282,6 +282,17 @@ namespace BLL
             }
 
             return lisPa;
+        }
+
+        public bool verificarPatentesUsuario(string pat, string usu)
+        {
+            List<string> lisUsu = new List<string>();
+
+            PatBE.idPatente = PatDAL.obtenerIdPatente(pat);
+            UsuBE.codUsuario = usu;
+
+            return PatDAL.verificarPatenteUsuario(UsuBE, PatBE);
+
         }
 
     }

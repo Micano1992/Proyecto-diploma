@@ -17,19 +17,17 @@ namespace DAL
             this.m_iv = iv;
         }
 
-        //Llamada al proveedor de encriptados 3DES
+
         private TripleDESCryptoServiceProvider m_des = new TripleDESCryptoServiceProvider();
 
-        //Define en controlador de cadenas de texto
+
         private UTF8Encoding m_utf8 = new UTF8Encoding();
 
         private Byte[] m_key;
         private Byte[] m_iv;
 
-        //Llave local y vector de bytes
         private readonly Byte[] key = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 };
 
-        //Cambiar los valores numéricos por unos diferentes ya que es parte de la llave de codificación y decodificación
         private readonly Byte[] iv = { 43, 16, 44, 35, 56, 32, 41, 14 };
 
         public string GetMD5(string str)

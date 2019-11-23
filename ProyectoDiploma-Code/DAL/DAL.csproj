@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bitacora.cs" />
+    <Compile Include="Conductor.cs" />
     <Compile Include="ConexionesSQL.cs" />
     <Compile Include="DigitoVerificador.cs" />
+    <Compile Include="Documento.cs" />
     <Compile Include="Encriptacion.cs" />
     <Compile Include="Familia.cs" />
     <Compile Include="Idioma.cs" />

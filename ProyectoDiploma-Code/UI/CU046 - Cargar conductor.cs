@@ -12,10 +12,16 @@ namespace UI
 {
     public partial class CU046___Cargar_conductor : Form
     {
-        public CU046___Cargar_conductor()
+        public string usuarioActivo { get; set; }
+
+        public CU046___Cargar_conductor(string usuarioAc)
         {
+            usuarioActivo = usuarioAc;
+
             InitializeComponent();
         }
+
+        BLL.Conductor conductorBLL = new BLL.Conductor();
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -69,9 +75,30 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Se creó el conductor", "INFORMACIÓN");
+            if (textBox1.Text.Trim(' ') == "" || textBox2.Text.Trim(' ') == "" || textBox3.Text.Trim(' ') == "" || textBox4.Text.Trim(' ') == "")
+            {
+                MessageBox.Show("Completar todos los campos", "ERROR");
+            }
 
-            this.Close();
+            else
+            {
+
+                if (conductorBLL.crearConductor(textBox2.Text, textBox1.Text, textBox4.Text, textBox3.Text, usuarioActivo))
+                {
+                    MessageBox.Show("Se creó el conductor", "INFORMACIÓN");
+
+                    this.Owner.Enabled = true;
+
+                    this.Close();
+                }
+
+                else
+                {
+                    MessageBox.Show("No se creó el producto", "ERROR");
+                }
+
+            }
+
         }
 
         private void CU046___Cargar_conductor_Load(object sender, EventArgs e)

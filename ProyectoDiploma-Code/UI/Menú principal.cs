@@ -43,7 +43,7 @@ namespace UI
 
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
-            label1.Text = usuarioLogueado;
+            //label1.Text = usuarioLogueado;
 
             deshabilitarPuntos();
 
@@ -162,7 +162,7 @@ namespace UI
         #region Tanque
         private void tToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            CU034___Consultar_tanque nCon = new CU034___Consultar_tanque();
+            CU034___Consultar_tanque nCon = new CU034___Consultar_tanque(usuarioLogueado, lPatentesUsu);
 
             this.Enabled = false;
 
@@ -171,21 +171,21 @@ namespace UI
 
         private void altaTanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU035___Cargar_tanque nCar = new CU035___Cargar_tanque();
+            CU035___Cargar_tanque nCar = new CU035___Cargar_tanque(usuarioLogueado);
 
             this.Enabled = false;
 
             nCar.Show(this);
         }
 
-        private void modificarTanqueToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CU038___Modificar_tanque nMod = new CU038___Modificar_tanque();
+        //private void modificarTanqueToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    CU038___Modificar_tanque nMod = new CU038___Modificar_tanque();
 
-            this.Enabled = false;
+        //    this.Enabled = false;
 
-            nMod.Show(this);
-        }
+        //    nMod.Show(this);
+        //}
 
         private void transferenciaDeStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -201,14 +201,14 @@ namespace UI
 
         private void consultarConductorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU045___Consultar_conductor nCon = new CU045___Consultar_conductor();
+            CU045___Consultar_conductor nCon = new CU045___Consultar_conductor(usuarioLogueado, lPatentesUsu);
 
             nCon.Show(this);
         }
 
         private void altaDeConductorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            CU046___Cargar_conductor nCar = new CU046___Cargar_conductor();
+            CU046___Cargar_conductor nCar = new CU046___Cargar_conductor(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -217,18 +217,18 @@ namespace UI
 
         private void modificarConductorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU049___Modificar_conductor nMod = new CU049___Modificar_conductor();
+            //CU049___Modificar_conductor nMod = new CU049___Modificar_conductor();
 
-            this.Enabled = false;
+            //this.Enabled = false;
 
-            nMod.Show(this);
+            //nMod.Show(this);
         }
         #endregion
 
         #region GestionTerminal
         private void verificarDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU042___Verificar_documento nVerdoc = new CU042___Verificar_documento();
+            CU042___Verificar_documento nVerdoc = new CU042___Verificar_documento(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -237,7 +237,7 @@ namespace UI
 
         private void generarRemitoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU040___Generar_remito nGenrem = new CU040___Generar_remito();
+            CU040___Generar_remito nGenrem = new CU040___Generar_remito(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -246,7 +246,7 @@ namespace UI
 
         private void generarReciboToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU041___Generar_recibo nGenRec = new CU041___Generar_recibo();
+            CU041___Generar_recibo nGenRec = new CU041___Generar_recibo(usuarioLogueado);
 
             this.Enabled = false;
 
@@ -255,7 +255,7 @@ namespace UI
 
         private void pedidosPendientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CU050___Verificar_pedidos_pendientes nVerPed = new CU050___Verificar_pedidos_pendientes();
+            CU050___Verificar_pedidos_pendientes nVerPed = new CU050___Verificar_pedidos_pendientes(usuarioLogueado, lPatentesUsu);
 
             this.Enabled = false;
 
@@ -912,12 +912,33 @@ namespace UI
                         this.cerrarSesiónToolStripMenuItem.Text = men[1];
                         break;
 
+                    case 56:
+                        this.ayudaToolStripMenuItem.Text = men[1];
+                        break;
 
                 }
 
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+     
+        }
+
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Help.ShowHelp(this, "YBaires.chm");
+            }
+            catch (Exception)
+            {
+
+                
+            }
+
+        }
     }
 }
 
