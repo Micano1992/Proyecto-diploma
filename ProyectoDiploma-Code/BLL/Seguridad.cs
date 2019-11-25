@@ -27,11 +27,11 @@ namespace BLL
             {
                 if(nSeg.validarEstado(Usu))
                 {
-                    acceso = nSeg.validarContraseña(Usu);
+                    acceso = nSeg.validarContraseña(Usu, ref mensaje);
 
                     if (acceso)
                     {
-                        nSeg.actualizarIngresosError(Usu, acceso);
+                        nSeg.actualizarIngresosError(Usu, acceso, ref mensaje);
 
                         bitacoraBLL.guardarLog(usuario, 3, "Ingreso a aplicación", "Login");
 
@@ -40,11 +40,10 @@ namespace BLL
 
                     else
                     {
-                        mensaje = "Contraseña inválida";
+                        //mensaje = "Contraseña inválida";
 
                         bitacoraBLL.guardarLog(usuario, 2, "Contraseña errónea", "Login");
-
-
+                        
                         return false;
                     }
 
@@ -78,7 +77,9 @@ namespace BLL
             Usu.codUsuario = usuario;
             Usu.contraseña = contraseña;
 
-            return nSeg.validarContraseña(Usu);
+            string mensaje = "";
+
+            return nSeg.validarContraseña(Usu, ref mensaje);
 
         }
 

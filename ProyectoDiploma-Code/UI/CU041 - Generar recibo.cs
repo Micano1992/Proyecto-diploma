@@ -38,8 +38,17 @@ namespace UI
 
             tanquesDisponibles();
 
-            comboBox1.SelectedIndex = 1;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            try
+            {
+                comboBox1.SelectedIndex = 1;
+                comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+            catch (Exception)
+            {
+
+            }
+
+
 
         }
 

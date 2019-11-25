@@ -40,9 +40,18 @@ namespace UI
 
             tanquesDisponibles();
 
-            comboBox1.SelectedIndex = 1;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            try
+            {
+                comboBox1.SelectedIndex = 1;
+
+            }
+            catch (Exception)
+            {
+                
+            }
+            
         }
 
         private void CU040___Generar_remito_FormClosed(object sender, FormClosedEventArgs e)
@@ -55,25 +64,34 @@ namespace UI
             //string n = comboBox1.Text.Split(':')[1];
             //string m = " " + dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
 
-            if (comboBox1.Text.Split(':')[1].Trim(' ') != dataGridView1.SelectedRows[0].Cells[1].Value.ToString())
+            if (comboBox1.Text != "")
             {
-                MessageBox.Show("El producto del pedido no coincide con el del tanque", "ERROR");
-            }
-            else
-            {
-                string num = documentoBLL.generarRemito(int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), usuarioActivo, int.Parse(comboBox1.Text.Split('-')[0]));
 
-                if (num != "")
+                if (comboBox1.Text.Split(':')[1].Trim(' ') != dataGridView1.SelectedRows[0].Cells[1].Value.ToString())
                 {
-                    MessageBox.Show(num, "INFORMACIÓN");
-
-                    actualizarGrilla();
+                    MessageBox.Show("El producto del pedido no coincide con el del tanque", "ERROR");
                 }
                 else
                 {
-                    MessageBox.Show("CASI");
+                    string num = documentoBLL.generarRemito(int.Parse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()), usuarioActivo, int.Parse(comboBox1.Text.Split('-')[0]));
+
+                    if (num != "")
+                    {
+                        MessageBox.Show(num, "INFORMACIÓN");
+
+                        actualizarGrilla();
+                    }
+                    else
+                    {
+                        MessageBox.Show("CASI");
+                    }
+
                 }
 
+            }
+            else
+            {
+                MessageBox.Show("Seleccione o cargue un tanque para realizar el despacho", "ERROR");
             }
         }
 
@@ -97,7 +115,7 @@ namespace UI
 
             foreach (string[] arreglo in documentoBLL.listaPedidos(usuarioBLL.consulUsuario(usuarioActivo)[7]))
             {
-                if(arreglo[5] ==  "False")
+                if(arreglo[3] !=  "0")
                 {
                     dataGridView1.Rows.Add(arreglo[0], arreglo[4], arreglo[2], arreglo[3]);
                 }

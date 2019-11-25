@@ -97,51 +97,57 @@ namespace UI
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {           
+        {
+            try
+            {
                 string celad = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
                 DialogResult result = MessageBox.Show("¿Desea eliminar la familia?", "INFORMACIÓN", MessageBoxButtons.YesNo);
 
-            if (result == DialogResult.Yes)
-            {
-
-                List<string> pat = new List<string>();
-
-                pat.Clear();
-
-                if (dataGridView1.SelectedCells.Count > 0)
+                if (result == DialogResult.Yes)
                 {
-                    foreach (string a in PatenteBLL.verificarPatentesFamilia(dataGridView1.SelectedCells[0].Value.ToString()))
-                    {
-                        pat.Add(a);
-                    }
 
-                    if (pat.Count > 0)
-                    {
-                        string men = "No es posible eliminar la familia debido a que las siguientes patentes no cuentan con otra asignación:\n";
+                    List<string> pat = new List<string>();
 
-                        foreach (string a in pat)
+                    pat.Clear();
+
+                    if (dataGridView1.SelectedCells.Count > 0)
+                    {
+                        foreach (string a in PatenteBLL.verificarPatentesFamilia(dataGridView1.SelectedCells[0].Value.ToString()))
                         {
-                            men += "\n" + a;
+                            pat.Add(a);
                         }
 
-                        MessageBox.Show(men, "ERROR");
+                        if (pat.Count > 0)
+                        {
+                            string men = "No es posible eliminar la familia debido a que las siguientes patentes no cuentan con otra asignación:\n";
+
+                            foreach (string a in pat)
+                            {
+                                men += "\n" + a;
+                            }
+
+                            MessageBox.Show(men, "ERROR");
+                        }
+
+                        else
+                        {
+
+                            FamiliaBLL.eliminarFamilia(celad, usuarioActivo);
+
+                            MessageBox.Show("Se eliminó la familia", "INFORMACIÓN");
+
+                            actualizarGrilla();
+                        }
                     }
 
-                    else
-                    {
 
-                        FamiliaBLL.eliminarFamilia(celad, usuarioActivo);
 
-                        MessageBox.Show("Se eliminó la familia", "INFORMACIÓN");
-
-                        actualizarGrilla();
-                    }
                 }
-
-                
-
             }
+            catch (Exception)
+            {          }
+
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -139,9 +139,9 @@ namespace DAL
             return nTan;
         }
 
-        public void cambiarStock(BE.Tanque tanque, int stock)
+        public void cambiarStock(BE.Tanque tanque, int stock, int dvh)
         {
-            sql = string.Format("Update dbo.Tanque set stock = {0} where id_tanque = {1}", stock, tanque.idTanque);
+            sql = string.Format("Update dbo.Tanque set stock = {0}, DVH = {1} where id_tanque = {2}", stock, dvh, tanque.idTanque);
 
             nConexion.conexionBD(1, sql);
 

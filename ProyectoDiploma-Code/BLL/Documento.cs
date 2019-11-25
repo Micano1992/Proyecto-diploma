@@ -70,14 +70,21 @@ namespace BLL
             BE.Documento nDocumen = new BE.Documento();
             BE.Producto productoBE = new BE.Producto();
             BE.Tanque tanqueBE = new BE.Tanque();
-                        
+            BE.Terminal terminalBE = new BE.Terminal();
+            BE.Pedido pedido = new BE.Pedido();
 
             nDocumen.cantidad = cantidad;
             productoBE.codPRoducto = tanqueBLL.consultarTanque(idTan)[3];
+            terminalBE.codTerminal = int.Parse(tanqueBLL.consultarTanque(idTan)[8]);
+            tanqueBE.terminal = terminalBE;
+            tanqueBE.producto = productoBE;
+            tanqueBE.codTanque = tanqueBLL.consultarTanque(idTan)[1];
             nDocumen.producto = productoBE;
             tanqueBE.idTanque = idTan;
             nDocumen.tanque = tanqueBE;
             nDocumen.tipoDocumento = "RC";
+            pedido.nroPedido = 0;
+            nDocumen.nroPedido = pedido;
 
             int DVH = DV.calcularDVH(nDocumen.tipoDocumento + nDocumen.producto.codPRoducto + nDocumen.cantidad.ToString(), NOMBRE_ENTIDAD_DOCUMENTO);
 
@@ -103,18 +110,20 @@ namespace BLL
             BE.Documento nDocumen = new BE.Documento();
             BE.Producto productoBE = new BE.Producto();
             BE.Tanque tanqueBE = new BE.Tanque();
-            BE.Pedido pedidoBE = new BE.Pedido();
+            BE.Terminal terminalBE = new BE.Terminal();
 
             BE.Pedido nPedido = documentoDAL.consultaPedido(pedido);
             
             nDocumen.cantidad = nPedido.cantidad;
             productoBE.codPRoducto = tanqueBLL.consultarTanque(idTan)[3];
+            terminalBE.codTerminal = int.Parse(tanqueBLL.consultarTanque(idTan)[8]);
+            tanqueBE.terminal = terminalBE;
+            tanqueBE.producto = productoBE;
             nDocumen.producto = productoBE;
             tanqueBE.idTanque = idTan;
             nDocumen.tanque = tanqueBE;
             nDocumen.tipoDocumento = "RM";
-            pedidoBE.nroPedido = pedido;
-            nDocumen.nroPedido = pedidoBE;
+            nDocumen.nroPedido = nPedido;
 
             int DVH = DV.calcularDVH(nDocumen.tipoDocumento + nDocumen.producto.codPRoducto + nDocumen.cantidad.ToString(), NOMBRE_ENTIDAD_DOCUMENTO);
 

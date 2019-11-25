@@ -178,7 +178,10 @@ namespace DAL
         {
             lUsu.Clear();
 
-            sql = string.Format("select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 0 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}'))", pat.idPatente, usu.codUsuario);
+            //sql = string.Format("select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 0 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}'))", pat.idPatente, usu.codUsuario);
+
+            sql = string.Format("select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} and a.bloqueado = 0 except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 0 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}'))", pat.idPatente, usu.codUsuario);
+
 
             nConexion.conexionBD(1, sql);
 
@@ -282,6 +285,32 @@ namespace DAL
             return false;
         }
 
+        public List<BE.UsuarioBE> verificarPatentesNegacion(BE.Patente pat, BE.UsuarioBE usu)
+        {
+            lUsu.Clear();
 
+            sql = string.Format("select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 0 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}'))", pat.idPatente, usu.codUsuario);
+
+            //sql = string.Format("select distinct a.Cod_usuario from dbo.Usuario a left join dbo.FamiliaUsuario b on b.Cod_usuario = a.Cod_usuario left join dbo.FamiliaPatente c on c.Id_familia = b.Id_familia where c.Id_patente = {0} and a.bloqueado = 0 except select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 1 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}') union all (select distinct a.Cod_usuario from dbo.Usuario a left join dbo.UsuarioPatente b on b.cod_usuario = a.Cod_usuario where b.Id_patente = {0} and b.Negado = 0 and a.bloqueado = 0 and a.Cod_usuario not in ('{1}'))", pat.idPatente, usu.codUsuario);
+
+
+            nConexion.conexionBD(1, sql);
+
+            SqlDataReader reader = nConexion.nCom.ExecuteReader();
+
+            while (reader.Read())
+            {
+                BE.UsuarioBE nUsu = new BE.UsuarioBE();
+
+                nUsu.codUsuario = reader[0].ToString();
+
+                lUsu.Add(nUsu);
+
+            }
+            nConexion.conexionBD(0);
+
+            return lUsu;
+
+        }
     }
 }

@@ -75,7 +75,7 @@ namespace UI
             {
                 lisUsuarios.Clear();
 
-                lisUsuarios = patenteBLL.verificarPatentes(dataGridView2.SelectedCells[0].Value.ToString(), codUsuario);
+                lisUsuarios = patenteBLL.verificarPatentesNegacion(dataGridView2.SelectedCells[0].Value.ToString(), codUsuario);
 
                 if (lisUsuarios.Count == 0)
                 {

@@ -569,12 +569,12 @@ namespace UI
                         //modificarProductoToolStripMenuItem.Visible = true;
 
                         break;
-                        
+
                     case 21:
 
                         productosToolStripMenuItem.Visible = true;
 
-                        productosOperadosToolStripMenuItem.Visible = true;
+                        //productosOperadosToolStripMenuItem.Visible = true;
 
                         verificarProductoterminalToolStripMenuItem.Visible = true;
 
@@ -585,7 +585,7 @@ namespace UI
 
                         productosToolStripMenuItem.Visible = true;
 
-                        productosOperadosToolStripMenuItem.Visible = true;
+                        //productosOperadosToolStripMenuItem.Visible = true;
 
                         asignarProductoterminalToolStripMenuItem.Visible = true;
 

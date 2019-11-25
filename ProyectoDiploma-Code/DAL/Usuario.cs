@@ -123,7 +123,7 @@ namespace DAL
             lPaten.Clear();
             
 
-            sql = string.Format("select id_patente, Descripcion_patente from dbo.patente where id_patente not in (select distinct Id_patente from dbo.FamiliaPatente where Id_familia in (select Id_familia from dbo.FamiliaUsuario where Cod_usuario = '{0}'))and id_patente not in (select id_patente from dbo.UsuarioPatente where Cod_usuario = '{0}') ", usu.codUsuario);
+            sql = string.Format("select id_patente, Descripcion_patente from dbo.patente where id_patente not in (select id_patente from dbo.UsuarioPatente where negado = 0 and Cod_usuario = '{0}') ", usu.codUsuario);
 
             nConexion.conexionBD(1, sql);
 

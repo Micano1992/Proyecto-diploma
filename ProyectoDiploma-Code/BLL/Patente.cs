@@ -141,12 +141,12 @@ namespace BLL
             PatBE.idPatente = PatDAL.obtenerIdPatente(pat);
             FamBE.idFamilia = FamDAL.obtenerIdFamilia(fam);
             int DVH = DV.calcularDVH(FamBE.idFamilia.ToString() + PatBE.idPatente.ToString(), NOMBRE_ENTIDAD_FAMILIAPATENTE);
-
-            DV.actualizarDVV(NOMBRE_ENTIDAD_FAMILIAPATENTE);
-
+            
             if (PatDAL.asignarPatenteFamilia(FamBE, PatBE, DVH))
             {
                 bitacoraBLL.guardarLog(codUsuario, 3, "Asignación de la patente " + pat + " a la familia " + fam, "Familias");
+
+                DV.actualizarDVV(NOMBRE_ENTIDAD_FAMILIAPATENTE);
 
                 return true;
             }
@@ -180,6 +180,22 @@ namespace BLL
             UsuBE.codUsuario = usu;
 
             foreach(BE.UsuarioBE u in PatDAL.verificarPatentes(PatBE, UsuBE))
+            {
+                lisUsu.Add(u.codUsuario);
+            }
+
+            return lisUsu;
+
+        }
+
+        public List<string> verificarPatentesNegacion(string pat, string usu)
+        {
+            List<string> lisUsu = new List<string>();
+
+            PatBE.idPatente = PatDAL.obtenerIdPatente(pat);
+            UsuBE.codUsuario = usu;
+
+            foreach (BE.UsuarioBE u in PatDAL.verificarPatentesNegacion(PatBE, UsuBE))
             {
                 lisUsu.Add(u.codUsuario);
             }

@@ -74,7 +74,7 @@ namespace DAL
         {
             int num = calcularNumeracion(docu.tipoDocumento);
 
-            sql = string.Format("insert into dbo.Documento values ({0}, {1}, {2}, {3}, '{4}', {5}, '{6}', 0)", num, docu.nroPedido, docu.cantidad, dvh, docu.producto.codPRoducto, docu.tanque.idTanque, docu.tipoDocumento);
+            sql = string.Format("insert into dbo.Documento values ({0}, {1}, {2}, {3}, '{4}', {5}, '{6}', 0)", num, docu.nroPedido.nroPedido, docu.cantidad, dvh, docu.producto.codPRoducto, docu.tanque.idTanque, docu.tipoDocumento);
 
             nConexion.conexionBD(1, sql);
 

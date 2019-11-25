@@ -95,7 +95,7 @@ namespace BLL
 
             BE.Tanque nTanque1 = new BE.Tanque();
 
-            string[] nTanque = new string[8];
+            string[] nTanque = new string[9];
 
             nTanque1 = tanqueDAL.consultarTanque(nTanq);
 
@@ -107,6 +107,7 @@ namespace BLL
             nTanque[5] = nTanque1.stock.ToString();
             nTanque[6] = nTanque1.cantidadMaxima.ToString();
             nTanque[7] = nTanque1.activo.ToString();
+            nTanque[8] = nTanque1.terminal.codTerminal.ToString();
 
             return nTanque;
         }
@@ -142,7 +143,7 @@ namespace BLL
             List<string[]> lTanq = new List<string[]>();
 
             var listaTan = from tanque in tanqueDAL.listarTanques()
-                           where tanque.terminal.codTerminal == term
+                           where tanque.terminal.codTerminal == term & tanque.activo == true
                            select tanque;
 
             foreach (BE.Tanque nTanque1 in listaTan)
@@ -177,7 +178,11 @@ namespace BLL
             }
             else
             {
-                tanqueDAL.cambiarStock(tanque, stock);
+                int DVH = DV.calcularDVH(tanque.codTanque + tanque.producto.codPRoducto + stock.ToString() + tanque.terminal.codTerminal, NOMBRE_ENTIDAD_TANQUE);
+
+                tanqueDAL.cambiarStock(tanque, stock, DVH);
+
+                DV.actualizarDVV(NOMBRE_ENTIDAD_TANQUE);
 
                 return true;
             }
@@ -194,7 +199,11 @@ namespace BLL
             }
             else
             {
-                tanqueDAL.cambiarStock(tanque, stock);
+                int DVH = DV.calcularDVH(tanque.codTanque + tanque.producto + stock.ToString() + tanque.terminal, NOMBRE_ENTIDAD_TANQUE);
+
+                tanqueDAL.cambiarStock(tanque, stock, DVH);
+
+                DV.actualizarDVV(NOMBRE_ENTIDAD_TANQUE);
 
                 return true;
             }

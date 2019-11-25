@@ -114,7 +114,7 @@ namespace DAL
 
                         if (calcu != Convert.ToInt64(reader[6].ToString()))
                         {
-                            verificacion += entidad + " - " + reader[7] + "\n" ;
+                            verificacion += entidad + " - " + reader[7] + "\n";
                         }
 
                     }
@@ -221,7 +221,7 @@ namespace DAL
 
                         if (calcul != entr)
                         {
-                            verificacion += entidad + " - " +  nEncrip.Desencriptar3D(reader[3].ToString()) + "/" + nEncrip.Desencriptar3D(reader[4].ToString()) + "\n";
+                            verificacion += entidad + " - " + nEncrip.Desencriptar3D(reader[3].ToString()) + "/" + nEncrip.Desencriptar3D(reader[4].ToString()) + "\n";
                         }
                     }
 
@@ -273,13 +273,52 @@ namespace DAL
                 #endregion
 
                 #region Tanque
+
                 case "Tanque":
 
+                    sql = "select codTanque, codProducto, stock, codTerminal, DVH from dbo.Tanque";
+
+                    nConexion.conexionBD(1, sql);
+
+                    reader = nConexion.nCom.ExecuteReader();
+
+                    calcul = 0;
+                    entr = 0;
+
+                    while (reader.Read())
+                    {
+                        regis = "";
+
+                        calcul = 0;
+
+                        entr = 0;
+
+                        for (int i = 0; i < 4; i++)
+                        {
+                            regis += reader[i].ToString();
+                        }
+
+                        calcul = calcularDVH(regis);
+
+                        entr = Convert.ToInt32(reader[4].ToString());
+
+                        if (calcul != entr)
+                        {
+                            verificacion += entidad + " - " + reader[0] + " " + reader[3] + "\n";
+                        }
+
+                    }
+
+                    nConexion.conexionBD(0);
+
                     break;
-                    #endregion
+
+                        #endregion
+                    
             }
 
-            return verificacion;
+
+                    return verificacion;
         }
 
         public string verificarDVV(string entidad, ref string verificacion)
@@ -541,8 +580,46 @@ namespace DAL
                 #region Tanque
                 case "Tanque":
 
+                    sql = "select codTanque, codProducto, stock, codTerminal, DVH, id_tanque from dbo.Tanque";
+
+                    nConexion.conexionBD(1, sql);
+
+                    reader = nConexion.nCom.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        regis = "";
+                        int calcu, entr = 0;
+
+                        string idF = reader[5].ToString();
+
+                        for (int i = 0; i < 4; i++)
+                        {
+                            regis += reader[i].ToString();
+                        }
+
+                        calcu = calcularDVH(regis);
+
+                        entr = Convert.ToInt32(reader[4].ToString());
+
+                        if (calcu != entr)
+                        {
+                            sqlm += string.Format("Update Tanque set DVH = {0} where id_tanque = {1} ;", calcu, idF);
+                        }
+                    }
+
+                    nConexion.conexionBD(0);
+
+                    if (sqlm != "")
+                    {
+                        nConexion.conexionBD(1, sqlm);
+
+                        nConexion.nCom.ExecuteNonQuery();
+
+                        nConexion.conexionBD(0);
+                    }
                     break;
-                    
+                   
                                        
                     #endregion
 

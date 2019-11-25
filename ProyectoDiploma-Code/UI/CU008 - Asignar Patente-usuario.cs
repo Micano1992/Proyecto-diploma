@@ -115,7 +115,7 @@ namespace UI
                 lisUsuarios = patenteBLL.verificarPatentes(dataGridView1.SelectedCells[0].Value.ToString(), codUsuario);
 
 
-                if (lisUsuarios.Count == 0 & !patenteBLL.verificarPatentesUsuario(dataGridView1.SelectedCells[0].Value.ToString(), codUsuario))
+                if (lisUsuarios.Count == 0)// & !patenteBLL.verificarPatentesUsuario(dataGridView1.SelectedCells[0].Value.ToString(), codUsuario))
                 {
                     MessageBox.Show("No es posible quitar la patente porque solo está asignada a este usuario", "ERROR");
       
