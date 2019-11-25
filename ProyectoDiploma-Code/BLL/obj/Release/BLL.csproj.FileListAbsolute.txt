@@ -1,0 +1,9 @@
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BLL\bin\Release\BLL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BLL\bin\Release\BLL.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BLL\bin\Release\BE.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BLL\bin\Release\DAL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BLL\bin\Release\BE.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BLL\bin\Release\DAL.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BLL\obj\Release\BLL.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BLL\obj\Release\BLL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BLL\obj\Release\BLL.pdb

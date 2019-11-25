@@ -1,0 +1,7 @@
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\bin\Release\DAL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\bin\Release\DAL.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\bin\Release\BE.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\bin\Release\BE.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\Release\DAL.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\DAL\obj\Release\DAL.pdb

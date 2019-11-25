@@ -1,0 +1,5 @@
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BE\bin\Release\BE.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BE\bin\Release\BE.pdb
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BE\obj\Release\BE.csprojResolveAssemblyReference.cache
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BE\obj\Release\BE.dll
+C:\Users\Matias\Documents\GitHub\Proyecto-diploma\ProyectoDiploma-Code\BE\obj\Release\BE.pdb
