@@ -141,9 +141,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(227, 37);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "BLOQUEADO:";
+            this.label3.Text = "ACTIVO:";
             // 
             // label1
             // 

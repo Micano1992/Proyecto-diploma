@@ -10,6 +10,7 @@ namespace BLL
     {
         DAL.Documento documentoDAL = new DAL.Documento();
         DAL.Conductor conductorDAL = new DAL.Conductor();
+        DAL.Producto productoDAL = new DAL.Producto();
         BE.Pedido pedidoBE = new BE.Pedido();
         BE.Conductor conductorBE = new BE.Conductor();
         BLL.Bitácora bitacoraBLL = new Bitácora();
@@ -75,6 +76,7 @@ namespace BLL
 
             nDocumen.cantidad = cantidad;
             productoBE.codPRoducto = tanqueBLL.consultarTanque(idTan)[3];
+            productoBE.activo = productoDAL.consultarProducto(productoBE).activo;
             terminalBE.codTerminal = int.Parse(tanqueBLL.consultarTanque(idTan)[8]);
             tanqueBE.terminal = terminalBE;
             tanqueBE.producto = productoBE;
@@ -86,23 +88,35 @@ namespace BLL
             pedido.nroPedido = 0;
             nDocumen.nroPedido = pedido;
 
-            int DVH = DV.calcularDVH(nDocumen.tipoDocumento + nDocumen.producto.codPRoducto + nDocumen.cantidad.ToString(), NOMBRE_ENTIDAD_DOCUMENTO);
-
-            if (tanqueBLL.aumentarStock(tanqueBE, cantidad))
+            if (productoBE.activo)
             {
-                int numGen = documentoDAL.generarDocumento(nDocumen, DVH);
 
-                bitacoraBLL.guardarLog(codUsuario, 3, "Generación recibo " + numGen, "Documento");
 
-                DV.actualizarDVV(NOMBRE_ENTIDAD_DOCUMENTO);
 
-                return "Se generó el recibo " + numGen;
+                int DVH = DV.calcularDVH(nDocumen.tipoDocumento + nDocumen.producto.codPRoducto + nDocumen.cantidad.ToString(), NOMBRE_ENTIDAD_DOCUMENTO);
+
+                if (tanqueBLL.aumentarStock(tanqueBE, cantidad))
+                {
+                    int numGen = documentoDAL.generarDocumento(nDocumen, DVH);
+
+                    bitacoraBLL.guardarLog(codUsuario, 3, "Generación recibo " + numGen, "Documento");
+
+                    DV.actualizarDVV(NOMBRE_ENTIDAD_DOCUMENTO);
+
+                    return "Se generó el recibo " + numGen;
+                }
+                else
+                {
+                    return "No hay suficiente capacidad en el tanque";
+                }
+
             }
+
             else
             {
-                return "No hay suficiente capacidad en el tanque";
-            }
 
+                return "El producto se encuentra inactivo";
+            }
         }
 
         public string generarRemito(int pedido, string codUsuario, int idTan)
@@ -116,6 +130,7 @@ namespace BLL
             
             nDocumen.cantidad = nPedido.cantidad;
             productoBE.codPRoducto = tanqueBLL.consultarTanque(idTan)[3];
+            productoBE.activo = productoDAL.consultarProducto(productoBE).activo;
             terminalBE.codTerminal = int.Parse(tanqueBLL.consultarTanque(idTan)[8]);
             tanqueBE.terminal = terminalBE;
             tanqueBE.producto = productoBE;
@@ -125,25 +140,34 @@ namespace BLL
             nDocumen.tipoDocumento = "RM";
             nDocumen.nroPedido = nPedido;
 
-            int DVH = DV.calcularDVH(nDocumen.tipoDocumento + nDocumen.producto.codPRoducto + nDocumen.cantidad.ToString(), NOMBRE_ENTIDAD_DOCUMENTO);
-
-            if (tanqueBLL.reducirStock(tanqueBE, nDocumen.cantidad))
+            if (productoBE.activo)
             {
-                int numGen = documentoDAL.generarDocumento(nDocumen, DVH);
 
-                bitacoraBLL.guardarLog(codUsuario, 3, "Generación remito " + numGen, "Documento");
 
-                DV.actualizarDVV(NOMBRE_ENTIDAD_DOCUMENTO);
+                int DVH = DV.calcularDVH(nDocumen.tipoDocumento + nDocumen.producto.codPRoducto + nDocumen.cantidad.ToString(), NOMBRE_ENTIDAD_DOCUMENTO);
 
-                documentoDAL.pedidoEntrega(nDocumen.nroPedido.nroPedido);
+                if (tanqueBLL.reducirStock(tanqueBE, nDocumen.cantidad))
+                {
+                    int numGen = documentoDAL.generarDocumento(nDocumen, DVH);
 
-                return "Se generó el remito " + numGen;
+                    bitacoraBLL.guardarLog(codUsuario, 3, "Generación remito " + numGen, "Documento");
+
+                    DV.actualizarDVV(NOMBRE_ENTIDAD_DOCUMENTO);
+
+                    documentoDAL.pedidoEntrega(nDocumen.nroPedido.nroPedido);
+
+                    return "Se generó el remito " + numGen;
+                }
+                else
+                {
+                    return "No hay suficiente stock en el tanque";
+                }
             }
             else
             {
-                return "No hay suficiente stock en el tanque";
-            }
+                return "El producto se encuentra inactivo";
 
+            }
         }
 
         public List<string[]> listaDocumentos()
